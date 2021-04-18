@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <mat-icon>face</mat-icon>
+  <span>Archetype</span>
+</mat-toolbar>
+
+<div class="content-wrapper">
+  <button (click)="newArchetype()" mat-button>
+    <mat-icon>add</mat-icon> Add Archetype
+  </button>
+
+  <div class="container-wrapper">
+    <div class="container">
+      <h2>Archetype</h2>
+      <mat-card class="list">
+        <p class="empty-label" *ngIf="(archetypes | async)?.length === 0">Empty list</p>
+        <app-archetype (edit)="editArchetype($event)" *ngFor="let archetype of archetypes | async" [archetype]="archetype"></app-archetype>
+      </mat-card>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
