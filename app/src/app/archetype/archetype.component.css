@@ -1,8 +1,16 @@
-:host {
-    display: block;
+  .list {
+    border: solid 1px #ccc;
+    min-height: 60px;
+    border-radius: 4px;
   }
   
-  .item {
-    margin-bottom: 10px;
-    cursor: pointer;
+  app-new-archetype {
+    margin-bottom: 30px;
+  }
+  
+  .empty-label {
+    font-size: 2em;
+    padding-top: 10px;
+    text-align: center;
+    opacity: 0.2;
   }
