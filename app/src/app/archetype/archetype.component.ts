@@ -22,7 +22,7 @@ export class ArchetypeComponent implements OnInit {
     const dialogRef = this.dialog.open(ArchetypeDialogComponent, {
       width: '270px',
       data: {
-        archetype: {},
+        archetype: { name: '', description: '', schema: new Array<string>() },
       },
     });
     dialogRef
@@ -31,8 +31,7 @@ export class ArchetypeComponent implements OnInit {
         if (!result) {
           return;
         }
-
-        this.store.collection('archetypes').add(result.archetype)
+        this.store.collection('archetypes').add(result.archetype);
       });
   }
 
