@@ -1,5 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { MatDialog } from '@angular/material/dialog';
+
 import { Character } from './character';
+import { CharacterDialogComponent, CharacterDialogResult } from '../character-dialog/character-dialog.component';
+import { CharacterService } from "../services/character.service";
 
 @Component({
   selector: 'app-character',
@@ -7,10 +12,46 @@ import { Character } from './character';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
-  @Input() character: Character | null = null;
-  @Output() edit = new EventEmitter<Character>();
+  characters = this.service.get();
 
-  constructor() { }
+  constructor(private dialog: MatDialog, private service:CharacterService) { }
+
+  newCharacter(): void {
+    const dialogRef = this.dialog.open(CharacterDialogComponent, {
+      width: '270px',
+      data: {
+        character: this.service.newCharacter()
+      },
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe((result: CharacterDialogResult) => {
+        if (!result) {
+          return;
+        }
+        this.service.add(result.character);
+      });
+  }
+
+  editCharacter(character: Character): void {
+    const dialogRef = this.dialog.open(CharacterDialogComponent, {
+      width: '270px',
+      data: {
+        character,
+        enableDelete: true,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: CharacterDialogResult) => {
+      if (!result) {
+        return;
+      }
+      if (result.delete) {
+        this.service.delete(character);
+      } else {
+        this.service.update(character);
+      }
+    });
+  }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,65 @@
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput cdkFocusInitial formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput cdkFocusInitial formControlName="description" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Archetype</mat-label>
+            <mat-select formControlName="archetypes" name="archetypes" (selectionChange)="onChange()" >
+                <mat-option *ngFor="let archetype of archetypes | async" [value]="archetype.id">
+                    {{archetype.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div [formGroup]="schemaFields">
+
+            <div *ngFor="let schemaField of schemaFields.controls | keyvalue; let i=index">
+                <mat-form-field>
+                    <mat-label>{{schemaField.key}}</mat-label>
+                    <input matInput formControlName="{{schemaField.key}}" />
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div mat-dialog-actions>
+            <button mat-button (click)="onSave()">OK</button>
+            <button mat-button (click)="onCancel()">Cancel</button>
+            <button *ngIf="data.enableDelete" mat-fab color="primary" aria-label="Delete" (click)="onDelete()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+
+
+    </form>
+</div>
+<!-- 
+<mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput cdkFocusInitial [(ngModel)]="data.archetype.name" />
+</mat-form-field>
+
+<mat-form-field>
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="data.archetype.description"></textarea>
+</mat-form-field>
+
+<mat-form-field *ngFor="let key in data">
+
+</mat-form-field>
+
+<div mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="{ archetype: data.archetype }">OK</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button *ngIf="data.enableDelete" mat-fab color="primary" aria-label="Delete" [mat-dialog-close]="{ archetype: data.archetype, delete: true }">
+        <mat-icon>delete</mat-icon>
+    </button>
+</div> -->

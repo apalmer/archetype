@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs';
-
 import { MatDialog } from '@angular/material/dialog';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Archetype } from './archetype';
 import { ArchetypeDialogComponent, ArchetypeDialogResult } from '../archetype-dialog/archetype-dialog.component';
+import { ArchetypeService } from "../services/archetype.service";
 
 @Component({
   selector: 'app-archetype',
@@ -14,15 +12,15 @@ import { ArchetypeDialogComponent, ArchetypeDialogResult } from '../archetype-di
   styleUrls: ['./archetype.component.css']
 })
 export class ArchetypeComponent implements OnInit {
-  archetypes = this.store.collection('archetypes').valueChanges({ idField: 'id' }) as Observable<Archetype[]>;
+  archetypes = this.service.get();
 
-  constructor(private dialog: MatDialog, private store: AngularFirestore) { }
+  constructor(private dialog: MatDialog, private service:ArchetypeService) { }
 
   newArchetype(): void {
     const dialogRef = this.dialog.open(ArchetypeDialogComponent, {
       width: '270px',
       data: {
-        archetype: { name: '', description: '', schema: new Array<string>() },
+        archetype: this.service.newArchetype()
       },
     });
     dialogRef
@@ -31,7 +29,7 @@ export class ArchetypeComponent implements OnInit {
         if (!result) {
           return;
         }
-        this.store.collection('archetypes').add(result.archetype);
+        this.service.add(result.archetype);
       });
   }
 
@@ -48,9 +46,9 @@ export class ArchetypeComponent implements OnInit {
         return;
       }
       if (result.delete) {
-        this.store.collection('archetypes').doc(archetype.id).delete();
+        this.service.delete(archetype);
       } else {
-        this.store.collection('archetypes').doc(archetype.id).update(archetype);
+        this.service.update(archetype);
       }
     });
   }

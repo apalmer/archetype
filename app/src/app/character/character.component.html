@@ -1,1 +1,17 @@
-<p>character works!</p>
+<div class="content-wrapper">
+  
+  <button (click)="newCharacter()" mat-button>
+    <mat-icon>add</mat-icon> Add Character
+  </button>
+
+  <div class="container-wrapper">
+    <div class="container">
+      <mat-card class="list">
+        <p class="empty-label" *ngIf="(characters | async)?.length === 0">Empty list</p>
+        <app-character-summary (edit)="editCharacter($event)" *ngFor="let character of characters | async"
+          [character]="character"></app-character-summary>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

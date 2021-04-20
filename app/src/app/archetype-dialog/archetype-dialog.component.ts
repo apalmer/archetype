@@ -31,7 +31,7 @@ export class ArchetypeDialogComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.shouldSave) {
+    if (this.shouldSave || this.shouldDelete) {
       this.dialogRef.close({ archetype: this.data.archetype, delete: this.shouldDelete });
     }
     else {

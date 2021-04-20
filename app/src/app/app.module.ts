@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelect, MatSelectModule  } from "@angular/material/select";
 //Angular Fire Modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -20,18 +21,22 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //App Components
-import { CharacterComponent } from './character/character.component';
 import { ArchetypeComponent } from './archetype/archetype.component';
-import { ArchetypeDialogComponent } from './archetype-dialog/archetype-dialog.component';
 import { ArchetypeSummaryComponent } from './archetype-summary/archetype-summary.component';
+import { ArchetypeDialogComponent } from './archetype-dialog/archetype-dialog.component';
+import { CharacterComponent } from './character/character.component';
+import { CharacterSummaryComponent } from './character-summary/character-summary.component';
+import { CharacterDialogComponent } from './character-dialog/character-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterComponent,
     ArchetypeComponent,
     ArchetypeDialogComponent,
-    ArchetypeSummaryComponent
+    ArchetypeSummaryComponent,
+    CharacterComponent,
+    CharacterSummaryComponent,
+    CharacterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,7 @@ import { ArchetypeSummaryComponent } from './archetype-summary/archetype-summary
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    MatSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgxAuthFirebaseUIModule.forRoot(
