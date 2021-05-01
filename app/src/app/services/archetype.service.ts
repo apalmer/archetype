@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Archetype } from '../archetype/archetype';
+import { Archetype } from '../models/Archetype';
+import { JsonSchema } from '../models/JsonSchema';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ArchetypeService {
   }
 
   newArchetype(): Archetype {
-    return { name: '', description: '', schema: new Array<string>() };
+    return { name: '', description: '' };
   }
 
   add(archetype: Archetype) {
