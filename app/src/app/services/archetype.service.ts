@@ -16,7 +16,11 @@ export class ArchetypeService {
   }
 
   newArchetype(): Archetype {
-    return { name: '', description: '' };
+    return { name: '', description: '', schema: this.newSchema() };
+  }
+
+  newSchema(): JsonSchema {
+    return { properties : {}};
   }
 
   add(archetype: Archetype) {

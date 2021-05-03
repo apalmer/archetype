@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //App Components
-import { ArchetypeComponent } from './archetype/archetype.component';
+import { ArchetypesComponent } from './archetypes/archetypes.component';
 import { ArchetypeSummaryComponent } from './archetype-summary/archetype-summary.component';
 import { ArchetypeDialogComponent } from './archetype-dialog/archetype-dialog.component';
 import { CharacterComponent } from './character/character.component';
@@ -31,7 +31,7 @@ import { CharacterDialogComponent } from './character-dialog/character-dialog.co
 @NgModule({
   declarations: [
     AppComponent,
-    ArchetypeComponent,
+    ArchetypesComponent,
     ArchetypeDialogComponent,
     ArchetypeSummaryComponent,
     CharacterComponent,

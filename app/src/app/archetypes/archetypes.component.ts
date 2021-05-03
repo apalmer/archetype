@@ -7,11 +7,11 @@ import { ArchetypeDialogComponent, ArchetypeDialogResult } from '../archetype-di
 import { ArchetypeService } from "../services/archetype.service";
 
 @Component({
-  selector: 'app-archetype',
-  templateUrl: './archetype.component.html',
-  styleUrls: ['./archetype.component.css']
+  selector: 'app-archetypes',
+  templateUrl: './archetypes.component.html',
+  styleUrls: ['./archetypes.component.css']
 })
-export class ArchetypeComponent implements OnInit {
+export class ArchetypesComponent implements OnInit {
   archetypes = this.service.get();
 
   constructor(private dialog: MatDialog, private service:ArchetypeService) { }

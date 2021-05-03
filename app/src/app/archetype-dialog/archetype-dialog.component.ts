@@ -3,6 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Archetype } from "../models/Archetype";
+import { ArchetypeService } from "../services/archetype.service";
 
 @Component({
   selector: 'app-archetype-dialog',
@@ -17,7 +18,8 @@ export class ArchetypeDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ArchetypeDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ArchetypeDialogData
+    @Inject(MAT_DIALOG_DATA) public data: ArchetypeDialogData,
+    private service: ArchetypeService
   ) {
 
   }
@@ -42,9 +44,12 @@ export class ArchetypeDialogComponent implements OnInit {
   onSave(): void {
     this.data.archetype.name = this.form.get('name')?.value;
     this.data.archetype.description = this.form.get('description')?.value;
-    this.data.archetype.schema = new Array<string>();
+    this.data.archetype.schema = this.service.newSchema();
     this.schemaFields.controls.forEach(control => {
-      this.data.archetype.schema?.push(control.value);
+      let val = control.value;
+      if(this.data.archetype.schema){
+        this.data.archetype.schema.properties['unknown'] = val;
+      }
     });
 
     this.shouldSave = true;
@@ -67,7 +72,8 @@ export class ArchetypeDialogComponent implements OnInit {
     group.name = new FormControl(archetype.name);
     group.description = new FormControl(archetype.description);
     const schemaFields: Array<FormControl> = new Array<FormControl>();
-    archetype.schema?.forEach(key => {
+    const keys = Object.keys(archetype.schema?.properties);
+    keys.forEach(key => {
       schemaFields.push(new FormControl(key));
     });
     group.schemaFields = new FormArray(schemaFields);
