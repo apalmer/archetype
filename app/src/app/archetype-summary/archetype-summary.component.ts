@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Archetype } from '../archetype/archetype';
+import { Archetype } from '../models/Archetype';
 
 @Component({
   selector: 'app-archetype-summary',

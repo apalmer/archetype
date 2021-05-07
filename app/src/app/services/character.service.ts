@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 
-import { Character } from '../character/character';
+import { Character } from '../models/Character';
 
 @Injectable({
   providedIn: 'root'

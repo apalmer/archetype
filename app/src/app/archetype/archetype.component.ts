@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { Archetype } from './archetype';
+import { Archetype } from '../models/Archetype';
 import { ArchetypeDialogComponent, ArchetypeDialogResult } from '../archetype-dialog/archetype-dialog.component';
 import { ArchetypeService } from "../services/archetype.service";
 

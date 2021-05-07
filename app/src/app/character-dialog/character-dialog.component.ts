@@ -2,8 +2,8 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Character } from "../character/character";
-import { Archetype } from "../archetype/archetype";
+import { Character } from "../models/Character";
+import { Archetype } from "../models/Archetype";
 import { ArchetypeService } from '../services/archetype.service';
 import { Observable } from 'rxjs';
 
@@ -69,9 +69,11 @@ export class CharacterDialogComponent implements OnInit {
       keys.forEach(key =>{
         this.schemaFields.removeControl(key);
       });
-      archetype?.schema.forEach(key => {
-        this.schemaFields.addControl(key,new FormControl(''));
-      });
+      if(archetype?.schema.properties != null){
+        Object.keys(archetype?.schema.properties).forEach(key => {
+          this.schemaFields.addControl(key,new FormControl(''));
+        });
+      }
 
     });
   }
