@@ -44,6 +44,8 @@ function skillcheck(profic:number,adv:string,mod:number,skill:number) {
 
 }
 
+
+
 class Charachters {
     stats:any;
     resources:any;
@@ -54,11 +56,11 @@ class Charachters {
         hpmax:number, spslot:number,
         athletics:number,acrobatics:number,
         portrait:string,name:string,background:string){
-        this.stats=[prime,skill];
-        this.stats.prime=[int,str,dex,vit,wis,chr];
-        this.stats.skill=[athletics,acrobatics]
-        this.resources=[hpmax,spslot];
-        this.bio=[portrait,name,background];
+        this.stats=[prime=[int,str,vit,wis,chr,dex],skill=[athletics,acrobatics]];
+        this.stats.prime=[int=9,str=9,dex=9,vit=9,wis=9,chr=9];
+        this.stats.skill=[athletics=0,acrobatics=0]
+        this.resources=[hpmax=9,spslot=4];
+        this.bio=[portrait="default.png",name="Brave Default",background="Stuff."];
     }
     
 
@@ -69,6 +71,10 @@ const mars= new Charachters(null,null,10,11,10,16,10,16,15,4,3,2,"me.png","Mars 
 
 const enemars= new Charachters(null,null,10,16,18,10,8,10,20,0,4,0,"ene.png","En Gro", "Killa");
 
+var b =skillcheck(2,"bo",(mars.stats.prime.str-10)/2,mars.stats.skill.acrobatics)
+
+
+
 var hpmin= mars.resources.hpmax -3
 
-console.log( "current HP is"+hpmin);
+console.log( "current HP is"+hpmin+"lo"+b);

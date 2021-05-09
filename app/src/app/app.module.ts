@@ -27,6 +27,7 @@ import { ArchetypeDialogComponent } from './archetype-dialog/archetype-dialog.co
 import { CharacterComponent } from './character/character.component';
 import { CharacterSummaryComponent } from './character-summary/character-summary.component';
 import { CharacterDialogComponent } from './character-dialog/character-dialog.component';
+import { CharuiComponent } from './charui/charui.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CharacterDialogComponent } from './character-dialog/character-dialog.co
     ArchetypeSummaryComponent,
     CharacterComponent,
     CharacterSummaryComponent,
-    CharacterDialogComponent
+    CharacterDialogComponent,
+    CharuiComponent
   ],
   imports: [
     BrowserModule,
