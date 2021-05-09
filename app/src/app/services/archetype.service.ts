@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
 
-import { Archetype } from '../models/Archetype';
-import { JsonSchema } from '../models/JsonSchema';
+import { Archetype } from '../models/archetype';
+import { JsonSchema } from '../models/json-schema';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,16 @@ export class ArchetypeService {
     return this.store.collection('archetypes').valueChanges({ idField: 'id' }) as Observable<Archetype[]>;
   }
 
+  getArchetype(archetypeId:string) {
+    return this.store.collection('archetypes').doc(archetypeId).get()  as Observable<DocumentSnapshot<Archetype>>;
+  }
+
   newArchetype(): Archetype {
-    return { name: '', description: '' };
+    return { name: '', description: '', schema: this.newSchema() };
+  }
+
+  newSchema(): JsonSchema {
+    return { properties : {}};
   }
 
   add(archetype: Archetype) {

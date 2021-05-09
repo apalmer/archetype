@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Field Type</h1>
+<div mat-dialog-content>
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="data.fieldType" class="field-type-radio-group">
+    <mat-radio-button *ngFor="let fieldTypeOption of fieldTypeOptions" [value]="fieldTypeOption" class="field-type-radio-button">
+      {{fieldTypeOption}}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.fieldType" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

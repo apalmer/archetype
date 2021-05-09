@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoggedInGuard } from 'ngx-auth-firebaseui';
 
-import { ArchetypeComponent } from './archetype/archetype.component';
+import { ArchetypesComponent } from './archetypes/archetypes.component';
 import { CharacterComponent } from './character/character.component';
 import { CharuiComponent } from './charui/charui.component';
 
@@ -12,6 +12,15 @@ const routes: Routes = [
   { path: 'archetypes', component: ArchetypeComponent, canActivate: [LoggedInGuard] },
   { path: 'characters', component: CharacterComponent, canActivate: [LoggedInGuard] },
   { path: 'charui', component: CharuiComponent, canActivate:[LoggedInGuard] }
+
+import { ArchetypeComponent } from "./archetype/archetype.component";
+
+const routes: Routes = [
+  { path: '', redirectTo: '/characters', pathMatch: 'full' },
+  { path: 'archetypes', component: ArchetypesComponent, canActivate: [LoggedInGuard] },
+  { path: 'archetype', component: ArchetypeComponent, canActivate: [LoggedInGuard] },
+  { path: 'archetype/:archetypeId', component: ArchetypeComponent, canActivate: [LoggedInGuard] },
+  { path: 'characters', component: CharacterComponent, canActivate: [LoggedInGuard] }
 ];
 
 @NgModule({

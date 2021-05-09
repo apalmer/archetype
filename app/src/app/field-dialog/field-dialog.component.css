@@ -1,0 +1,9 @@
+.field-type-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .field-type-radio-button {
+    margin: 5px;
+  }

@@ -1,17 +1,51 @@
-<div class="content-wrapper">
-  
-  <button (click)="newArchetype()" mat-button>
-    <mat-icon>add</mat-icon> Add Archetype
-  </button>
+<div *ngIf="form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-  <div class="container-wrapper">
-    <div class="container">
-      <mat-card class="list">
-        <p class="empty-label" *ngIf="(archetypes | async)?.length === 0">Empty list</p>
-        <app-archetype-summary (edit)="editArchetype($event)" *ngFor="let archetype of archetypes | async"
-          [archetype]="archetype"></app-archetype-summary>
-      </mat-card>
-    </div>
-  </div>
+        <mat-card class="archetype-card">
+            <mat-card-header>
+                <mat-card-title>Archetype</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Name" cdkFocusInitial formControlName="name" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <mat-label>Description</mat-label>
+                            <input matInput formControlName="description" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div *ngIf="root">
+                    <app-field-control [form]="form" [field]="root"></app-field-control>
+                </div>
+                <!-- <button type="button" (click)="onAddField()" mat-button>
+                    <mat-icon>add</mat-icon> Add Property
+                </button>
+
+                <div *ngFor="let field of fields" class="row">
+                    <div class="col">
+                    </div>
+                </div> -->
+
+            </mat-card-content>
+            <mat-card-actions>
+
+
+            </mat-card-actions>
+        </mat-card>
+
+
+
+
+    </form>
+    <!-- <div *ngFor="let field of fields" class="form-row">
+        
+    </div> -->
 
 </div>
