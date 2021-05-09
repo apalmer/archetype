@@ -1,5 +1,3 @@
-import { RtlScrollAxisType } from "@angular/cdk/platform";
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "node:constants";
 
 function rolldice(side: number) {
   return Math.floor((Math.random() * side)+1)
@@ -44,11 +42,13 @@ function skillcheck(profic:number,adv:string,mod:number,skill:number) {
 
 }
 
-class Charachters {
+export class Charachters {
+
     stats:any;
     resources:any;
     items:any;
     bio:any;
+
     constructor(prime:any,skill:any,
         int:number,str:number,vit:number,wis:number,chr:number,dex:number, 
         hpmax:number, spslot:number,
@@ -60,12 +60,9 @@ class Charachters {
         this.resources=[hpmax,spslot];
         this.bio=[portrait,name,background];
     }
-    
-
 };
 
 const mars= new Charachters(null,null,10,11,10,16,10,16,15,4,3,2,"me.png","Mars God","Born in Brook, 1120");
-
 
 const enemars= new Charachters(null,null,10,16,18,10,8,10,20,0,4,0,"ene.png","En Gro", "Killa");
 

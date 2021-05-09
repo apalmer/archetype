@@ -1,0 +1,51 @@
+<div *ngIf="form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+        <mat-card class="archetype-card">
+            <mat-card-header>
+                <mat-card-title>Archetype</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <input matInput placeholder="Name" cdkFocusInitial formControlName="name" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <mat-form-field class="full-width">
+                            <mat-label>Description</mat-label>
+                            <input matInput formControlName="description" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div *ngIf="root">
+                    <app-field-control [form]="form" [field]="root"></app-field-control>
+                </div>
+                <!-- <button type="button" (click)="onAddField()" mat-button>
+                    <mat-icon>add</mat-icon> Add Property
+                </button>
+
+                <div *ngFor="let field of fields" class="row">
+                    <div class="col">
+                    </div>
+                </div> -->
+
+            </mat-card-content>
+            <mat-card-actions>
+
+
+            </mat-card-actions>
+        </mat-card>
+
+
+
+
+    </form>
+    <!-- <div *ngFor="let field of fields" class="form-row">
+        
+    </div> -->
+
+</div>

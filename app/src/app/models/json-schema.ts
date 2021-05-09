@@ -7,3 +7,7 @@ export interface JsonSchema {
     properties: any,
     // required:string[]
 }
+
+export interface JsonSchemaProperty {
+    type:string
+}

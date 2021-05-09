@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { Archetype } from '../models/Archetype';
+import { Archetype } from '../models/archetype';
 import { ArchetypeDialogComponent, ArchetypeDialogResult } from '../archetype-dialog/archetype-dialog.component';
 import { ArchetypeService } from "../services/archetype.service";
 
@@ -14,46 +15,18 @@ import { ArchetypeService } from "../services/archetype.service";
 export class ArchetypesComponent implements OnInit {
   archetypes = this.service.get();
 
-  constructor(private dialog: MatDialog, private service:ArchetypeService) { }
+  constructor(private router:Router, private service:ArchetypeService) { }
 
   newArchetype(): void {
-    const dialogRef = this.dialog.open(ArchetypeDialogComponent, {
-      width: '270px',
-      data: {
-        archetype: this.service.newArchetype()
-      },
-    });
-    dialogRef
-      .afterClosed()
-      .subscribe((result: ArchetypeDialogResult) => {
-        if (!result) {
-          return;
-        }
-        this.service.add(result.archetype);
-      });
+    this.router.navigate(['/archetype']);
   }
 
   editArchetype(archetype: Archetype): void {
-    const dialogRef = this.dialog.open(ArchetypeDialogComponent, {
-      width: '270px',
-      data: {
-        archetype,
-        enableDelete: true,
-      },
-    });
-    dialogRef.afterClosed().subscribe((result: ArchetypeDialogResult) => {
-      if (!result) {
-        return;
-      }
-      if (result.delete) {
-        this.service.delete(archetype);
-      } else {
-        this.service.update(archetype);
-      }
-    });
+    this.router.navigate(['/archetype', archetype.id ]);
   }
 
   ngOnInit(): void {
+    
   }
 
 }

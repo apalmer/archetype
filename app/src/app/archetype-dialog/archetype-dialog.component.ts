@@ -2,7 +2,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Archetype } from "../models/Archetype";
+import { Archetype } from "../models/archetype";
 import { ArchetypeService } from "../services/archetype.service";
 
 @Component({

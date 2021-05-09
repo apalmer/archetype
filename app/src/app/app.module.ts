@@ -10,7 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelect, MatSelectModule  } from "@angular/material/select";
+import { MatSelectModule  } from "@angular/material/select";
+import { MatRadioModule } from "@angular/material/radio";
 //Angular Fire Modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -21,12 +22,18 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //App Components
+import { ArchetypeComponent } from './archetype/archetype.component';
 import { ArchetypesComponent } from './archetypes/archetypes.component';
 import { ArchetypeSummaryComponent } from './archetype-summary/archetype-summary.component';
 import { ArchetypeDialogComponent } from './archetype-dialog/archetype-dialog.component';
 import { CharacterComponent } from './character/character.component';
 import { CharacterSummaryComponent } from './character-summary/character-summary.component';
 import { CharacterDialogComponent } from './character-dialog/character-dialog.component';
+import { FieldControlComponent } from './field-control/field-control.component';
+import { FieldDialogComponent } from './field-dialog/field-dialog.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -36,7 +43,10 @@ import { CharacterDialogComponent } from './character-dialog/character-dialog.co
     ArchetypeSummaryComponent,
     CharacterComponent,
     CharacterSummaryComponent,
-    CharacterDialogComponent
+    CharacterDialogComponent,
+    ArchetypeComponent,
+    FieldControlComponent,
+    FieldDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -51,13 +61,17 @@ import { CharacterDialogComponent } from './character-dialog/character-dialog.co
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    MatRadioModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     NgxAuthFirebaseUIModule.forRoot(
       environment.firebase,
       environment.ngxFireBaseUiAppNameFactory,
       environment.ngxFirebaseUi
-    )
+    ),
+    MatGridListModule,
+    MatMenuModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

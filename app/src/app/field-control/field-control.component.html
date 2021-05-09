@@ -1,0 +1,27 @@
+<div [formGroup]="form" [ngSwitch]="getType(field)">
+
+    <div *ngSwitchCase="'object'">
+        object
+    </div>
+    <div *ngSwitchCase="'number'">
+        number
+    </div>
+    <div *ngSwitchCase="'string'">
+        string
+    </div>
+    <div *ngSwitchCase="'array'">
+        array
+    </div>
+    <div *ngSwitchCase="'null'">
+        null
+    </div>
+    <div *ngSwitchCase="'boolean'">
+        boolean
+    </div>
+<!--     
+    <mat-form-field class="full-width">
+        <mat-label>{{field.name}}</mat-label>
+        <input matInput />
+    </mat-form-field> -->
+    
+</div>
