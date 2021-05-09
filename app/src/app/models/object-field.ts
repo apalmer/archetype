@@ -11,7 +11,7 @@ export class ObjectField extends FieldBase<object>{
         name: string;
         value?: any;
     }) {
-        super({ name: options.name });
+        super({ name: options.name, type: 'object' });
         this.fields = [];
         if (options.value) {
             Object.keys(options.value).forEach(key => {
@@ -20,13 +20,13 @@ export class ObjectField extends FieldBase<object>{
                     let field: FieldBase<any>;
                     switch (property.type) {
                         case "boolean":
-                            field = new BooleanField({ name: key });
+                            field = new BooleanField(key);
                             break;
                         case "number":
-                            field = new NumberField({ name: key });
+                            field = new NumberField(key);
                             break;
                         case "string":
-                            field = new StringField({ name: key });
+                            field = new StringField(key);
                             break;
                         case "object":
                             field = new ObjectField({ name: key });
