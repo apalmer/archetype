@@ -2,8 +2,8 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Character } from "../models/character";
-import { Archetype } from "../models/archetype";
+import { Character } from "../models/dcharacter";
+import { Archetype } from "../models/darchetype";
 import { ArchetypeService } from '../services/archetype.service';
 import { Observable } from 'rxjs';
 

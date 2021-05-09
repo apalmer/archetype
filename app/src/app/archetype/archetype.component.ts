@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
-import { Archetype } from "../models/archetype";
+import { Archetype } from "../models/darchetype";
 import { ArchetypeService } from "../services/archetype.service";
 import { FieldControlComponent } from "../field-control/field-control.component";
 import { FieldHelperService } from "../services/field-helper.service";

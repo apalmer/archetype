@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { Character } from '../models/character';
+import { Character } from '../models/dcharacter';
 import { CharacterDialogComponent, CharacterDialogResult } from '../character-dialog/character-dialog.component';
 import { CharacterService } from "../services/character.service";
 

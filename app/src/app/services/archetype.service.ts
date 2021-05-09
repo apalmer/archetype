@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { AngularFirestore, DocumentSnapshot } from '@angular/fire/firestore';
 
-import { Archetype } from '../models/archetype';
+import { Archetype } from '../models/darchetype';
 import { JsonSchema } from '../models/json-schema';
 
 @Injectable({

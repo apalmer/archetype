@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 
 import { MatDialog } from '@angular/material/dialog';
 
-import { Archetype } from '../models/archetype';
+import { Archetype } from '../models/darchetype';
 import { ArchetypeDialogComponent, ArchetypeDialogResult } from '../archetype-dialog/archetype-dialog.component';
 import { ArchetypeService } from "../services/archetype.service";
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Character } from '../models/character';
+import { Character } from '../models/dcharacter';
 
 @Component({
   selector: 'app-character-summary',

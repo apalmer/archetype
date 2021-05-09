@@ -47,13 +47,10 @@ import { LayoutModule } from '@angular/cdk/layout';
     CharacterComponent,
     CharacterSummaryComponent,
     CharacterDialogComponent,
-
-    CharuiComponent
-
+    CharuiComponent, 
     ArchetypeComponent,
     FieldControlComponent,
     FieldDialogComponent
-
   ],
   imports: [
     BrowserModule,

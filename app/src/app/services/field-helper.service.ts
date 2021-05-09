@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormArray } from '@angular/forms';
-import { Archetype } from '../models/archetype';
+import { Archetype } from '../models/darchetype';
 import { FieldBase } from '../models/field-base';
 
 @Injectable({
