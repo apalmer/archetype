@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {CharDataServiceService} from '../char-data-service.service';
 import{CharOh} from '../charui/charoh';
 
+
 var bal=new CharOh;
 
 

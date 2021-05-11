@@ -1,7 +1,9 @@
-<div [formGroup]="form" [ngSwitch]="getType(field)">
+<div [formGroup]="form" [ngSwitch]="field.type">
 
     <div *ngSwitchCase="'object'">
-        object
+        <button type="button" (click)="onAddField()" mat-button>
+            <mat-icon>add</mat-icon> Add Property
+        </button>
     </div>
     <div *ngSwitchCase="'number'">
         number
@@ -9,14 +11,14 @@
     <div *ngSwitchCase="'string'">
         string
     </div>
+    <div *ngSwitchCase="'boolean'">
+        boolean
+    </div>
     <div *ngSwitchCase="'array'">
         array
     </div>
     <div *ngSwitchCase="'null'">
         null
-    </div>
-    <div *ngSwitchCase="'boolean'">
-        boolean
     </div>
 <!--     
     <mat-form-field class="full-width">
