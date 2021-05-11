@@ -1,40 +1,23 @@
+import { AttrAst } from '@angular/compiler';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, OnInit } from '@angular/core';
+import {CharDataServiceService} from '../char-data-service.service';
+import{CharOh} from '../charui/charoh';
 
-class CharOh {
-  name="Balca Bo";
-  classes=[['Monk',9], ['Barbarian',1]];
-  profi='assets/images/bil.svg'
-  weapon=[staff,unarmed,knuckles]
-  resource=[['HP',24,10], ['ki', 4,3]]
-};
-
-const staff={name:'Old Staff', type:'quarterstaff', dmg1: '1d6',dmg2:'1d8', dmgtype:'blunt', properties:['versatile']}
-const unarmed={name:'Fists', type:'unnamrmed', dmg1: '1d1',dmg2:'1d1', dmgtype:'blunt', properties:['none']}
-const knuckles={name:'Brass Knuckles', type:'club', dmg1: '1d4',dmg2:'1d4', dmgtype:'blunt', properties:['light']}
 var bal=new CharOh;
 
 
 
-
-function allclasslvl(char:CharOh){
+function allclasslvl(char:any){
   
   var covo= 0;
   
   var i
-  for (i=0; i <char.classes.length; i++){
-     covo += Number(char.classes[i][1]);
+  for (i=0; i <char.bio.class.length; i++){
+     covo += Number(char.bio.class[i].lvl);
      }
      return covo;
 }
-
-function hpcenter(bu:any){
-  var boom= bu+"%";
-  var x =document.getElementById('#hpcent')!;
-  x.style.width=boom
-
-};
-
 
 
 @Component({
@@ -44,10 +27,36 @@ function hpcenter(bu:any){
   
 })
 export class CharuiComponent implements OnInit {
-  myhero="Windstorm"
-  charb=bal;
-  claszt=allclasslvl(bal);
-  nop=10;
+  charb=new CharOh;
+  sal=new CharDataServiceService
+  charc=this.sal.barb[1]
+  claszt=allclasslvl(this.charc);
+  f:number=1
+  anim=this.charc.bio.idlava
+
+  onRage(event: MouseEvent){
+    (event.target as HTMLElement).style.backgroundColor="blue";
+    if (this.charc.resources[1].min==0) {alert('too tired')}
+    else {this.charc.resources[1].min=this.charc.resources[1].min-1;
+      this.anim=this.charc.bio.idlrag
+    
+      setTimeout( ()=>{this.anim=this.charc.bio.idlava;
+      (event.target as HTMLElement).style.backgroundColor="red"
+      ;}, 2000)
+    }
+    
+
+   // if (this.f<this.sal.barb.length-1){
+    //this.f=this.f+1
+    //this.charc=this.sal.barb[this.f]}
+  //  else {this.f=0
+   //   this.charc=this.sal.barb[this.f]}
+  
+  
+    
+    
+  }
+
    
 
   constructor() { }
@@ -56,18 +65,6 @@ export class CharuiComponent implements OnInit {
   }
   
 
-}
-
-@Component({
-  selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <h2>My favorite hero is: {{myHero}}</h2>
-    `
-})
-export class AppComponent {
-  title = 'Tour of Heroes';
-  myHero = 'Windstorm';
 }
 
 

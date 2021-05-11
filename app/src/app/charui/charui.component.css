@@ -2,7 +2,14 @@
     border: solid red;
     width:600px;
     font-family: 'Exo 2', sans-serif;
+    float:left;
 
+}
+.vatar{
+    border: solid orange;
+    height: 350px;
+    width:350px;
+    float:left;
 }
 .profile{
     border: solid gray;
@@ -24,7 +31,13 @@
 .charlevels{
     font-size: small;
     color: gainsboro;
-    float:right;
+    
+}
+.statz{
+    font-size: small;
+    padding:2px;
+    float:left;
+    border-radius:4px;
 }
 .resourcebox{
     font-size: smaller;
@@ -44,3 +57,11 @@
 .claslev{color: white}
 .itabwrap{border:blue}
 .weapon{border:navy}
+.press{
+    background-color:firebrick;
+    color:blanchedalmond;
+    font-size: medium;
+    padding: 5px;
+    float:left;
+    border-radius: 8px;
+}

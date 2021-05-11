@@ -45,7 +45,7 @@ function skillcheck(profic:number,adv:string,mod:number,skill:number) {
 
 
 class Charachters {
-export class Charachters {
+
 
     stats:any;
     resources:any;
