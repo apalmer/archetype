@@ -11,6 +11,7 @@ import { AuthProvider } from 'ngx-auth-firebaseui';
 })
 export class AppComponent {
   title = 'archetype';
+  
   providers = AuthProvider;
 
   constructor(public auth: AngularFireAuth) { }

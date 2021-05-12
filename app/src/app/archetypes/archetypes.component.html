@@ -1,17 +1,2 @@
-<div class="content-wrapper">
-  
-  <button (click)="newArchetype()" mat-button>
-    <mat-icon>add</mat-icon> Add Archetype
-  </button>
-
-  <div class="container-wrapper">
-    <div class="container">
-      <mat-card class="list">
-        <p class="empty-label" *ngIf="(archetypes | async)?.length === 0">Empty list</p>
-        <app-archetype-summary (edit)="editArchetype($event)" *ngFor="let archetype of archetypes | async" [archetype]="archetype">
-        </app-archetype-summary>
-      </mat-card>
-    </div>
-  </div>
-
-</div>
+<p>archetypes works!</p>
+<app-archetype-list></app-archetype-list>

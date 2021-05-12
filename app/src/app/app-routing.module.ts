@@ -1,21 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoggedInGuard } from 'ngx-auth-firebaseui';
-
-import { ArchetypeComponent } from "./archetype/archetype.component";
-import { ArchetypesComponent } from './archetypes/archetypes.component';
-import { CharacterComponent } from './character/character.component';
-
-import { CharuiComponent } from './charui/charui.component';
-
 const routes: Routes = [
-  { path: '', redirectTo: '/characters', pathMatch: 'full' },
-  { path: 'archetypes', component: ArchetypesComponent, canActivate: [LoggedInGuard] },
-  { path: 'archetype', component: ArchetypeComponent, canActivate: [LoggedInGuard] },
-  { path: 'charui', component: CharuiComponent, canActivate:[LoggedInGuard] },
-  { path: 'archetype/:archetypeId', component: ArchetypeComponent, canActivate: [LoggedInGuard] },
-  { path: 'characters', component: CharacterComponent, canActivate: [LoggedInGuard] }
+  { path: 'characters', loadChildren: () => import('./characters/characters.module').then(m => m.CharactersModule) },
+  { path: 'archetypes', loadChildren: () => import('./archetypes/archetypes.module').then(m => m.ArchetypesModule) },
+  { path: 'scratch', loadChildren: () => import('./scratch/scratch.module').then(m => m.ScratchModule) }
 ];
 
 @NgModule({
