@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatIconModule } from "@angular/material/icon";
+import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { MatTreeModule } from "@angular/material/tree";
 
 import { ArchetypesRoutingModule } from './archetypes-routing.module';
 import { ArchetypesComponent } from './archetypes.component';
@@ -24,6 +25,7 @@ import { ArchetypeSummaryComponent } from './archetype-summary/archetype-summary
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatTreeModule,
     ArchetypesRoutingModule
   ]
 })
