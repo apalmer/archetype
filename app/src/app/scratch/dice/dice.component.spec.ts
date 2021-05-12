@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArchetypesComponent } from './archetypes.component';
+import { DiceComponent } from './dice.component';
 
-describe('ArchetypesComponent', () => {
-  let component: ArchetypesComponent;
-  let fixture: ComponentFixture<ArchetypesComponent>;
+describe('DiceComponent', () => {
+  let component: DiceComponent;
+  let fixture: ComponentFixture<DiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArchetypesComponent ]
+      declarations: [ DiceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArchetypesComponent);
+    fixture = TestBed.createComponent(DiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

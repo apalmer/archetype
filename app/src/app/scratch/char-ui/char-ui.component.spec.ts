@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArchetypesComponent } from './archetypes.component';
+import { CharUIComponent } from './char-ui.component';
 
-describe('ArchetypesComponent', () => {
-  let component: ArchetypesComponent;
-  let fixture: ComponentFixture<ArchetypesComponent>;
+describe('CharUIComponent', () => {
+  let component: CharUIComponent;
+  let fixture: ComponentFixture<CharUIComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArchetypesComponent ]
+      declarations: [ CharUIComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArchetypesComponent);
+    fixture = TestBed.createComponent(CharUIComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
