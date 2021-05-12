@@ -8,11 +8,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 //Material Design Modules
 import { MatToolbarModule } from '@angular/material/toolbar'; 
 import { MatIconModule } from "@angular/material/icon";
+//Firebase
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 //App Core Modules
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
   declarations: [

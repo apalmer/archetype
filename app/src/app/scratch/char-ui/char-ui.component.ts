@@ -1,29 +1,10 @@
+import { AttrAst } from '@angular/compiler';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, OnInit } from '@angular/core';
+import { CharDataService } from '../services/char-data.service';
 import { ProRuleService } from '../services/pro-rule.service';
+import { CharOh } from "../models/char-oh";
 
-class CharOh {
-  name = "Balca Bo";
-  classes = [['Monk', 9], ['Barbarian', 1]];
-  profi = 'assets/images/bil.svg'
-  weapon = [staff, unarmed, knuckles]
-  resource = [['HP', 24, 10], ['ki', 4, 3]]
-};
-
-// class Char{
-//   name:string='';
-//   classes:[]=[];
-//   profile:string='';
-//   weapon:[]=[];
-//   resource:[]=[];
-
-//   constructor(x:number){
-//   }
-// }
-
-const staff = { name: 'Old Staff', type: 'quarterstaff', dmg1: '1d6', dmg2: '1d8', dmgtype: 'blunt', properties: ['versatile'] }
-const unarmed = { name: 'Fists', type: 'unnamrmed', dmg1: '1d1', dmg2: '1d1', dmgtype: 'blunt', properties: ['none'] }
-const knuckles = { name: 'Brass Knuckles', type: 'club', dmg1: '1d4', dmg2: '1d4', dmgtype: 'blunt', properties: ['light'] }
 var bal = new CharOh;
 
 @Component({
@@ -33,32 +14,38 @@ var bal = new CharOh;
 
 })
 export class CharUIComponent implements OnInit {
-  myhero = "Windstorm"
-  charb = bal;
-  claszt = this.allclasslvl(bal);
-  nop = 10;
+  charb = new CharOh;
+  sal = new CharDataService
+  charc = this.sal.barb[2]
+  claszt = this.allclasslvl(this.charc);
+  f: number = 1
+  anim = this.charc.bio.idlava
 
   constructor(private proRule: ProRuleService) { }
 
-
-
-  allclasslvl(char: CharOh) {
-
+  allclasslvl(char: any) {
     var covo = 0;
-
     var i
-    for (i = 0; i < char.classes.length; i++) {
-      covo += Number(char.classes[i][1]);
+    for (i = 0; i < char.bio.class.length; i++) {
+      covo += Number(char.bio.class[i].lvl);
     }
     return covo;
   }
-  hpcenter(bu: any) {
-    var boom = bu + "%";
-    var x = document.getElementById('#hpcent')!;
-    x.style.width = boom
 
-  };
+  onRage(event: MouseEvent) {
+    (event.target as HTMLElement).style.backgroundColor = "blue";
+    if (this.charc.resources[1].min == 0) { alert('too tired') }
+    else {
+      this.charc.resources[1].min = this.charc.resources[1].min - 1;
+      this.anim = this.charc.bio.idlrag
 
+      setTimeout(() => {
+        this.anim = this.charc.bio.idlava;
+        (event.target as HTMLElement).style.backgroundColor = "red"
+          ;
+      }, 2000)
+    }
+  }
 
   ngOnInit(): void {
   }
