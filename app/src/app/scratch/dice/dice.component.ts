@@ -1,4 +1,4 @@
-import { animate } from '@angular/animations';
+import { animate, style } from '@angular/animations';
 import { rendererTypeName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import * as THREE from 'three'
@@ -19,6 +19,7 @@ export class DiceComponent implements OnInit {
   animate;
   go;
   yo;
+  diepos=10;
 
   blo = Math.random()
   
@@ -27,12 +28,16 @@ export class DiceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
 
+    var parent=document.getElementById('rboxk')
+    var padwidth=parent.clientWidth-10;
+    var padheight=parent.clientHeight-10;
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(25, 350 / 210, 0.5, 1000);
-    this.scene.background = new THREE.Color('gainsborod')
+    this.camera = new THREE.PerspectiveCamera(25, padwidth/padheight, 0.5, 1000);
+    this.scene.background = new THREE.Color('gainsboro')
     this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(350, 210);
+    this.renderer.setSize(padwidth,padheight);
 
     document.getElementById('rboxk').appendChild(this.renderer.domElement);
     
@@ -71,7 +76,10 @@ export class DiceComponent implements OnInit {
 
     let animate = this.animate = () => {
       if (dy < .001) {
-        this.cube.material.color.set('blue')
+        this.cube.material.color.set('orange')
+        var dice20=Math.floor((Math.random())*20)+1
+        document.getElementById('die').innerText=''+dice20;
+        document.getElementById('die').style.transform='rotate(-1440deg)'
         this.renderer.render(this.scene, this.camera)
       }
       else {
@@ -94,6 +102,16 @@ export class DiceComponent implements OnInit {
   }
 
   ani() {
+    document.getElementById('die').style.left='230px';
+    document.getElementById('die').style.top='80px';
+    document.getElementById('die').innerText='?'
+    document.getElementById('die').style.transform='rotate(1440deg)'
+    //document.getElementById('die').style.transform='scale(2)'
+    //document.getElementById('die').addEventListener('transitionend.left',()=>{
+     //document.getElementById('diespan').style.transform='scale(5)'
+
+    //})
+    
     //this.cube.material.color.set('red');
     
     //this.renderer.render(this.scene, this.camera);
