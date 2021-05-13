@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { AngularFirestore, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
 
@@ -19,12 +19,48 @@ export class ArchetypeService {
     return this.store.collection('archetypes').doc(archetypeId).get()  as Observable<DocumentSnapshot<Archetype>>;
   }
 
+  getMockArchetype(archetypeId:string) : Observable<Archetype> {
+
+    let mocked:Archetype = {
+      id: archetypeId,
+      name: 'MockArchetype',
+      description: 'MockDescription',
+      schema:{
+        type:'object',
+        properties:{
+          alpha:{
+            type:'string'
+          },
+          beta:{
+            type:'number'
+          },
+          gamma:{
+            type:'boolean'
+          },
+          delta:{
+            type:'object',
+            properties:{
+              epsilon:{
+                type:'string'
+              },
+              zeta:{
+                type:'number'
+              }
+            }
+          }
+        }
+      }  
+    };
+
+    return of(mocked);
+  }
+
   newArchetype(): Archetype {
     return { name: '', description: '', schema: this.newSchema() };
   }
 
   newSchema(): JsonSchema {
-    return { properties : {}};
+    return { type:'object', properties : {}};
   }
 
   add(archetype: Archetype) : Promise<DocumentReference<Archetype>>{

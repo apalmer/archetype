@@ -1,6 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AngularFirestore, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
+
 import { ArchetypeEditorComponent } from './archetype-editor.component';
+
+const AngularFirestoreMocks = {
+  collection: (path:string) => {
+    return {
+      valueChanges: (options:{ idField:string }) => {}
+    }
+  }
+};
 
 describe('ArchetypeEditorComponent', () => {
   let component: ArchetypeEditorComponent;
@@ -8,6 +18,9 @@ describe('ArchetypeEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers:[
+        { provide: AngularFirestore, useValue: AngularFirestoreMocks }
+      ], 
       declarations: [ ArchetypeEditorComponent ]
     })
     .compileComponents();

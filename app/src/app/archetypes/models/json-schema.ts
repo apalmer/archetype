@@ -3,11 +3,12 @@ export interface JsonSchema {
     // $id:string;
     // title:string;
     // description:string;
-    // type: "object" | "array",
+    type: "object" | "array",
     properties: any,
     // required:string[]
 }
 
 export interface JsonSchemaProperty {
-    type:string
+    type:string,
+    properties: any
 }

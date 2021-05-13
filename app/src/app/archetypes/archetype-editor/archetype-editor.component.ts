@@ -1,41 +1,10 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from "@angular/material/tree";
-
-export class PropertyNode {
-  name: string;
-  type: string;
-  properties?: PropertyNode[]
-}
-
-const TREE_DATA: PropertyNode[] = [{
-  name: 'root',
-  type: 'object',
-  properties: [
-    {
-      name: 'one',
-      type: 'string'
-    },
-    {
-      name: 'two',
-      type: 'number'
-    },
-    {
-      name: 'three',
-      type: 'object',
-      properties: [
-        {
-          name: 'four',
-          type: 'string'
-        }
-      ]
-    },
-    {
-      name: 'four',
-      type: 'object'
-    }
-  ]
-}]
+import { ArchetypeService } from '../services/archetype.service';
+import { SchemaEditorService } from '../services/schema-editor.service';
+import { PropertyNode } from '../models/property-node';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-archetype-editor',
@@ -43,15 +12,28 @@ const TREE_DATA: PropertyNode[] = [{
   styleUrls: ['./archetype-editor.component.css']
 })
 export class ArchetypeEditorComponent implements OnInit {
-  treeControl = new NestedTreeControl<PropertyNode>(node => node.properties);
-  dataSource = new MatTreeNestedDataSource<PropertyNode>();
+  treeControl: NestedTreeControl<PropertyNode>;
+  dataSource: MatTreeNestedDataSource<PropertyNode>;
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(private archetypeService: ArchetypeService, private schemaService: SchemaEditorService) {
+    this.treeControl = new NestedTreeControl<PropertyNode>(this._getChildren);
+    this.dataSource = new MatTreeNestedDataSource<PropertyNode>();
+
+    this.schemaService.dataChange.subscribe(
+      data => {
+        this.dataSource.data = data
+      });
   }
 
   ngOnInit(): void {
+
+    this.archetypeService.getMockArchetype('archetypeId').subscribe(
+      archtype => {
+        this.schemaService.loadFromJsonSchema(archtype.schema);
+      });
   }
+   
+  private _getChildren = (node: PropertyNode) => of(node.properties);
 
   hasChild(_: number, node: PropertyNode): Boolean {
     return !!node.properties && node.properties.length > 0;
@@ -61,12 +43,9 @@ export class ArchetypeEditorComponent implements OnInit {
     return node.type === 'object'
   }
 
-  /** Select the category so we can insert the new item. */
-  addNewItem(node) {
-    let child:PropertyNode = new PropertyNode();
-    child.name = 'wutang'
-    node.properties.push(child)
-    console.log(node.properties.length)
-    this.dataSource.data = []
+  addNewItem(node): void {
+    this.schemaService.addNewProperty(node, 'shoalin', 'number');
+
+    this.treeControl.expand(node);
   }
 }
