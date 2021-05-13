@@ -16,7 +16,7 @@ var bal = new CharOh;
 export class CharUIComponent implements OnInit {
   charb = new CharOh;
   sal = new CharDataService
-  charc = this.sal.barb[2]
+  charc = this.sal.barb[1]
   claszt = this.allclasslvl(this.charc);
   f: number = 1
   anim = this.charc.bio.idlava
