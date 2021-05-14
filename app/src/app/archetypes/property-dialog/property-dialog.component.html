@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Add Property</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Property Name</mat-label>
+        <input matInput [(ngModel)]="data.name">
+    </mat-form-field>
+    <div>
+        <mat-label>Property Type</mat-label>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="data.type">
+            <mat-radio-button class="example-radio-button" *ngFor="let schemaType of schemaTypes" [value]="schemaType">
+                {{schemaType}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

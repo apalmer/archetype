@@ -1,21 +1,27 @@
-import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, OnInit } from '@angular/core';
-import { MatTreeNestedDataSource } from "@angular/material/tree";
-import { ArchetypeService } from '../services/archetype.service';
-import { SchemaEditorService } from '../services/schema-editor.service';
-import { PropertyNode } from '../models/property-node';
 import { of } from 'rxjs';
 
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource } from "@angular/material/tree";
+import { MatDialog } from '@angular/material/dialog';
+
+import { PropertyNode } from '../models/property-node';
+import { SchemaEditorService } from '../services/schema-editor.service';
+import { ArchetypeService } from '../services/archetype.service';
+import { PropertyDialogComponent } from "../property-dialog/property-dialog.component";
+import { Archetype } from '../models/archetype';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-archetype-editor',
   templateUrl: './archetype-editor.component.html',
   styleUrls: ['./archetype-editor.component.css']
 })
 export class ArchetypeEditorComponent implements OnInit {
+  archetype: Archetype;
   treeControl: NestedTreeControl<PropertyNode>;
   dataSource: MatTreeNestedDataSource<PropertyNode>;
 
-  constructor(private archetypeService: ArchetypeService, private schemaService: SchemaEditorService) {
+  constructor(private archetypeService: ArchetypeService, private schemaService: SchemaEditorService, private dialog: MatDialog, private route: ActivatedRoute) {
     this.treeControl = new NestedTreeControl<PropertyNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource<PropertyNode>();
 
@@ -27,12 +33,20 @@ export class ArchetypeEditorComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.archetypeService.getMockArchetype('archetypeId').subscribe(
+    let archetypeId: string = this.route.snapshot.paramMap.get('archetypeId');
+    console.log(archetypeId);
+    if(archetypeId){
+    this.archetypeService.getArchetype(archetypeId).subscribe(
       archtype => {
-        this.schemaService.loadFromJsonSchema(archtype.schema);
+        this.archetype = archtype.data();
+        this.schemaService.loadFromJsonSchema(this.archetype.schema);
       });
+    }else{
+      this.archetype = this.archetypeService.newArchetype();
+      this.schemaService.loadFromJsonSchema(this.archetype.schema);
+    }
   }
-   
+
   private _getChildren = (node: PropertyNode) => of(node.properties);
 
   hasChild(_: number, node: PropertyNode): Boolean {
@@ -43,9 +57,23 @@ export class ArchetypeEditorComponent implements OnInit {
     return node.type === 'object'
   }
 
-  addNewItem(node): void {
-    this.schemaService.addNewProperty(node, 'shoalin', 'number');
+  addNewProperty(node): void {
+    const dialogRef = this.dialog.open(PropertyDialogComponent, {
+      width: '250px',
+      data: { name: '', type: '' }
+    });
 
-    this.treeControl.expand(node);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.schemaService.addNewProperty(node, result.name, result.type);
+        this.treeControl.expand(node);
+      }
+    });
+  }
+
+  saveArchetype():void{
+    console.log('saving archetype');
+    this.archetype.schema = this.schemaService.getJsonSchema(this.dataSource.data);
+    this.archetypeService.save(this.archetype); 
   }
 }

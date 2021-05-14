@@ -74,6 +74,10 @@ export class ArchetypeService {
   update(archetype: Archetype) : Promise<void> {
     return this.store.collection('archetypes').doc(archetype.id).update(archetype);
   }
+  
+  save(archetype: Archetype) : Promise<unknown> {
+    return archetype.id ? this.update(archetype) : this.add(archetype);
+  }
 
   constructor(private store: AngularFirestore) { }
 }
