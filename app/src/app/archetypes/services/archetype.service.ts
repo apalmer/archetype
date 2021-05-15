@@ -11,6 +11,8 @@ import { JsonSchema } from '../models/json-schema';
 })
 export class ArchetypeService {
 
+  constructor(private store: AngularFirestore) { }
+
   get() : Observable<Archetype[]> {
     return this.store.collection('archetypes').valueChanges({ idField: 'id' }) as Observable<Archetype[]>;
   }
@@ -78,6 +80,4 @@ export class ArchetypeService {
   save(archetype: Archetype) : Promise<unknown> {
     return archetype.id ? this.update(archetype) : this.add(archetype);
   }
-
-  constructor(private store: AngularFirestore) { }
 }

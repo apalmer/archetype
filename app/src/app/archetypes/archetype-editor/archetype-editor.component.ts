@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 
+import { ActivatedRoute } from '@angular/router';
+
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 import { MatDialog } from '@angular/material/dialog';
 
+import { Archetype } from '../models/archetype';
 import { PropertyNode } from '../models/property-node';
 import { SchemaEditorService } from '../services/schema-editor.service';
 import { ArchetypeService } from '../services/archetype.service';
 import { PropertyDialogComponent } from "../property-dialog/property-dialog.component";
-import { Archetype } from '../models/archetype';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 @Component({
   selector: 'app-archetype-editor',
   templateUrl: './archetype-editor.component.html',
@@ -21,7 +23,12 @@ export class ArchetypeEditorComponent implements OnInit {
   treeControl: NestedTreeControl<PropertyNode>;
   dataSource: MatTreeNestedDataSource<PropertyNode>;
 
-  constructor(private archetypeService: ArchetypeService, private schemaService: SchemaEditorService, private dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(
+    private archetypeService: ArchetypeService, 
+    private schemaService: SchemaEditorService, 
+    private dialog: MatDialog, 
+    private route: ActivatedRoute
+    ) {
     this.treeControl = new NestedTreeControl<PropertyNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource<PropertyNode>();
 
