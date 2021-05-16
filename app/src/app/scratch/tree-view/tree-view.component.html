@@ -1,0 +1,14 @@
+<cdk-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl">
+    <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="example-tree-node">
+      {{node.filename}}:  {{node.type}}
+    </cdk-nested-tree-node>
+    <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasNestedChild" class="example-tree-node">
+      <a cdkTreeNodeToggle>X</a>
+      <button (click)="addNewItem(node)">add</button>
+      {{node.filename}}:  {{node.type}}
+      <div [hidden]="!nestedTreeControl.isExpanded(node)">
+        <ng-container cdkTreeNodeOutlet></ng-container>
+      </div>
+    </cdk-nested-tree-node>
+  </cdk-tree>
+  

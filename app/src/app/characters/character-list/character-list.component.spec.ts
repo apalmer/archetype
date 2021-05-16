@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { AngularFirestore, DocumentReference, DocumentSnapshot } from '@angular/fire/firestore';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
-import { ArchetypeEditorComponent } from './archetype-editor.component';
+import { CharacterListComponent } from './character-list.component';
 
 const AngularFirestoreMocks = {
   collection: (path:string) => {
@@ -14,30 +14,23 @@ const AngularFirestoreMocks = {
   }
 };
 
-const MatDialogMocks = {
-}
-
-
-describe('ArchetypeEditorComponent', () => {
-  let component: ArchetypeEditorComponent;
-  let fixture: ComponentFixture<ArchetypeEditorComponent>;
+describe('CharacterListComponent', () => {
+  let component: CharacterListComponent;
+  let fixture: ComponentFixture<CharacterListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[
-        RouterTestingModule.withRoutes([])
-      ],
+      imports: [RouterTestingModule],
       providers:[
-        { provide: AngularFirestore, useValue: AngularFirestoreMocks },
-        { provide: MatDialog, useValue: MatDialogMocks}
-      ], 
-      declarations: [ ArchetypeEditorComponent ]
+        { provide: AngularFirestore, useValue: AngularFirestoreMocks }
+      ],
+      declarations: [ CharacterListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArchetypeEditorComponent);
+    fixture = TestBed.createComponent(CharacterListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

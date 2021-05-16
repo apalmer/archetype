@@ -6,6 +6,8 @@ import { ScratchComponent } from './scratch.component';
 import { CharUIComponent } from './char-ui/char-ui.component';
 import { DiceComponent } from './dice/dice.component';
 import { WeaponsComponent } from './weapons/weapons.component';
+import { TreeViewComponent } from './tree-view/tree-view.component';
+import { CdkTreeModule } from '@angular/cdk/tree';
 
 
 @NgModule({
@@ -13,9 +15,11 @@ import { WeaponsComponent } from './weapons/weapons.component';
     ScratchComponent,
     CharUIComponent,
     DiceComponent,
-    WeaponsComponent
+    WeaponsComponent,
+    TreeViewComponent,
   ],
   imports: [
+    CdkTreeModule,
     CommonModule,
     ScratchRoutingModule
   ]

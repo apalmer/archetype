@@ -16,10 +16,47 @@ export class SchemaEditorService {
   constructor() { }
 
   loadFromJsonSchema(schema: JsonSchema | JsonSchemaProperty) {
-    let root = this.convertToPropertyNode(schema, 'root');
+    schema = this.convertToCurrentSchemaFormat(schema);
+    let root = this.convertToPropertyNode(schema, 'schema');
     let data = [];
     data.push(root);
     this.dataChange.next(data);
+  }
+
+  getJsonSchema(nodes:PropertyNode[]):JsonSchema{
+    let root = nodes[0];
+    let schema:JsonSchema = { type:'object', properties:{}}
+    if(root.properties){
+      root.properties.forEach(propertyNode =>{
+        schema.properties[propertyNode.name] = this.getJsonSchemaProperty(propertyNode);
+      })
+    }
+    return schema;
+  }
+
+  getJsonSchemaProperty(propertyNode: PropertyNode): JsonSchemaProperty {
+    let property:JsonSchemaProperty = {type:propertyNode.type};
+    if(propertyNode.properties && propertyNode.properties.length >0){
+      property.properties = {}
+      propertyNode.properties.forEach(childNode =>{
+        property.properties[childNode.name] = this.getJsonSchemaProperty(childNode);
+      });
+    }
+    return property;
+  }
+
+  convertToCurrentSchemaFormat(previous:any):JsonSchema{
+    let current:JsonSchema;
+
+    if(Array.isArray(previous)){
+      current = { type:'object',properties:{}}
+      previous.forEach(item =>{
+        current.properties[item] = { type:'string'}
+      });
+    }else{
+      current = previous;
+    }
+    return current;
   }
 
   convertToPropertyNode(schema: JsonSchema | JsonSchemaProperty, name: string): PropertyNode {
@@ -49,8 +86,9 @@ export class SchemaEditorService {
       node.properties.push(child);
     }
 
-    let prev = this.data;
-
-    this.dataChange.next([this.data[0]]);
+    let next: PropertyNode = { name: this.data[0].name, type:this.data[0].type, properties: this.data[0].properties }
+    let data:PropertyNode[] = [];
+    data.push(next);
+    this.dataChange.next(data);
   }
 }
