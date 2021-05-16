@@ -27,8 +27,8 @@ export class ProRuleService {
       else {return roll2}
   };
   
-  damage(num: number, side:number, bonus:number, crit:boolean) {
-      if (crit=true) {num=num*2}
+  damage(num: number, side:number, bonus:number, crit?:boolean) {
+      //if (crit=true) {num=num*2}
       return ((num*this.rolldice(side))+bonus);
   };
   
@@ -48,4 +48,24 @@ export class ProRuleService {
   skillcheck(profic:number,adv:string,mod:number,skill:number) {
       return this.abcheck(profic,adv)+mod+skill;
   }
+
+  profic(lvl){
+    return 2+Math.floor((lvl-1)/4)
+  }
+
+  totlvl(charc){
+    var covo = 0;
+    var i
+    for (i = 0; i < charc.bio.class.length; i++) {
+      covo += Number(charc.bio.class[i].lvl);
+    }
+    return covo;
+
+  }
+  statmod(sta,charc){
+    return Math.floor((charc.stats.abscores[sta]-10)/2)
+  }
+
 }
+
+

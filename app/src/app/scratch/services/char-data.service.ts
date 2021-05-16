@@ -11,9 +11,31 @@ export class CharDataService {
 }
 
 
-const staff={name:'Old Staff', type:'quarterstaff', dmg1: '1d6',dmg2:'1d8', dmgtype:'blunt', properties:['versatile']}
-const unarmed={name:'Fists', type:'unnamrmed', dmg1: '1d1',dmg2:'1d1', dmgtype:'blunt', properties:['none']}
-const knuckles={name:'Brass Knuckles', type:'club', dmg1: '1d4',dmg2:'1d4', dmgtype:'blunt', properties:['light']}
+const staff={name:'Old Staff', type:'quarterstaff', dmg: ['1d6','1d8'], dmgtype:'blunt', properties:['versatile'], icon:'', art:''}
+const unarmed={name:'Fist', type:'unnamrmed', dmg: ['1d1'], dmgtype:'blunt', properties:['none'],icon:'("assets/images/fist.svg")',art:''}
+const knuckles={name:'Brass Knuckles', type:'club', dmg: ['1d4'], dmgtype:'blunt', properties:['light']}
+
+
+function anyweap(
+  name:string,
+  type:string,
+  dmg1:any,
+  )
+  {
+
+this.name=name
+this.type=type
+this.dmg=[dmg1]
+this.dmgtype='bluntslashpierce'
+this.properties=[]
+this.icon='icon.svg'
+this.art='art.png'
+}
+
+var gun = new anyweap('Matchlock','firearm','1d12')
+gun.dmg.push('1d20')
+gun.icon='("assets/images/mlok.svg")'
+
 
 
 
@@ -59,7 +81,7 @@ class dndchar extends anychar{
     resources:any=
     [{name:'HP',max:10,min:9,bonus:0}]
 
-    items:any={unarmed}
+    items:any=[unarmed, gun]
 
 
 
@@ -114,3 +136,6 @@ var adven=[jam,sol,balco]
 jam.bio.profile='("assets/images/jam.gif")'
 jam.bio.idlava="assets/images/jamid.gif"
 
+
+
+balco

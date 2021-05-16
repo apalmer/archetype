@@ -1,0 +1,132 @@
+.weaponwrap{
+    font-family: 'Nova Flat', cursive;
+    position:relative;
+    height: 50px;
+    border: dashed salmon;
+    color:whitesmoke;
+    margin-bottom: 20px;
+    width: 320px;
+}
+.iconweap{
+    float:left;
+    height:100%;
+    width: 50px;
+    border: solid midnightblue;
+    border-width: 5px ;
+    border-radius: 50%;
+    position: relative;
+    left: 25px;
+    z-index: 2;
+    background-color: gainsboro;
+
+}
+.itemactionwrap{
+    float: left;
+    height:100%;
+}
+.itembar{
+    margin-top: 4%;
+    height:35%;
+    width: 215px;
+    background-color: slategray;
+    border-top: solid midnightblue;
+    border: solid midnightblue;
+    transform: skew(30deg);
+}
+.itemname{
+    font-size: 95%;
+    float:left;
+    transform: skew(-31deg);
+    padding-left: 15%;
+    width:60%;
+    height:99%;
+
+}
+.iteminfo{
+    float:right;
+    font-size: 75%;
+    width:20%;
+    transform: skew(-30deg);
+
+}
+.actionbar{
+    height:37%;
+    width: 190px;
+    background-color: steelblue;
+    border-bottom: solid midnightblue;
+    border-right: solid midnightblue;
+    transform: skew(-30deg);
+
+
+}
+.action{
+    font-size: 95%;
+    float:left
+}
+.actbutton{
+    padding-left: 25px;
+    color:whitesmoke;
+    background-color: firebrick;
+}
+.dmg{
+    margin-left: 10px;
+    float:left;
+    transform: skew(30deg);
+}
+.dmode{
+    float:right;
+    font-size: 75%;
+}
+ 
+.logbox{
+    width: 100px;
+    height: 100px;
+    border: solid gold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: crimson;
+    font-size: 30px;
+    position:fixed;
+    top:70px;
+    left:330px;
+}
+@keyframes lefto{
+    0% {left: -400px;}
+    90%{left: 15px}
+    100%{left: 0px}
+}
+
+@keyframes righto{
+    0% {left: 1200px;}
+    50%{left: 1200px;}
+    90%{left: -15px;}
+    100%{left: 0px;}
+}
+.atta{
+    position: relative;
+    margin: 8px;
+    animation-name: lefto;
+    animation-duration: 500ms;
+
+
+
+}
+
+.cla{
+    position: relative;
+    margin: 8px;
+    animation-name: lefto;
+    animation-duration: 500ms;
+}
+.damma{
+float:right;
+position: relative;
+    margin: 8px;
+    animation-name: righto;
+    animation-duration: 1000ms;
+}
+.apper {
+    transition: visibility 1s;
+    visibility: hidden;
+    font-size: 15px;
+    color:firebrick;
+}

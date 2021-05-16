@@ -5,13 +5,15 @@ import { ScratchRoutingModule } from './scratch-routing.module';
 import { ScratchComponent } from './scratch.component';
 import { CharUIComponent } from './char-ui/char-ui.component';
 import { DiceComponent } from './dice/dice.component';
+import { WeaponsComponent } from './weapons/weapons.component';
 
 
 @NgModule({
   declarations: [
     ScratchComponent,
     CharUIComponent,
-    DiceComponent
+    DiceComponent,
+    WeaponsComponent
   ],
   imports: [
     CommonModule,

@@ -58,7 +58,7 @@
     left:10px;
     /*transform:rotate(45deg);*/
     transition: 
-        left 750ms cubic-bezier(.34,1.34,.2,1.34), top .95s cubic-bezier(1,0,.53,2.9), transform 3s;
+        left 750ms cubic-bezier(.34,1.34,.2,1.34), top .95s cubic-bezier(1,0,.53,2.9), transform 2.5s;
     color:honeydew;
     font-size: xx-large;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
