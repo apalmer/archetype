@@ -21,7 +21,7 @@ export class CharacterService {
   }
   
   newCharacter(): Character {
-    return { };
+    return { name:'', description:'' };
   }
 
   add(character: Character) : Promise<DocumentReference<Character>>{
