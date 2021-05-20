@@ -1,1 +1,13 @@
-<p>character-editor works!</p>
+<div *ngIf="character">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label>
+            Name:
+            <input type="text" formControlName="name">
+        </label>
+        <label>
+            Description:
+            <input type="text" formControlName="description">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+</div>

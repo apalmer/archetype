@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,6 +14,7 @@ import { EditorFormService } from '../services/editor-form.service';
 })
 export class CharacterEditorComponent implements OnInit {
   character: Character;
+  form: FormGroup;
 
   constructor(
     private characterService:CharacterService,
@@ -27,10 +29,15 @@ export class CharacterEditorComponent implements OnInit {
     this.characterService.getCharacter(characterId).subscribe(
       character => {
         this.character = character.data();
+        this.form = this.editorFormService.convertToForm(this.character);
       });
     }else{
       this.character = this.characterService.newCharacter();
+      this.form = this.editorFormService.convertToForm(this.character);
     }
   }
 
+  onSubmit():void{
+    
+  }
 }
