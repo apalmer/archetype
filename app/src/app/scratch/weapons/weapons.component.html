@@ -3,6 +3,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Nova+Flat&display=swap" rel="stylesheet">
 </head>
+<div class=godbox style=position:absolute;>
 <div *ngFor='let ite of charc.items' style="width: 330px;">
     <div class='weaponwrap'>
         <div class='iconweap' [style.backgroundImage]='"url"+ite.icon' style='background-size: 100%'></div>
@@ -12,7 +13,7 @@
                 <div class='iteminfo'><button style="transform:skew(-30deg);"> info</button></div>
             </div>
             <div class='actionbar'>
-                <div class='action'><button class='actbutton' (click)='atknao(ite.dmg[swnum])'>ATTACK</button></div>
+                <div class='action'><button class='actbutton' (click)='atknao(ite.dmg[swnum],ite.mod)'>ATTACK</button></div>
                 <div class='dmg'>{{ite.dmg[swnum]}}</div>
                 <div class='dmode'><button (click)='dmgswtch(ite)'>{{swnam}}</button></div>
             </div>
@@ -22,4 +23,5 @@
 <div class="logbox">
     <div id='atak' class="atta">{{atktxt}} <span id="a1"class="apper">Attack</span></div>
     <div id='dama' class="damma"><span id="d1"class="apper">Damage </span>{{atkdmg}}</div>
+</div>
 </div>

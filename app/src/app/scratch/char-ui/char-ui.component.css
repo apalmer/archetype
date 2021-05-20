@@ -1,15 +1,26 @@
+
+
 .charwrap{
     border: solid red;
-    width:600px;
+    width:450px;
     font-family: 'Exo 2', sans-serif;
-    float:left;
+    position: absolute;
+    /*top: 350px;*/
+    right: 40px;
+    transition: top 1s, right 1s;
+    z-index: 2;
 
 }
 .vatar{
     border: solid orange;
     height: 350px;
     width:350px;
-    float:left;
+    position:absolute;
+    right: 40px;
+    top: 60px;
+    transition: right 1s,;
+    z-index: 1;
+    
 }
 .profile{
     border: solid gray;
@@ -64,4 +75,70 @@
     padding: 5px;
     float:left;
     border-radius: 8px;
+}
+
+.actUIbox{
+    position:absolute;
+    top: 370px;
+    left:0px;
+    z-index: 1;
+    transition: top 1s;
+}
+
+.adwrap{
+    background-color: dimgray;
+    position: absolute;
+    border-radius: 10px;
+    top: -30px;
+    right: 30px;
+    z-index: 3;
+    
+}
+.blo{
+    color: orangered;
+   background-image: url('/assets/images/cracks.png') ;
+   background-size: 250px;
+    border: inset darkslateblue;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 100px;
+    font-size: 15px;
+}
+.lo{
+    color: lightgray;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 100px;
+}
+.glo{
+    border: double white;
+    color:white;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+   /* box-shadow: -1px 0 dimgrey ;*/
+
+    text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #fff, 
+    0 0 15px #0073e6, 
+    0 0 20px #0073e6, 
+    0 0 25px #0073e6, 
+    0 0 30px #0073e6, 
+    0 0 35px #0073e6;
+}
+
+.mapui{
+    position:absolute;
+    width: 900px;
+    height: 350px;
+    border: solid khaki;
+    top:60px;
+    transition: width 1s, height 1s;
 }

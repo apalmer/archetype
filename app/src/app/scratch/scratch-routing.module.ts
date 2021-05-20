@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CharUIComponent } from './char-ui/char-ui.component';
 import { DiceComponent } from './dice/dice.component';
 import { ScratchComponent } from './scratch.component';
 import { WeaponsComponent } from './weapons/weapons.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
+import {ActionuiComponent} from './actionui/actionui.component'
+import { MaproundComponent } from './mapround/mapround.component';
+
 
 const routes: Routes = [
   { path: '', component: ScratchComponent },
@@ -12,6 +15,8 @@ const routes: Routes = [
   { path: 'dice', component: DiceComponent},
   { path: 'weapo', component: WeaponsComponent},
   { path: 'tree-view', component: TreeViewComponent},
+  { path: 'actionui', component: ActionuiComponent},
+  { path: 'mapro', component: MaproundComponent},
 ];
 
 @NgModule({

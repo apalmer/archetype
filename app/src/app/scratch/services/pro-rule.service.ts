@@ -28,13 +28,13 @@ export class ProRuleService {
   };
   
   damage(num: number, side:number, bonus:number, crit?:boolean) {
-      //if (crit=true) {num=num*2}
+      if (crit==true) {num=num*2}
       return ((num*this.rolldice(side))+bonus);
   };
   
   abcheck(profic:number,adv:string) {
-      if (adv ="advantage") {var roll:number=this.advantage(20);}
-      else if (adv = "disadvantage") {var roll:number=this.disadvantage(20);}
+      if (adv =="advantage") {var roll:number=this.advantage(20);}
+      else if (adv =="disadvantage") {var roll:number=this.disadvantage(20);}
       else {var roll:number=this.rolldice(20)}
   
       return (roll+profic);
@@ -66,6 +66,10 @@ export class ProRuleService {
     return Math.floor((charc.stats.abscores[sta]-10)/2)
   }
 
+
+
+
+cantriplvlbonusdice(lvl){
+  (lvl+1)/6
 }
-
-
+}

@@ -8,6 +8,8 @@ import { DiceComponent } from './dice/dice.component';
 import { WeaponsComponent } from './weapons/weapons.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { ActionuiComponent } from './actionui/actionui.component';
+import { MaproundComponent } from './mapround/mapround.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     DiceComponent,
     WeaponsComponent,
     TreeViewComponent,
+    ActionuiComponent,
+    MaproundComponent,
   ],
   imports: [
     CdkTreeModule,

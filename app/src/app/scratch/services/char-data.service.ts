@@ -1,3 +1,4 @@
+import { dependenciesFromGlobalMetadata } from '@angular/compiler/src/render3/r3_factory';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,29 +13,32 @@ export class CharDataService {
 
 
 const staff={name:'Old Staff', type:'quarterstaff', dmg: ['1d6','1d8'], dmgtype:'blunt', properties:['versatile'], icon:'', art:''}
-const unarmed={name:'Fist', type:'unnamrmed', dmg: ['1d1'], dmgtype:'blunt', properties:['none'],icon:'("assets/images/fist.svg")',art:''}
+const unarmed={name:'Fist', type:'unnamrmed', dmg: ['1d1'], dmgtype:'blunt', properties:['none'],icon:'("assets/images/fist.svg")',art:'', mod:'str'}
 const knuckles={name:'Brass Knuckles', type:'club', dmg: ['1d4'], dmgtype:'blunt', properties:['light']}
 
 
 function anyweap(
   name:string,
   type:string,
-  dmg1:any,
+  dmg1:Array<string>,
+  mod:string,
   )
   {
 
 this.name=name
 this.type=type
-this.dmg=[dmg1]
+this.dmg=dmg1
 this.dmgtype='bluntslashpierce'
 this.properties=[]
 this.icon='icon.svg'
 this.art='art.png'
+this.mod=mod
 }
 
-var gun = new anyweap('Matchlock','firearm','1d12')
-gun.dmg.push('1d20')
+var gun = new anyweap('Matchlock','firearm',['1d10', '1d12'],'dex')
 gun.icon='("assets/images/mlok.svg")'
+var staff1 =new anyweap('Gnarled Staff','quarterstaff',['1d6','1d8'],'str')
+var axe = new anyweap('Garruks Rage', '2hnd Axe',['','1d12'],'str')
 
 
 
@@ -81,7 +85,7 @@ class dndchar extends anychar{
     resources:any=
     [{name:'HP',max:10,min:9,bonus:0}]
 
-    items:any=[unarmed, gun]
+    items:Array<any>=[unarmed, gun]
 
 
 
@@ -120,6 +124,8 @@ sol.resources.push({name:'Rage', max:5, min:5})
 sol.resources[0]={name:'HP',max:223, min:183}
 sol.bio.idlava="assets/images/solidl.gif"
 sol.bio.idlrag="assets/images/solrg.gif"
+sol.bio.atkan="assets/images/sol-a4.gif"
+sol.items.push(axe)
 
 function dndAb(char:dndchar, s:number,d:number,co:number,i:number,w:number,ch:number){
  char.stats.abscores={str:s,dex:d,con:co,int:i,wis:w,chr:ch}
@@ -135,7 +141,19 @@ dndAb(jam,11,16,13,8,18,12)
 var adven=[jam,sol,balco]
 jam.bio.profile='("assets/images/jam.gif")'
 jam.bio.idlava="assets/images/jamid.gif"
+jam.bio.atkan="assets/images/ocused_v3.gif"
 
+var apbot=new dndchar('Sarah Applebottom', 'Bard', 12)
+dndAb(apbot,8,18,10,12,14,16)
+apbot.bio.profile='("assets/images/apbot.jpg")'
+apbot.bio.idlava="assets/images/apbotful.jpg"
 
+var rlet=new dndchar('RathLethal','Sorcerer', 14)
+dndAb(rlet,8,16,10,12,14,20)
+rlet.bio.profile='("assets/images/rleth.svg")'
+rlet.bio.idlava='assets/images/rletidl2.gif'
+rlet.bio.atkan='assets/images/rletatk.gif'
+adven.push(rlet)
 
 balco
+adven.push(apbot)

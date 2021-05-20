@@ -1,0 +1,28 @@
+
+<head><link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet"></head>
+
+<div id='actionwrap'>
+    <div class='alistbo'>
+        <div class='cloactiv'(click)='openweap($event,1)' *ngIf="z==1; else elseBlock">Attacks</div>
+            <ng-template #elseBlock><div class='clo' (click)='openweap($event,1)'>Attacks</div></ng-template>
+        <div class='cloactiv'(click)='openweap($event,2)' *ngIf="z==2; else elseBlock2">Ability</div>
+            <ng-template #elseBlock2>
+                <div class='clo' (click)='openweap($event,2)'>Ability</div>
+            </ng-template>
+        <div class='cloactiv'(click)='openweap($event,3)' *ngIf="z==3; else elseBlock3">Spells</div>
+            <ng-template #elseBlock3>
+                <div class='clo' (click)='openweap($event,3)'>Spells</div>
+            </ng-template>
+        <div class='cloactiv'(click)='openweap($event,4)' *ngIf="z==4; else elseBlock4">Items</div>
+            <ng-template #elseBlock4>
+                <div class='clo' (click)='openweap($event,4)'>Items</div>
+            </ng-template>
+
+    </div>
+    <div class='wbox1'>
+    <div [ngSwitch]='switchnum'>
+        <app-weapons (atkanim)='onattack2()' [advantages]='advantages'[charc]='charc' *ngSwitchCase='1'></app-weapons>
+        <div id='abilities' *ngSwitchCase='2'>abab ba ba ab ab aba ba ab</div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { AttrAst } from '@angular/compiler';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CharDataService } from '../services/char-data.service';
 import { ProRuleService } from '../services/pro-rule.service';
 import { CharOh } from "../models/char-oh";
@@ -16,10 +16,20 @@ var bal = new CharOh;
 export class CharUIComponent implements OnInit {
   charb = new CharOh;
   sal = new CharDataService
-  charc = this.sal.barb[1]
+  charc = this.sal.barb[3]
   claszt = this.allclasslvl(this.charc);
   f: number = 1
   anim = this.charc.bio.idlava
+  avtop='350px'
+  avright='40px'
+  avright2='40px'
+  ntage='No Vantage'
+  gloV='lo'
+  mwidth='70%'
+  mheight='48%'
+  actiontop='60%'
+  advantages:string='non'
+
 
   constructor(private proRule: ProRuleService) { }
 
@@ -31,6 +41,14 @@ export class CharUIComponent implements OnInit {
     }
     return covo;
   }
+
+onattack(){
+  this.anim = this.charc.bio.atkan
+  setTimeout(() =>{
+    this.anim=this.charc.bio.idlava;
+  },900)
+}
+
 
   onRage(event: MouseEvent) {
     (event.target as HTMLElement).style.backgroundColor = "blue";
@@ -47,7 +65,59 @@ export class CharUIComponent implements OnInit {
     }
   }
 
+  avlayout(){
+    this.mwidth='70%'
+    this.mheight='48%'
+    if(this.avtop=='350px'){
+    this.avtop='55px'
+    this.avright="4px"
+    this.avright2="400px"}
+    else{
+      this.avtop='350px'
+      this.avright="40px"
+      this.avright2='40px'
+    }
+  }
+
+  msize1(){
+    this.mwidth='85%'
+    this.mheight='65%'
+    this.avtop="68%"
+    this.avright2='-10%'
+    this.avright="-2%"
+    this.actiontop='70%'
+
+  }
+
+  actui1(){
+    this.mwidth='70%'
+    this.mheight='48%'
+    this.actiontop='60%'
+    this.avright2='40px'
+    this.avright='40px'
+    this.avtop='350px'
+  }
+
+  avante(){
+    if (this.ntage=='No Vantage'){
+    this.gloV='glo'
+    this.ntage='Advantage'
+    this.advantages='advantage'
+    }
+    else if(this.ntage=='Advantage'){
+      this.gloV='blo'
+      this.ntage='disadvantage'
+      this.advantages='disadvantage'
+    }
+    else if(this.ntage=='disadvantage'){
+      this.gloV='lo'
+      this.ntage='No Vantage'
+      this.advantages='non'
+    }
+  }
+
   ngOnInit(): void {
+  
   }
 }
 

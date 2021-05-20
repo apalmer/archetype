@@ -3,40 +3,49 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
 </head>
-<div class="charwrap">
+<div id='olflow'>
+<div class="charwrap"  [style.top]='avtop' [style.right]='avright'>
+
+    <div class='adwrap' >
+        <div [ngClass]='gloV' (click)="avante()">{{ntage}}</div>
+    </div>
+
     <div class="profile" [style.backgroundImage]='"url"+charc.bio.profile' style='background-size: 150px;'>
-          
     </div>
     <div class="charname">
         <div>{{charc.bio.name}}
-            <div class="charlevels">Lv {{claszt}}  <span *ngFor='let cro of charc.bio.class'class="claslev">{{cro.name}} Lv{{cro.lvl}} </span></div>
-        </div>
-           <div>
-               <div class="statz" *ngFor='let ab of charc.stats.abscores | keyvalue' style="border: solid cadetblue">{{ab.key}} {{ab.value}}
-
-                </div>
+            <div class="charlevels">Lv {{claszt}}  <span *ngFor='let cro of charc.bio.class'class="claslev">{{cro.name}} Lv{{cro.lvl}} </span>
             </div>
+        </div>
+        <div>
+            <div class="statz" *ngFor='let ab of charc.stats.abscores | keyvalue' style="border: solid cadetblue">{{ab.key}} {{ab.value}}
+            </div>
+        </div>
            
-           <div class='resourcebox'>
+        <div class='resourcebox'>
             <div class='resoname' *ngFor='let rez of charc.resources'>{{rez.name}} {{rez.min}}/{{rez.max}} <br>
                 <div style='width: 150px; height: 10px; border: solid navy'>
-                    <div [style.width]="(+rez.min/(+rez.max))*100+'%'" style='background-color: cadetblue;height:100%'id='hpcent'></div>
-    
-                    
+                    <div [style.width]="(+rez.min/(+rez.max))*100+'%'" style='background-color: cadetblue;height:100%'id='hpcent'>
+                    </div>
                 </div>
-    
             </div>
-    
         </div>
-        </div>
+    </div>
    
     <div class="itabwrap" style="clear:both;">
-        <div *ngFor='let number of charb.weapon' class="weapon">
-            <span class=wname>{{number.name}}</span> <span class=wdmg>{{number.dmg1}} {{number.dmgtype}}</span></div>
-        
-
     </div>
     <button class="press" (click)='onRage($event)'>R A G E</button>
 
 </div>
-<div class='vatar'><img id='ata'[src]='anim' style='vertical-align:bottom;'></div>
+<div class='vatar' (click)='avlayout()'[style.right]='avright2'><img id='ata'[src]='anim' style='vertical-align:bottom;'></div>
+<div class=actUIbox (click)='actui1()'[style.top]='actiontop'>
+<app-actionui (atkan)='onattack()' [charc]='charc' [advantages]='advantages'></app-actionui>
+
+</div>
+
+<div class='mapui' (click)='msize1()' [style.width]='mwidth' [style.height]='mheight'>
+    <app-mapround></app-mapround>
+</div>
+
+
+</div>
