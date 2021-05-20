@@ -3,8 +3,8 @@ import { Router } from "@angular/router";
 
 import { Observable } from 'rxjs';
 
-import { Archetype } from "../models/archetype";
-import { ArchetypeService } from '../services/archetype.service';
+import { Archetype } from "../../models/archetype";
+import { ArchetypeService } from '../../services/archetype.service';
 
 @Component({
   selector: 'app-archetype-list',

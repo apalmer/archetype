@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PropertyNode } from "../models/property-node";
-import { JsonSchema, JsonSchemaProperty } from "../models/json-schema";
+import { JsonSchema, JsonSchemaProperty } from "../../models/json-schema";
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
