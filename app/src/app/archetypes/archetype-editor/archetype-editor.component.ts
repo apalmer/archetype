@@ -7,10 +7,10 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 import { MatDialog } from '@angular/material/dialog';
 
-import { Archetype } from '../models/archetype';
+import { Archetype } from '../../models/archetype';
 import { PropertyNode } from '../models/property-node';
 import { SchemaEditorService } from '../services/schema-editor.service';
-import { ArchetypeService } from '../services/archetype.service';
+import { ArchetypeService } from '../../services/archetype.service';
 import { PropertyDialogComponent } from "../property-dialog/property-dialog.component";
 
 @Component({

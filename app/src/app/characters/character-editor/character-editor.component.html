@@ -1,13 +1,24 @@
-<div *ngIf="character">
+<div id="form-container" *ngIf="form">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <label>
-            Name:
-            <input type="text" formControlName="name">
-        </label>
-        <label>
-            Description:
-            <input type="text" formControlName="description">
-        </label>
-        <button type="submit">Submit</button>
+        <div id="field-container">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Archetype</mat-label>
+                <mat-select formControlName="archetype" name="archetype" (selectionChange)="onArchetypeChange($event.value)">
+                    <mat-option *ngFor="let arch of archetypes | async" [value]="arch.id">
+                      {{arch.name}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <app-flexible-form [control]="form" [controlName]="'data'"></app-flexible-form>
+            <button mat-button type="submit">Submit</button>
+        </div>
     </form>
 </div>

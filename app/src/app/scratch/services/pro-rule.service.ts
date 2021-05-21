@@ -56,6 +56,8 @@ export class ProRuleService {
   totlvl(charc){
     var covo = 0;
     var i
+    //check the existence of objects before using them
+    if(!charc || !charc.bio || !charc.bio.class){ return covo; }
     for (i = 0; i < charc.bio.class.length; i++) {
       covo += Number(charc.bio.class[i].lvl);
     }
@@ -63,6 +65,9 @@ export class ProRuleService {
 
   }
   statmod(sta,charc){
+    if(!charc || !charc.stats || !charc.stats.abscores || !charc.stats.abscores[sta]){
+      return;
+    }
     return Math.floor((charc.stats.abscores[sta]-10)/2)
   }
 
