@@ -21,11 +21,15 @@ function newmonsta(
     this.type=type
     this.align=align
     this.ac=ac
+    // have to set this.hp or it will be null
+    this.hp = {}
     this.hp.max=hp
     this.hp.min =hp
     this.hp.dice
     this.speed=speed
     this.absco
+    // have to set this.bio or it will be null
+    this.bio = {}
     this.bio.sthro
     this.bio.skills
     this.resist

@@ -17,19 +17,21 @@ export class FlexibleFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.control.valueChanges.subscribe(
-      x => {
-        let root = this.control as FormGroup;
-        let childRoot = root.get(this.controlName);
-        if (childRoot && childRoot instanceof FormGroup) {
-          this.formGroup = childRoot as FormGroup;
-        }
-        else {
-          this.formGroup = root;
-        }
+    if (this.control) {
+      this.control.valueChanges.subscribe(
+        x => {
+          let root = this.control as FormGroup;
+          let childRoot = root.get(this.controlName);
+          if (childRoot && childRoot instanceof FormGroup) {
+            this.formGroup = childRoot as FormGroup;
+          }
+          else {
+            this.formGroup = root;
+          }
 
 
-      });
+        });
+    }
   }
 
   iterate(form: FormGroup) {

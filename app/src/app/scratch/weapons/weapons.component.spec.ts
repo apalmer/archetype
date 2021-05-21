@@ -16,6 +16,7 @@ describe('WeaponsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WeaponsComponent);
     component = fixture.componentInstance;
+    component.charc = { items:[]};
     fixture.detectChanges();
   });
 
