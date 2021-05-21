@@ -6,7 +6,7 @@
 <div id='olflow'>
 <div class="charwrap"  [style.top]='avtop' [style.right]='avright'>
 
-    <div class='adwrap' >
+    <div class='adwrap'  >
         <div [ngClass]='gloV' (click)="avante()">{{ntage}}</div>
     </div>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="charname">
         <div>{{charc.bio.name}}
-            <div class="charlevels">Lv {{claszt}}  <span *ngFor='let cro of charc.bio.class'class="claslev">{{cro.name}} Lv{{cro.lvl}} </span>
+            <div class="charlevels">Lv {{allclasslvl(charc)}}  <span *ngFor='let cro of charc.bio.class'class="claslev">{{cro.name}} Lv{{cro.lvl}} </span>
             </div>
         </div>
         <div>
@@ -46,6 +46,9 @@
 <div class='mapui' (click)='msize1()' [style.width]='mwidth' [style.height]='mheight'>
     <app-mapround></app-mapround>
 </div>
+
+<div class='glo' (click)='charswitch()' style='position:absolute;top:1%;left:45%;'>
+    Next Char</div>
 
 
 </div>

@@ -39,3 +39,8 @@
     top:0px;
     transition: transform 1s,
 }
+
+.enemy{
+    position:absolute
+    
+}

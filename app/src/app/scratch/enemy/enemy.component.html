@@ -1,0 +1,22 @@
+<div class=monwrap (click)='tdisplay()'>
+    <div class=monicon [style.backgroundImage]='"url("+monstone.icon+")"'>
+        <div class='targe'[style.display]='tdisp'></div>
+
+    </div>
+    <div class=monblok>
+        <div class=montitle>
+            {{monstone.name}} <br> <span class="mlign">{{monstone.align}}</span>
+        </div>
+        <div class=mdetail>Detail</div>
+
+    </div>
+</div>
+<div class=enemycardwrap>
+<div class=evatar><img [attr.src]='monstone.avatar' style='max-height: 100%;'></div>
+<div class=ecard>
+    <div class=montitle>
+        {{monstone.name}} <br> <span class="mlign">{{monstone.align}}</span>
+    </div>
+
+</div>
+</div>

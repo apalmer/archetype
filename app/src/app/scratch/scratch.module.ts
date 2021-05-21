@@ -10,6 +10,7 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { ActionuiComponent } from './actionui/actionui.component';
 import { MaproundComponent } from './mapround/mapround.component';
+import { EnemyComponent } from './enemy/enemy.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { MaproundComponent } from './mapround/mapround.component';
     TreeViewComponent,
     ActionuiComponent,
     MaproundComponent,
+    EnemyComponent,
   ],
   imports: [
     CdkTreeModule,

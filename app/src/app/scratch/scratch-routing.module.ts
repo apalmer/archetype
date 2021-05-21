@@ -7,6 +7,7 @@ import { WeaponsComponent } from './weapons/weapons.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import {ActionuiComponent} from './actionui/actionui.component'
 import { MaproundComponent } from './mapround/mapround.component';
+import { EnemyComponent } from './enemy/enemy.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'tree-view', component: TreeViewComponent},
   { path: 'actionui', component: ActionuiComponent},
   { path: 'mapro', component: MaproundComponent},
+  { path: 'enemmon', component: EnemyComponent},
 ];
 
 @NgModule({

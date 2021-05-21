@@ -1,5 +1,11 @@
 <div class='mwrap'>
-    <div class='acmap'><div id= 'sbo'[style.transform]='"scale("+scale+")"'><img src='assets/images/map1.jpg'></div></div>
+    <div class='acmap'>
+        <div id= 'sbo'[style.transform]='"scale("+scale+")"'>
+            <img src='assets/images/map1.jpg'>
+            <div class='enemy' [style.top]='50+"%"' [style.right]='1+"%"'><app-enemy></app-enemy></div>
+        </div>
+        
+    </div>
     <div class='zbut' (click)='zoomp()'>+</div>
     <div class='zbutm' (click)='zoomm()'>-</div>
 </div>

@@ -17,7 +17,7 @@ export class CharUIComponent implements OnInit {
   charb = new CharOh;
   sal = new CharDataService
   charc = this.sal.barb[3]
-  claszt = this.allclasslvl(this.charc);
+  //claszt = this.allclasslvl(this.charc);
   f: number = 1
   anim = this.charc.bio.idlava
   avtop='350px'
@@ -29,9 +29,23 @@ export class CharUIComponent implements OnInit {
   mheight='48%'
   actiontop='60%'
   advantages:string='non'
+  charId=1
 
 
   constructor(private proRule: ProRuleService) { }
+
+  charswitch(){
+    if (this.charId<this.sal.barb.length-1){
+      this.charId=this.charId+1
+      this.charc=this.sal.barb[this.charId]
+      this.anim=this.charc.bio.idlava
+    }
+    else {
+      this.charId=0
+      this.charc=this.sal.barb[this.charId]
+      this.anim=this.charc.bio.idlava
+    }
+  }
 
   allclasslvl(char: any) {
     var covo = 0;
@@ -93,9 +107,11 @@ onattack(){
     this.mwidth='70%'
     this.mheight='48%'
     this.actiontop='60%'
+    if(this.avright2=='-10%'){
     this.avright2='40px'
-    this.avright='40px'
+    this.avright='40px'}
     this.avtop='350px'
+   // }
   }
 
   avante(){
@@ -117,20 +133,10 @@ onattack(){
   }
 
   ngOnInit(): void {
+    document.body.style.overflow='hidden'
+    //document.body.style.backgroundColor='black'
   
   }
 }
 
-// @Component({
-//   selector: 'my-app',
-//   template: `
-//     <h1>{{title}}</h1>
-//     <h2>My favorite hero is: {{myHero}}</h2>
-//     `
-// })
-// export class AppComponent {
-//   title = 'Tour of Heroes';
-//   myHero = 'Windstorm';
-
-// }
 
