@@ -15,6 +15,7 @@ import { CharactersComponent } from './characters.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { CharacterSummaryComponent } from './character-summary/character-summary.component';
 import { CharacterEditorComponent } from './character-editor/character-editor.component';
+import { FlexibleFormComponent } from './flexible-form/flexible-form.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CharacterEditorComponent } from './character-editor/character-editor.co
     CharactersComponent,
     CharacterListComponent,
     CharacterSummaryComponent,
-    CharacterEditorComponent
+    CharacterEditorComponent,
+    FlexibleFormComponent
   ],
   imports: [
     CommonModule, 

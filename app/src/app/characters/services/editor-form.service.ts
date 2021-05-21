@@ -39,6 +39,10 @@ export class EditorFormService {
     return group;
   }
 
+  updateForm(form:FormGroup, archetype: Archetype, character: Character){
+    form.setControl('data',this.convertPropertyToFormGroup(archetype.schema.properties));
+  }
+
   convertPropertyToFormGroup(properties: any): FormGroup {
     let group = new FormGroup({});
 

@@ -18,7 +18,7 @@ import { EditorFormService } from '../services/editor-form.service';
 })
 export class CharacterEditorComponent implements OnInit {
   character: Character;
-  archetype: Observable<Archetype>;
+  archetype: Archetype;
   archetypes: Observable<Archetype[]>;
   form: FormGroup;
 
@@ -38,19 +38,13 @@ export class CharacterEditorComponent implements OnInit {
 
     console.log(characterId);
     if (characterId) {
-      this.characterService.getCharacter(characterId).pipe().
-
       this.characterService.getCharacter(characterId).subscribe(
         character => {
           this.character = character.data();
           this.archetypeService.getArchetype(this.character.archetypeId).subscribe(
             archetype => {
-              this.archetype = of(archetype.data());
-              this.archetype.subscribe(
-                archetype => {
-                  this.form = this.editorFormService.convertToForm(archetype, this.character);
-                }
-              )
+              this.archetype = archetype.data();
+              this.form = this.editorFormService.convertToForm(this.archetype, this.character);
             }
           )
         });
@@ -59,16 +53,20 @@ export class CharacterEditorComponent implements OnInit {
       this.character = this.characterService.newCharacter();
       this.archetypes.subscribe( 
         archetypes =>{
-          this.archetype = of(archetypes[0]);
-          this.archetype.subscribe(
-            archetype => {
-              this.form = this.editorFormService.convertToForm(archetype, this.character);
-            }
-          )
+          this.archetype = archetypes[0];
+          this.form = this.editorFormService.convertToForm(this.archetype, this.character);
         }
       )
       
     }
+  }
+
+  onArchetypeChange(archetypeId:string){
+    this.archetypes.subscribe(archetypes => { 
+      this.archetype = archetypes.find(archetype => archetype.id === archetypeId);
+      console.log('changed:'+this.archetype.name)
+      this.editorFormService.updateForm(this.form, this.archetype, this.character);
+    });
   }
 
   onSubmit(): void {
