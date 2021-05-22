@@ -1,13 +1,21 @@
 <div class='mwrap'>
     <div class='acmap'>
-        <div id= 'sbo'[style.transform]='"scale("+scale+")"'>
+        <div id='sbo' [style.transform]='"scale("+scale+")"'>
             <img src='assets/images/map1.jpg'>
-            <div class='enemy' [style.top]='400+"px"' [style.left]='600+"px"'>
-                <app-enemy></app-enemy></div>
+
+            <div *ngFor="let enemy of enemies; index as i;">
+                <div class='enemy' [style.top]='200+i*100+"px"' [style.left]='300+i*100+"px"'>
+                    <app-enemy-combatant [enemy]="enemy"></app-enemy-combatant>
+                </div>
+            </div>
+
+            <!-- <div class='enemy' [style.top]='400+"px"' [style.left]='600+"px"'>
+                <app-enemy></app-enemy>
+            </div> -->
         </div>
-        
+
     </div>
     <div class='zbut' (click)='zoomp()'>+</div>
     <div class='zbutm' (click)='zoomm()'>-</div>
-  <!--  <div class='zbut'  (click)=''-->
+    <!--  <div class='zbut'  (click)=''-->
 </div>

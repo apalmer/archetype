@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Enemy } from '../classes/enemy';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-mapround',
@@ -6,11 +8,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./mapround.component.css']
 })
 export class MaproundComponent implements OnInit {
-  
+  enemies:Enemy[];
 
   scale=1
   scalet='scale('+this.scale+')'
-  constructor() { }
+  constructor(game:GameService) {
+    this.enemies = game.engine.encounter.enemies;
+  }
 
   ngOnInit(): void {
   }

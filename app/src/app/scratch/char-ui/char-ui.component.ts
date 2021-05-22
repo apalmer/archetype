@@ -4,6 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CharDataService } from '../services/char-data.service';
 import { ProRuleService } from '../services/pro-rule.service';
 import { CharOh } from "../models/char-oh";
+import { GameService } from '../services/game.service';
 
 var bal = new CharOh;
 
@@ -32,7 +33,7 @@ export class CharUIComponent implements OnInit {
   charId=1
 
 
-  constructor(private proRule: ProRuleService) { }
+  constructor(private proRule: ProRuleService, private game: GameService) { }
 
   charswitch(){
     if (this.charId<this.sal.barb.length-1){
