@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'actionui', component: ActionuiComponent},
   { path: 'mapro', component: MaproundComponent},
   { path: 'enemmon', component: EnemyComponent},
+  { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) }
 ];
 
 @NgModule({
