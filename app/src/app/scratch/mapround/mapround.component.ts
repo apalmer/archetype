@@ -6,6 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./mapround.component.css']
 })
 export class MaproundComponent implements OnInit {
+  
 
   scale=1
   scalet='scale('+this.scale+')'

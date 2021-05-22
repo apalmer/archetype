@@ -21,9 +21,13 @@ export class EnemyComponent implements OnInit {
    }
 
    tdisplay(){
+     this.emitmonster.emit(this.monstone)
+
      if(this.tdisp=='none'){
      this.tdisp='block'}
      else {this.tdisp='none'}
+     this.monstone.hp.min=this.monstone.hp.min-3
+     
    }
 
   ngOnInit(): void {
