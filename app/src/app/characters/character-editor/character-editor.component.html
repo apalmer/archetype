@@ -11,13 +11,13 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Archetype</mat-label>
-                <mat-select formControlName="archetype" name="archetype" (selectionChange)="onArchetypeChange($event.value)">
+                <mat-select formControlName="archetypeId" name="archetypeId" (selectionChange)="onArchetypeChange($event.value)">
                     <mat-option *ngFor="let arch of archetypes | async" [value]="arch.id">
                       {{arch.name}}
                     </mat-option>
                   </mat-select>
             </mat-form-field>
-            <app-flexible-form [control]="form" [controlName]="'data'"></app-flexible-form>
+            <app-flexible-form [schemaFormGroup]="data"></app-flexible-form>
             <button mat-button type="submit">Submit</button>
         </div>
     </form>
