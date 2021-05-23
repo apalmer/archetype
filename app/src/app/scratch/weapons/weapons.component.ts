@@ -63,9 +63,7 @@ export class WeaponsComponent implements OnInit {
 
     let handiness:"one-handed"|"two-handed" = swnum ? 'two-handed':'one-handed';
     
-    //this.game.engine.combatSystem.attack(source,target,attackOption);
-
-    this.attack.emit({ weapon: weapon, handiness: handiness});
+    this.game.attackTarget({ weapon: weapon, handiness: handiness});
   }
 
   atknao(dmg,mod){

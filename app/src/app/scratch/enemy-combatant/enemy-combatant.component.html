@@ -1,6 +1,6 @@
-<div class='monwrap' >
+<div class='monwrap' (click)='selectCombatant()'>
     <div class='monicon' [style.backgroundImage]='"url("+enemy.icon+")"'>
-        <div class='targe' ></div>
+        <div [class.targe]='isSelected()'></div>
     </div>
     <div class='monblok'>
         <div class='montitle'>
