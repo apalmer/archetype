@@ -5,6 +5,8 @@ import { CharDataService } from '../services/char-data.service';
 import { ProRuleService } from '../services/pro-rule.service';
 import { CharOh } from "../models/char-oh";
 import { GameService } from '../services/game.service';
+import { Player } from '../classes/player';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 var bal = new CharOh;
 
@@ -21,30 +23,36 @@ export class CharUIComponent implements OnInit {
   //claszt = this.allclasslvl(this.charc);
   f: number = 1
   anim = this.charc.bio.idlava
-  avtop='350px'
-  avright='40px'
-  avright2='40px'
-  ntage='No Vantage'
-  gloV='lo'
-  mwidth='70%'
-  mheight='48%'
-  actiontop='60%'
-  advantages:string='non'
-  charId=1
+  avtop = '350px'
+  avright = '40px'
+  avright2 = '40px'
+  ntage = 'No Vantage'
+  gloV = 'lo'
+  mwidth = '70%'
+  mheight = '48%'
+  actiontop = '60%'
+  advantages: string = 'non'
+  charId = 1
+  player:Player;
 
 
-  constructor(private proRule: ProRuleService, private game: GameService) { }
+  constructor(private proRule: ProRuleService, private game: GameService, private snackBar: MatSnackBar) { 
+    this.player = this.game.player;
+    this.game.eventFeed.subscribe(
+      event => this.snackBar.open(event.payload,'close',{duration:2000})
+    )
+  }
 
-  charswitch(){
-    if (this.charId<this.sal.barb.length-1){
-      this.charId=this.charId+1
-      this.charc=this.sal.barb[this.charId]
-      this.anim=this.charc.bio.idlava
+  charswitch() {
+    if (this.charId < this.sal.barb.length - 1) {
+      this.charId = this.charId + 1
+      this.charc = this.sal.barb[this.charId]
+      this.anim = this.charc.bio.idlava
     }
     else {
-      this.charId=0
-      this.charc=this.sal.barb[this.charId]
-      this.anim=this.charc.bio.idlava
+      this.charId = 0
+      this.charc = this.sal.barb[this.charId]
+      this.anim = this.charc.bio.idlava
     }
   }
 
@@ -57,12 +65,12 @@ export class CharUIComponent implements OnInit {
     return covo;
   }
 
-onattack(){
-  this.anim = this.charc.bio.atkan
-  setTimeout(() =>{
-    this.anim=this.charc.bio.idlava;
-  },900)
-}
+  onattack() {
+    this.anim = this.charc.bio.atkan
+    setTimeout(() => {
+      this.anim = this.charc.bio.idlava;
+    }, 900)
+  }
 
 
   onRage(event: MouseEvent) {
@@ -80,63 +88,65 @@ onattack(){
     }
   }
 
-  avlayout(){
-    this.mwidth='70%'
-    this.mheight='48%'
-    if(this.avtop=='350px'){
-    this.avtop='55px'
-    this.avright="4px"
-    this.avright2="400px"}
-    else{
-      this.avtop='350px'
-      this.avright="40px"
-      this.avright2='40px'
+  avlayout() {
+    this.mwidth = '70%'
+    this.mheight = '48%'
+    if (this.avtop == '350px') {
+      this.avtop = '55px'
+      this.avright = "4px"
+      this.avright2 = "400px"
+    }
+    else {
+      this.avtop = '350px'
+      this.avright = "40px"
+      this.avright2 = '40px'
     }
   }
 
-  msize1(){
-    this.mwidth='85%'
-    this.mheight='65%'
-    this.avtop="68%"
-    this.avright2='-10%'
-    this.avright="-2%"
-    this.actiontop='70%'
+  msize1() {
+    this.mwidth = '85%'
+    this.mheight = '65%'
+    this.avtop = "68%"
+    this.avright2 = '-10%'
+    this.avright = "-2%"
+    this.actiontop = '70%'
 
   }
 
-  actui1(){
-    this.mwidth='70%'
-    this.mheight='48%'
-    this.actiontop='60%'
-    if(this.avright2=='-10%'){
-    this.avright2='40px'
-    this.avright='40px'}
-    this.avtop='350px'
-   // }
+  actui1() {
+    this.mwidth = '70%'
+    this.mheight = '48%'
+    this.actiontop = '60%'
+    if (this.avright2 == '-10%') {
+      this.avright2 = '40px'
+      this.avright = '40px'
+    }
+    this.avtop = '350px'
+    // }
   }
 
-  avante(){
-    if (this.ntage=='No Vantage'){
-    this.gloV='glo'
-    this.ntage='Advantage'
-    this.advantages='advantage'
+  avante() {
+    if (this.ntage == 'No Vantage') {
+      this.gloV = 'glo'
+      this.ntage = 'Advantage'
+      this.advantages = 'advantage'
     }
-    else if(this.ntage=='Advantage'){
-      this.gloV='blo'
-      this.ntage='disadvantage'
-      this.advantages='disadvantage'
+    else if (this.ntage == 'Advantage') {
+      this.gloV = 'blo'
+      this.ntage = 'disadvantage'
+      this.advantages = 'disadvantage'
     }
-    else if(this.ntage=='disadvantage'){
-      this.gloV='lo'
-      this.ntage='No Vantage'
-      this.advantages='non'
+    else if (this.ntage == 'disadvantage') {
+      this.gloV = 'lo'
+      this.ntage = 'No Vantage'
+      this.advantages = 'non'
     }
   }
 
   ngOnInit(): void {
-    document.body.style.overflow='hidden'
+    document.body.style.overflow = 'hidden'
     //document.body.style.backgroundColor='black'
-  
+
   }
 }
 

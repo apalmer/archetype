@@ -5,7 +5,7 @@ export class Enemy extends Combatant {
         super();
 
         this.name = "Dragon";
-        this.hitPoints = 33;
+        this.hitPoints = this.maxHitPoints = 33;
         this.armorClass = 10;
         this.icon = 'assets/monsta/mimages/bwyr.jpg'
     }

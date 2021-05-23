@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Combatant } from '../classes/combatant';
 import { Enemy } from '../classes/enemy';
 import { GameEngine } from '../classes/game-engine';
+import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 
@@ -10,32 +12,37 @@ import { AttackOptions } from '../models/attack-options';
   providedIn: 'root'
 })
 export class GameService {
-
-  engine: GameEngine;
+  private engine: GameEngine;
   player: Player;
-  target: Combatant;
+  private target: Combatant;
+  eventFeed: Observable<GameEvent>;
 
   constructor() {
     this.engine = new GameEngine();
+    this.player = this.engine.encounter.player;
+    this.eventFeed = this.engine.gameEvents;
   }
 
-  setTarget(target: Combatant) {
+  getEnemies(): Enemy[] {
+    return this.engine.encounter.enemies;
+  }
+
+  setTarget(target: Combatant): void {
     this.target = target;
   }
 
-  isTarget(target: Combatant) {
-    this.target === target;
+  isTarget(target: Combatant): boolean {
+    return this.target === target;
   }
 
-  attackTarget(attackOptions: AttackOptions) {
-    if(!this.target){
+  attackTarget(attackOptions: AttackOptions): void {
+    if (!this.target) {
       //what should happen if nothing is selected?
     }
     this.engine.combatSystem.attack(this.player, this.target, attackOptions);
   }
 
-  attackPlayer() {
-    let attackOptions: AttackOptions = { weapon: "Bite", handiness: "one-handed" };
+  attackPlayer(attackOptions: AttackOptions): void {
     this.engine.combatSystem.attack(this.target, this.player, attackOptions);
   }
 

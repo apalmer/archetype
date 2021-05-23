@@ -13,7 +13,7 @@ export class MaproundComponent implements OnInit {
   scale=1
   scalet='scale('+this.scale+')'
   constructor(game:GameService) {
-    this.enemies = game.engine.encounter.enemies;
+    this.enemies = game.getEnemies(); 
   }
 
   ngOnInit(): void {

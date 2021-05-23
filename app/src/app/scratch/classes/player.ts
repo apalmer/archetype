@@ -5,7 +5,7 @@ export class Player extends Combatant {
         super();
 
         this.name = "WuTang";
-        this.hitPoints = 20;
+        this.hitPoints = this.maxHitPoints = 20;
         this.armorClass = 12;
     }
 }
