@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { CharUIComponent } from './char-ui.component';
 
 describe('CharUIComponent', () => {
@@ -8,7 +10,8 @@ describe('CharUIComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharUIComponent ]
+      declarations: [ CharUIComponent ],
+      imports: [ MatSnackBarModule ]
     })
     .compileComponents();
   });

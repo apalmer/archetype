@@ -1,6 +1,7 @@
 import { Combatant } from "./combatant";
 
 export class Enemy extends Combatant {
+    
     constructor(){
         super();
 
@@ -9,5 +10,6 @@ export class Enemy extends Combatant {
         this.armorClass = 10;
         this.icon = 'assets/monsta/mimages/bwyr.jpg'
     }
+
 
 }
