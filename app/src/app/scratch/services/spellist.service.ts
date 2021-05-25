@@ -1,10 +1,12 @@
 import { stringify } from '@angular/compiler/src/util';
+import {spellson} from '../services/spellson'
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpellistService {
+  cant=cantryp
 
   constructor() { }
 }
@@ -50,3 +52,37 @@ var bblade= new newspell('Booming Blade',0,'1 action',5, '1 round',['1d8','0d8']
 var iknif= new newspell('Ice Knife',1,'1 action',60, 'instant',['1d10','2d6'],['S','M'],
 "(a drop of water or piece of ice) <br>You create a shard of ice and fling it at one creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 piercing damage. Hit or miss, the shard then explodes. The target and each creature within 5 feet of the point where the ice exploded must succeed on a Dexterity saving throw or take 2d6 cold damage At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the cold damage increases by 1d6 for each slot level above 1st.",
 'elem evil')
+
+var spstring
+var spstring2
+var sps
+var gps
+
+export var cantryp=[]
+spstring= JSON.stringify(spellson)
+
+spstring2=spstring.replace(/\*\*.*?\*\*/g, '')
+sps=JSON.parse(spstring2)
+gps=Object.keys(sps['0th'])
+
+
+for (const prop in sps['0th']){
+  var i=0
+  cantryp.push({
+    name: prop,
+    level: sps['0th'][prop].level,
+    casttime: sps['0th'][prop].cast_time,
+    range: sps['0th'][prop].range,
+    duration: sps['0th'][prop].duration,
+    comp: sps['0th'][prop].components,
+    descrip: sps['0th'][prop].description,
+    tags: sps['0th'][prop].tags,
+    dmg:'unknown'
+  })
+  i=i+1;
+
+}
+
+export var cant=cantryp
+
+

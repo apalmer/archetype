@@ -1,5 +1,6 @@
 import { dependenciesFromGlobalMetadata } from '@angular/compiler/src/render3/r3_factory';
 import { Injectable } from '@angular/core';
+import {cant} from '../services/spellist.service'
 
 @Injectable({
   providedIn: 'root'
@@ -154,6 +155,8 @@ rlet.bio.profile='("assets/images/rleth.svg")'
 rlet.bio.idlava='assets/images/rletidl2.gif'
 rlet.bio.atkan='assets/images/rletatk.gif'
 adven.push(rlet)
+rlet.bio.spells=[]
+rlet.bio.spells.push[cant[2], cant[0], cant[10]]
 
 balco
 adven.push(apbot)

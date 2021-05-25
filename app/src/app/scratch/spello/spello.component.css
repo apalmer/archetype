@@ -1,0 +1,28 @@
+.spelbox{
+    width: 450px;
+    /*height: 140px;*/
+    background-color: cadetblue;
+    color: seashell;
+    font-family: 'Questrial', sans-serif;
+    padding: 10px;
+    line-height: 12px;
+    border: double seashell;
+    border-width: 4px;
+}
+.namesp{
+    font-size: 20px;
+    border-bottom: solid lightgray;
+}
+.levelsp{
+    color: lightcyan;
+    font-size: 10px;
+}
+.crd{
+    color: lightcyan;
+    font-size:  12px;
+}
+.descr{
+    padding: 5px;
+    font-size: 11px;
+    color: white
+}

@@ -8,6 +8,7 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
 import {ActionuiComponent} from './actionui/actionui.component'
 import { MaproundComponent } from './mapround/mapround.component';
 import { EnemyComponent } from './enemy/enemy.component';
+import { SpelloComponent } from './spello/spello.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'actionui', component: ActionuiComponent},
   { path: 'mapro', component: MaproundComponent},
   { path: 'enemmon', component: EnemyComponent},
+  {path: 'spello' , component: SpelloComponent},
   { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) }
 ];
 

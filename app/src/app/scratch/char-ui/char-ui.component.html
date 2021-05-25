@@ -13,7 +13,7 @@
     <div class="profile" [style.backgroundImage]='"url"+charc.bio.profile' style='background-size: 150px;'>
     </div>
     <div class="charname">
-        <div>{{charc.bio.name}}
+        <div>{{charc.bio.name}} 
             <div class="charlevels">Lv {{allclasslvl(charc)}}  <span *ngFor='let cro of charc.bio.class'class="claslev">{{cro.name}} Lv{{cro.lvl}} </span>
             </div>
         </div>
