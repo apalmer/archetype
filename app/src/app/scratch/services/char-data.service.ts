@@ -156,7 +156,7 @@ rlet.bio.idlava='assets/images/rletidl2.gif'
 rlet.bio.atkan='assets/images/rletatk.gif'
 adven.push(rlet)
 rlet.bio.spells=[]
-rlet.bio.spells.push[cant[2], cant[0], cant[10]]
+rlet.bio.spells.push(cant[2], cant[0], cant[10])
 
 balco
 adven.push(apbot)

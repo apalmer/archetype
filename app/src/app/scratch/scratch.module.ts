@@ -12,6 +12,7 @@ import { ActionuiComponent } from './actionui/actionui.component';
 import { MaproundComponent } from './mapround/mapround.component';
 import { EnemyComponent } from './enemy/enemy.component';
 import { SpelloComponent } from './spello/spello.component';
+import { DebuggerComponent } from './debugger/debugger.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SpelloComponent } from './spello/spello.component';
     MaproundComponent,
     EnemyComponent,
     SpelloComponent,
+    DebuggerComponent,
   ],
   imports: [
     CdkTreeModule,
