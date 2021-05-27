@@ -41,8 +41,24 @@ function roll20(advantage: Advantage) {
     return { value: value, critical: critical };
 }
 
-export function attackRoll(combatant: Combatant, ability: Ability){
-    return abilityRoll(combatant,ability);
+export function attackRoll(combatant: Combatant, ability: Ability, ability2:Ability){
+    let mod
+    if(ability2==null){
+        mod = getMod(combatant, ability);
+       
+    }
+    else{
+        mod=Math.max(getMod(combatant,ability), getMod(combatant, ability2))
+    }
+
+    let roll = roll20(combatant.advantage);
+    roll.value += mod;
+
+    if (proficiencyApplies(combatant)) {
+        roll.value += getProficiency(combatant as Player);
+    }
+
+    return roll;
 }
 
 function abilityRoll(combatant: Combatant, ability: Ability) {
@@ -57,9 +73,18 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
     return roll;
 }
 
-export function damageRoll(dice:number, sides:number, isCritical?:boolean){
+export function damageRoll(combatant: Combatant, ability:Ability, ability2:Ability, 
+    dice:number, sides:number, isCritical?:boolean){
 
     let dagger = new Weapon('dagger');
+    let mod
+    if(ability2==null){
+        mod = getMod(combatant, ability);
+       
+    }
+    else{
+        mod=Math.max(getMod(combatant,ability), getMod(combatant, ability2))
+    }
     
     if(isCritical){
         dice *= 2;
@@ -69,6 +94,7 @@ export function damageRoll(dice:number, sides:number, isCritical?:boolean){
     for (let index = 0; index < dice; index++) {
         sum += die(sides);
     }
+    sum+=mod
     return sum;
 }
 

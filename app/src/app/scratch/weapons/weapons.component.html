@@ -6,7 +6,7 @@
 <div class=godbox style=position:absolute;>
 <div *ngFor='let ite of charc.items' style="width: 330px;">
     <div class='weaponwrap'>
-        <div class='iconweap' [style.backgroundImage]='"url"+ite.icon' style='background-size: 100%'></div>
+        <div class='iconweap' [style.backgroundImage]='' style='background-size: 100%'></div>
         <div class='itemactionwrap'>
             <div class='itembar'>
                 <div class='itemname'>{{ite.name}}</div>
@@ -15,7 +15,7 @@
             <div class='actionbar'>
                 <div class='action'><button class='actbutton' (click)='onAttack(ite.name, swnum)'>ATTACK</button></div> 
                 <!-- <div class='action'><button class='actbutton' (click)='atknao(ite.dmg[swnum], ite.mod)'>ATTACK</button></div> -->
-                <div class='dmg'>{{ite.dmg[swnum]}}</div>
+                <div class='dmg'>unknown</div>
                 <div class='dmode'><button (click)='dmgswtch(ite)'>{{swnam}}</button></div>
             </div>
         </div>

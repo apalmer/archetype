@@ -19,7 +19,7 @@ export class CombatSystem {
         //is attackOptions valid for the source
         let weapon = new Weapon(attackOption.weapon);
         //figure out attack chance to hit based on source, dice and modifiers
-        let attack = attackRoll(source, weapon.ability[0]);
+        let attack = attackRoll(source, weapon.ability[0], weapon.ability[1]);
         //figure out attack chance to hit based on target
         let success = attack.value >= target.armorClass;
 
@@ -27,7 +27,8 @@ export class CombatSystem {
         if (success) {
             let weaponDamage = attackOption.handiness === "one-handed" ? weapon.damage.oneHanded : weapon.damage.twoHanded;
             let isCritical = attack.critical === "success";
-            let damage = damageRoll(weaponDamage.dice, weaponDamage.sides, isCritical);
+            let damage = damageRoll(source, weapon.ability[0], weapon.ability[1],
+                weaponDamage.dice, weaponDamage.sides, isCritical);
 
             //apply damage to target
             target.hitPoints -= damage;

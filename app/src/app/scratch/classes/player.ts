@@ -10,11 +10,12 @@ export class Player extends Combatant {
         this.abilities = {
             "CHR": 10,
             "CON": 10,
-            "DEX": 10,
+            "DEX": 20,
             "INT": 10,
             "STR": 16,
             "WIS": 10
         }
+        this.advantage='none'
     }
 
     get TotalLevel(): number {

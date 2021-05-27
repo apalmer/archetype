@@ -30,7 +30,7 @@ export class WeaponsComponent implements OnInit {
   atktxt:any='ready'
   atkdmg:any='go'
   dmgswtch(ip){
-    if (this.swnum<ip.dmg.length-1){
+    if (this.swnum<1){
     this.swnum=this.swnum+1
     this.swnam='2hnd'
   }
@@ -56,7 +56,7 @@ export class WeaponsComponent implements OnInit {
      this.strmod=this.rule.statmod('dex',this.charc)
 
      this.game.eventFeed.subscribe(
-       message => this.onAttackEvent(message.payload.attack, message.payload.damage)
+       message => this.onAttackEvent(message.payload.attack, message.payload.critical, message.payload.damage)
      )
      
   }
@@ -70,8 +70,38 @@ export class WeaponsComponent implements OnInit {
     this.game.attackTarget({ weapon: weapon, handiness: handiness});
   }
 
-  onAttackEvent(attack:number, damage:number){
+    onAttackEvent(attack:number,  critical:string, damage:number){
+    
     console.log(`${attack} - ${damage}`)
+    this.atkanim.emit(this.atktxt)
+    document.getElementById('atak').style.color='crimson'
+    document.getElementById('dama').style.color='firebrick'
+
+    this.atktxt=attack
+    this.atkdmg=damage
+
+    document.getElementById('atak').style.transform='skew(-'+attack*1.4+'deg)'
+    document.getElementById("atak").style.animationDuration = 600-((attack-10)*20)+'ms';
+
+    if (critical=="success"){
+      document.getElementById('atak').style.color='gold'
+      document.getElementById('dama').style.color='darkorange'
+    }
+
+    else if(critical=="failure"){
+      document.getElementById('atak').style.color='gray'
+    }
+    document.getElementById('atak').classList.remove('atta');
+    void document.getElementById('atak').offsetWidth;
+    document.getElementById('atak').classList.add('atta');
+
+    document.getElementById('dama').classList.remove('damma');
+    document.getElementById('dama').style.fontSize=18+attack+'px'
+
+    void document.getElementById('dama').offsetWidth;
+    document.getElementById('dama').classList.add('damma');
+    document.getElementById('a1').style.visibility='visible';
+    document.getElementById('d1').style.visibility='visible';
   }
 
   atknao(dmg,mod){
