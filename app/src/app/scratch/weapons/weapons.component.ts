@@ -54,6 +54,10 @@ export class WeaponsComponent implements OnInit {
      this.lvl=this.rule.totlvl(this.charc)
      this.profic=this.rule.profic(this.lvl)
      this.strmod=this.rule.statmod('dex',this.charc)
+
+     this.game.eventFeed.subscribe(
+       message => this.onAttackEvent(message.payload.attack, message.payload.damage)
+     )
      
   }
   atkbonus=0;
@@ -64,6 +68,10 @@ export class WeaponsComponent implements OnInit {
     let handiness:"one-handed"|"two-handed" = swnum ? 'two-handed':'one-handed';
     
     this.game.attackTarget({ weapon: weapon, handiness: handiness});
+  }
+
+  onAttackEvent(attack:number, damage:number){
+    console.log(`${attack} - ${damage}`)
   }
 
   atknao(dmg,mod){

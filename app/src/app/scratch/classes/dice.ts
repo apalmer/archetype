@@ -41,6 +41,10 @@ function roll20(advantage: Advantage) {
     return { value: value, critical: critical };
 }
 
+export function attackRoll(combatant: Combatant, ability: Ability){
+    return abilityRoll(combatant,ability);
+}
+
 function abilityRoll(combatant: Combatant, ability: Ability) {
     let mod = getMod(combatant, ability);
     let roll = roll20(combatant.advantage);
@@ -53,7 +57,7 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
     return roll;
 }
 
-function damageRoll(dice:number, sides:number, isCritical?:boolean){
+export function damageRoll(dice:number, sides:number, isCritical?:boolean){
 
     let dagger = new Weapon('dagger');
     

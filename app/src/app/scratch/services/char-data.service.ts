@@ -37,7 +37,7 @@ this.mod=mod
 
 var gun = new anyweap('Matchlock','firearm',['1d10', '1d12'],'dex')
 gun.icon='("assets/images/mlok.svg")'
-var staff1 =new anyweap('Gnarled Staff','quarterstaff',['1d6','1d8'],'str')
+var staff1 =new anyweap('Quarterstaff','quarterstaff',['1d6','1d8'],'str')
 var axe = new anyweap('Garruks Rage', '2hnd Axe',['','1d12'],'str')
 
 
@@ -85,7 +85,7 @@ class dndchar extends anychar{
     resources:any=
     [{name:'HP',max:10,min:9,bonus:0}]
 
-    items:Array<any>=[unarmed, gun]
+    items:Array<any>=[staff1, gun]
 
 
 

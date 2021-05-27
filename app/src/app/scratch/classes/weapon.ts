@@ -5,8 +5,8 @@ export class Weapon {
     flare: string;
     name: string;
     damage: {
-        "one-handed": { dice: number, sides: number, type: string },
-        "two-handed": { dice: number, sides: number, type: string }
+        oneHanded: { dice: number, sides: number, type: string } | null,
+        twoHanded: { dice: number, sides: number, type: string } | null
     };
     //TODO:The applicable abilities are way more complex
     ability: Ability[];
@@ -15,13 +15,14 @@ export class Weapon {
     property:string[];
 
     constructor(name:string) {
-        let data = weaponData.find(x => x.Name === name);
+        let data = weaponData.find(x => x.Name.toLowerCase() === name.toLowerCase());
         this.name = data.Name;
         this.cost = Number(data.Cost.match(/(\d*)/)[0]);
         this.weight = Number(data.Weight.match(/(\d*)/)[0]);
         this.property = data.Properties;
 
         let damage:RegExpMatchArray = data.Damage.match(/(\d*)d(\d*)(\s*)(.*)/);
+        let damageType = data.Damagetype || damage[4];
         let twoHanded:boolean = data.Properties.includes("Two-Handed");
         let versatile:boolean = false;
         let versatileDamage:RegExpMatchArray = null;
@@ -32,23 +33,25 @@ export class Weapon {
             }
         });
         if(twoHanded){
-            this.damage["two-handed"] = {
+            this.damage = { oneHanded:null, twoHanded:null };
+            this.damage.twoHanded = {
                 dice: Number(damage[1]),
                 sides: Number(damage[2]),
-                type: damage[4]
+                type: damageType
             }
         }
         else{
-            this.damage["one-handed"] = {
+            this.damage = { oneHanded:null, twoHanded:null };
+            this.damage.oneHanded = {
                 dice: Number(damage[1]),
                 sides: Number(damage[2]),
-                type: damage[4]
+                type: damageType
             }
             if(versatile){
-                this.damage["two-handed"] = {
+                this.damage.twoHanded = {
                     dice: Number(versatileDamage[1]),
                     sides: Number(versatileDamage[2]),
-                    type: damage[4]
+                    type: damageType
                 }
             }
         }
