@@ -29,6 +29,8 @@ export class WeaponsComponent implements OnInit {
   lvl
   atktxt:any='ready'
   atkdmg:any='go'
+  hand=['oneHanded','twoHanded']
+  
   dmgswtch(ip){
     if (this.swnum<1){
     this.swnum=this.swnum+1
@@ -37,6 +39,27 @@ export class WeaponsComponent implements OnInit {
     else {this.swnum=0
     this.swnam='1hnd'}
 
+  }
+ 
+  itehand(ite,swnu){
+    var itestring
+    if(ite.damage[this.hand[swnu]]==null){
+      itestring="not"
+    }
+    else{
+    itestring=ite.damage[this.hand[swnu]].dice+'d'+ite.damage[this.hand[swnu]].sides
+    }
+    return itestring
+
+  }
+
+  weaponname(ite){
+    if (ite.flare==null){
+      return ite.name
+    }
+    else {
+      return ite.flare
+    }
   }
   
 
