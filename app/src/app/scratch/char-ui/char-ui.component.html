@@ -29,6 +29,15 @@
                     </div>
                 </div>
             </div>
+            
+        <div class='resourcebox'>
+            <div class='resoname' *ngFor='let rez of charc.resources'>HitPoints {{player.hitPoints}}/{{player.maxHitPoints}} <br>
+            <div style='width: 150px; height: 10px; border: solid navy'>
+                <div [style.width]="(player.hitPoints/(player.maxHitPoints))*100+'%'" style='background-color: cadetblue;height:100%'id='hpcent'>
+                </div>
+            </div>
+        </div>
+        </div>
         </div>
     </div>
    

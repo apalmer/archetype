@@ -12,7 +12,9 @@ import { ActionuiComponent } from './actionui/actionui.component';
 import { MaproundComponent } from './mapround/mapround.component';
 import { EnemyComponent } from './enemy/enemy.component';
 import { SpelloComponent } from './spello/spello.component';
-
+import { DebuggerComponent } from './debugger/debugger.component';
+import { EnemyCombatantComponent } from './enemy-combatant/enemy-combatant.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -25,11 +27,14 @@ import { SpelloComponent } from './spello/spello.component';
     MaproundComponent,
     EnemyComponent,
     SpelloComponent,
+    DebuggerComponent,
+    EnemyCombatantComponent,
   ],
   imports: [
     CdkTreeModule,
     CommonModule,
-    ScratchRoutingModule
+    ScratchRoutingModule,
+    MatSnackBarModule
   ]
 })
 export class ScratchModule { }
