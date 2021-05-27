@@ -1,0 +1,107 @@
+.monwrap{
+    position: absolute;
+    width: 180px;
+    height: 75px;
+   /* border: dashed goldenrod*/
+}
+
+.monicon{
+    width: 40%;
+    height: 100%;
+    border-radius: 60px 0px 0px 60px;
+    /*background-color: goldenrod;*/
+    border: solid goldenrod;
+    border-width: 5px;
+    float:left;
+    background-size: 98%;
+}
+.monblok{
+    width: 45%;
+    height:80%;
+    background-color: goldenrod;
+    border: solid goldenrod;
+    border-width: 5%;
+    float: left;
+    line-height: 1;
+    position:absolute;
+    left:40%;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+.montitle{
+    font-size: 11px;
+    color:maroon;
+}
+
+.mlign{
+    font-size: 9px;
+    color:moccasin;}
+
+.mdetail{
+    font-size: 10;
+    border: inset saddlebrown;
+    text-align: center;
+    position:absolute;
+    bottom:3%;
+    right:12%;
+    width: 70%;
+    height: 25%;
+    color: brown;
+
+}
+.enemycardwrap{
+    height: 300px;
+    width:300px;
+    border: solid pink;
+    position:absolute;
+    display:none
+    
+}
+
+.evatar{
+    width:33%;
+    height:100%;
+    border: dashed orange;
+    position:absolute;
+    left:0px;
+    top:0px;
+
+}
+
+.ecard{
+    width: 66%;
+    height:100%;
+    background-color: goldenrod;
+    position: absolute;
+    right:0px;
+    border-radius: 0px 30px 30px 0px;
+    
+}
+.targe{
+    position:absolute;
+    top:-25%;
+    right: 6%;
+    width:60px;
+    height: 60px;
+    background-image: url('/assets/images/target.svg');
+    background-size: 100%;
+    z-index: 2;
+}
+
+.hptest{
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 100px; 
+    height: 10px;
+    border: solid saddlebrown;
+    
+}
+.hpbar{
+    height:100%;
+    position: absolute;
+    left:0px;
+    top:0px;
+    background-color: cadetblue;
+    z-index: -1;
+}

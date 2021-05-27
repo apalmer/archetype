@@ -1,7 +1,9 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, Output, Input,EventEmitter } from '@angular/core';
 import { CharactersComponent } from 'src/app/characters/characters.component';
+import { AttackOptions } from '../models/attack-options';
 import { CharDataService } from '../services/char-data.service';
+import { GameService } from '../services/game.service';
 import { ProRuleService } from '../services/pro-rule.service';
 
 
@@ -16,6 +18,7 @@ export class WeaponsComponent implements OnInit {
   @Input() advantages:string | null=null;
   @Input() charc:any | null=null;
   @Output() atkanim = new EventEmitter();
+  @Output() attack = new EventEmitter<AttackOptions>()
   
   //sal= new CharDataService
   //charc= this.sal.barb[1]
@@ -39,7 +42,7 @@ export class WeaponsComponent implements OnInit {
 
   
 
-  constructor(private rule: ProRuleService) { 
+  constructor(private rule: ProRuleService, private game:GameService) { 
     
 
 
@@ -56,7 +59,15 @@ export class WeaponsComponent implements OnInit {
   atkbonus=0;
   dmgbonus=0;
 
+  onAttack(weapon, swnum){
+
+    let handiness:"one-handed"|"two-handed" = swnum ? 'two-handed':'one-handed';
+    
+    this.game.attackTarget({ weapon: weapon, handiness: handiness});
+  }
+
   atknao(dmg,mod){
+
     this.atkanim.emit(this.atktxt)
     document.getElementById('atak').style.color='crimson'
     document.getElementById('dama').style.color='firebrick'

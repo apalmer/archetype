@@ -1,0 +1,24 @@
+<div class='monwrap' (click)='selectCombatant()'>
+    <div class='monicon' [style.backgroundImage]='"url("+enemy.icon+")"'>
+        <div [class.targe]='isSelected()'></div>
+    </div>
+    <div class='monblok'>
+        <div class='montitle'>
+            {{enemy.name}} <br> <span class="mlign">{{enemy.armorClass}}</span>
+        </div>
+        <div class='mdetail' >
+            <input type="button" (click)="attack()" value="Attack">
+        </div>
+    </div>
+    <div class='hptest'>{{enemy.hitPoints}}
+        <div class='hpbar'></div>
+    </div>
+</div>
+<div class='enemycardwrap'>
+    <div class='evatar'><img [attr.src]='enemy.icon' style='max-height: 100%;'></div>
+    <div class='ecard'>
+        <div class='montitle'>
+            {{enemy.name}} <br> <span class="mlign">{{enemy.armorClass}}</span>
+        </div>
+    </div>
+</div>
