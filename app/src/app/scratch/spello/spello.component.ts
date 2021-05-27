@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {spellson} from '../services/spellson';
+import {adven} from '../services/char-data.service'
 
 
 
@@ -19,7 +20,9 @@ export class SpelloComponent implements OnInit {
   spstring2
   sps
   gps
-  
+  charc=adven[3]
+  colerase='gold'
+  magic
 
   constructor() {
      this.spstring= JSON.stringify(spellson)
@@ -30,6 +33,20 @@ export class SpelloComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+  }
+  sclicks(event,spel,i){
+    this.magic=spel.name
+
+  }
+  smouseov(spel,i){
+    var spellid='spellno'+i
+    document.getElementById(spellid).style.display='block'
+  }
+  
+  smouseof(spel,i){
+    var spellid='spellno'+i
+    document.getElementById(spellid).style.display='none'
   }
 
 }

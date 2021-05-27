@@ -57,6 +57,7 @@ var spstring
 var spstring2
 var sps
 var gps
+var spellmagic =[]
 
 export var cantryp=[]
 spstring= JSON.stringify(spellson)
@@ -70,7 +71,8 @@ for (const prop in sps['0th']){
   var i=0
   cantryp.push({
     name: prop,
-    level: sps['0th'][prop].level,
+    level:0,
+    type: sps['0th'][prop].level,
     casttime: sps['0th'][prop].cast_time,
     range: sps['0th'][prop].range,
     duration: sps['0th'][prop].duration,
@@ -85,4 +87,44 @@ for (const prop in sps['0th']){
 
 export var cant=cantryp
 
+for (const prop in sps['1st']){
+  var i=0
+  spellmagic.push({
+    name: prop,
+    level:1,
+    type: sps['1st'][prop].level,
+    casttime: sps['1st'][prop].cast_time,
+    range: sps['1st'][prop].range,
+    duration: sps['1st'][prop].duration,
+    comp: sps['1st'][prop].components,
+    descrip: sps['1st'][prop].description,
+    tags: sps['1st'][prop].tags,
+    dmg:'unknown'
+  })
+  i=i+1;
 
+}
+
+function spelltranslate(no, nth:string){
+for (const prop in sps[nth]){
+  var i=0
+  spellmagic.push({
+    name: prop,
+    level:no,
+    type: sps[nth][prop].level,
+    casttime: sps[nth][prop].cast_time,
+    range: sps[nth][prop].range,
+    duration: sps[nth][prop].duration,
+    comp: sps[nth][prop].components,
+    descrip: sps[nth][prop].description,
+    tags: sps[nth][prop].tags,
+    dmg:'unknown'
+  })
+  i=i+1;
+
+}
+}
+spelltranslate(2,'2nd')
+spelltranslate(3, '3rd')
+spelltranslate(4, '4th')
+export const spellcode=spellmagic

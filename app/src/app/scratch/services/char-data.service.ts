@@ -1,6 +1,7 @@
 import { dependenciesFromGlobalMetadata } from '@angular/compiler/src/render3/r3_factory';
 import { Injectable } from '@angular/core';
-import {cant} from '../services/spellist.service'
+import {cant,spellcode} from '../services/spellist.service'
+import { spellson } from './spellson';
 
 @Injectable({
   providedIn: 'root'
@@ -139,7 +140,7 @@ var jam=new dndchar('Jam','Monk',10)
 dndAb(jam,11,16,13,8,18,12)
 //dndsk(jam,'athletics',10)
 
-var adven=[jam,sol,balco]
+export var adven=[jam,sol,balco]
 jam.bio.profile='("assets/images/jam.gif")'
 jam.bio.idlava="assets/images/jamid.gif"
 jam.bio.atkan="assets/images/ocused_v3.gif"
@@ -156,7 +157,10 @@ rlet.bio.idlava='assets/images/rletidl2.gif'
 rlet.bio.atkan='assets/images/rletatk.gif'
 adven.push(rlet)
 rlet.bio.spells=[]
-rlet.bio.spells.push[cant[2], cant[0], cant[10]]
+rlet.bio.spells.push(cant[2], cant[0], cant[5], cant[40], cant[23], cant[3], cant[15], cant[11], 
+  spellcode[0],spellcode[10], spellcode[8], spellcode[5], spellcode[70], spellcode[55], spellcode[45],
+  spellcode[120], spellcode[150], spellcode[170], spellcode[200], spellcode[210], spellcode[220],
+  )
 
 balco
 adven.push(apbot)
