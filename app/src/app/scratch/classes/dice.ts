@@ -3,18 +3,28 @@ import { resolveSanitizationFn } from "@angular/compiler/src/render3/view/templa
 import { RouterOutlet } from "@angular/router";
 import { resourceUsage } from "process";
 import { AttackOptions } from "../models/attack-options";
+import { CombatSystem } from "./combat-system";
 import { Combatant } from "./combatant";
+import { Enemy } from "./enemy";
 import { Player } from "./player";
 import { Weapon } from "./weapon";
 
 export type Ability = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHR";
 export type Advantage = "advantage" | "disadvantage" | "none";
+export type Skill ="athletics" | "acrobatics" | "sleightofhand"|"stealth"|
+    "arcana"|"history"|"investigation"|"nature"|"religion"|"animalhandling"
+    |"insight"|"medecine"|"perception"|"survival"|"deception"|"intimidation"
+    |"perform"|"persuasion";
 
-function die(sides) {
+
+
+
+
+export function die(sides) {
     return Math.floor((sides * Math.random()) + 1);
 }
 
-function roll20(advantage: Advantage) {
+function roll20(advantage: Advantage, bonus?:number) {
     let value: number;
     let critical: "success" | "failure" | "normal";
 
@@ -113,6 +123,41 @@ function proficiencyApplies(combatant: Combatant): boolean {
 function getProficiency(player: Player): number {
     let proficiency = Math.floor((player.TotalLevel - 1) / 4) + 2;
     return proficiency;
+}
+
+//do not use yet! sketching idea
+function savethrow(source, target, sourceability:Ability , tability:Ability, bonus?:number){
+    var dc
+    if (source instanceof Player){
+    dc=8+ getMod(source,sourceability) + getProficiency(source)+bonus}
+    if (source instanceof Number){
+        dc=source
+    }
+
+    if (target instanceof Player){
+        //incimplete, build isproficient method lookup
+    alert('Roll the '+tability+ ' Save Check!')}
+
+    if (target instanceof Enemy) {
+        var i
+        var result
+        for (i=0;i<target.safethrowbonus.length;i++){
+            {if (target.safethrowbonus[i].ability===tability){
+                if (roll20('none')+target.safethrowbonus[i].value>=dc){result= 'pass'}
+                }
+
+            }
+
+        }
+
+
+    }
+
+    //
+
+
+
+
 }
 
 

@@ -14,9 +14,7 @@ export class CharDataService {
 }
 
 
-const staff={name:'Old Staff', type:'quarterstaff', dmg: ['1d6','1d8'], dmgtype:'blunt', properties:['versatile'], icon:'', art:''}
-const unarmed={name:'Fist', type:'unnamrmed', dmg: ['1d1'], dmgtype:'blunt', properties:['none'],icon:'("assets/images/fist.svg")',art:'', mod:'str'}
-const knuckles={name:'Brass Knuckles', type:'club', dmg: ['1d4'], dmgtype:'blunt', properties:['light']}
+
 
 
 function anyweap(
@@ -37,11 +35,25 @@ this.art='art.png'
 this.mod=mod
 }
 
+
+
+function dweapon(varname, type:string, flar?:string, iconfile?:string){
+ varname= new Weapon(type)
+ varname.flare=flar
+ varname.icon='("assets/images/'+iconfile+'")'
+ return varname
+}
 var gun = new anyweap('Matchlock','firearm',['1d10', '1d12'],'dex')
 gun.icon='("assets/images/mlok.svg")'
 var staff1 =new anyweap('Quarterstaff','quarterstaff',['1d6','1d8'],'str')
-var axe = new anyweap('Garruks Rage', '2hnd Axe',['','1d12'],'str')
+var laxe = new anyweap('Garruks Rage', '2hnd Axe',['','1d12'],'str')
 var dugery= new Weapon('Barbed Dagger')
+var thugery= new Weapon('Quarterstaff')
+var axe=dweapon(axe,'Greataxe', "Garruks's Rages",'gaxe.jpg')
+
+
+dugery.flare='Dugerous Blade'
+dugery.icon='("assets/images/barbs.svg")'
 
 
 
@@ -87,7 +99,7 @@ class dndchar extends anychar{
     resources:any=
     [{name:'HP',max:10,min:9,bonus:0}]
 
-    items:Array<any>=[staff1, gun, dugery]
+    items:Array<any>=[thugery, dugery]
 
 
 

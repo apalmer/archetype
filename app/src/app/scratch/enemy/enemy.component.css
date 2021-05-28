@@ -30,7 +30,7 @@
 }
 .montitle{
     font-size: 11px;
-    color:maroon;
+    color:whitesmoke;
 }
 
 .mlign{
@@ -54,7 +54,7 @@
     width:300px;
     border: solid pink;
     position:absolute;
-    display:none
+    display:block
     
 }
 
@@ -71,7 +71,7 @@
 .ecard{
     width: 66%;
     height:100%;
-    background-color: goldenrod;
+    background-color: darkred;
     position: absolute;
     right:0px;
     border-radius: 0px 30px 30px 0px;

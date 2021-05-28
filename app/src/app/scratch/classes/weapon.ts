@@ -4,6 +4,7 @@ import { weaponData } from "./weapons-data";
 export class Weapon {
     flare: string;
     name: string;
+    icon: string;'icon.svg'
     damage: {
         oneHanded: { dice: number, sides: number, type: string } | null,
         twoHanded: { dice: number, sides: number, type: string } | null

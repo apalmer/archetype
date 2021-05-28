@@ -26,14 +26,14 @@ function newmonsta(
     this.ac=ac;
     this.hp={max:hp,min:hp,dice:''};
     this.speed=speed;
-    this.absco;
+    this.abilities;
     this.bio={sthro:{},skills:[]}
     this.resist;
     this.action;
     this.icon;
     }
     function addscore(monsta,s,d,co,i,w,cr){
-    monsta.absco={str:s,dex:d,con:co,int:i,wis:w,chr:cr}
+    monsta.abilities={str:s,dex:d,con:co,int:i,wis:w,chr:cr}
   }
 
    var bdragwyrm= new newmonsta('Black Dragon Wrymling','medium dragon','chaotic evil',17,33,[30,60,30])

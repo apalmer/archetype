@@ -1,6 +1,18 @@
 import { Combatant } from "./combatant";
+import { Ability } from "./dice";
 
 export class Player extends Combatant {
+    proficiencies:{
+        skills:Array<string>
+        weapon:Array<string>
+        saves:Array<Ability>
+        armor:Array<string>
+    }
+    resources:any
+    bio:any
+    classes:[{class:string, lvl:number }]
+    spells:any
+
     constructor() {
         super();
 
