@@ -1,0 +1,44 @@
+<head><link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"></head>
+<div class='spelbox'>
+    <div class='namesp'>{{gps[2]}}<br>
+        <span class='levelsp'>{{sps['0th'][gps[2]].level}}</span>
+    </div>
+    <div class='crd'>Cast Time {{sps['0th'][gps[2]].casting_time}}</div>
+    <div class='crd'>Range {{sps['0th'][gps[2]].range}}</div>
+    <div class='crd'>Duration {{sps['0th'][gps[2]].duration}}</div>
+    <div class='descr'>
+        <span style='font-size: 18px; color: seashell; border-bottom: solid seashell'>Description</span>
+        <br><br>
+        <div *ngFor='let des of sps["0th"][gps[2]].description'>{{des}} <br><br></div>
+    </div>
+    
+</div>
+<div class=spuiwrap>
+<div class='spellui' *ngFor='let spel of charc.bio.spells; index as i'>
+    <div class='sphellnam' 
+    (mouseover)='smouseov(spel,i)' 
+    (mouseout)='smouseof(spel,i)'
+    (click)='sclicks($event,spel,i)'>{{spel.name}}
+    <div class='righ'>Lv. {{spel.level}}</div>
+
+    </div>
+
+    <div class='spelboxtip' [attr.id]='"spellno"+i'>
+    <div class='namesp'>{{spel.name}}<br>
+        <span class='levelsp'>{{spel.type}}</span>
+    </div>
+    <div class='crd'>Cast Time {{spel.casttime}}</div>
+    <div class='crd'>Range {{spel.range}}</div>
+    <div class='crd'>Duration {{spel.duration}}</div>
+    <div class='descr'>
+        <span style='font-size: 18px; color: seashell; border-bottom: solid seashell'>Description</span>
+        <br><br>
+        <div *ngFor='let des of spel.descrip'>{{des}} <br><br></div>
+    </div>
+
+
+</div>
+
+<div class='spelbar'>CAST <span id='spname'>{{magic}}</span></div>
+</div>

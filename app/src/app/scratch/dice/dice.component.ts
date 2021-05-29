@@ -20,6 +20,7 @@ export class DiceComponent implements OnInit {
   go;
   yo;
   diepos=10;
+  diceresult
 
   blo = Math.random()
   
@@ -81,6 +82,7 @@ export class DiceComponent implements OnInit {
         document.getElementById('die').innerText=''+dice20;
         document.getElementById('die').style.transform='rotate(-1440deg)'
         this.renderer.render(this.scene, this.camera)
+        this.diceresult=dice20
       }
       else {
   

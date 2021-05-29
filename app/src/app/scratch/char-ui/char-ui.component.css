@@ -2,7 +2,7 @@
 
 .charwrap{
     border: solid red;
-    width:450px;
+    width:460px;
     font-family: 'Exo 2', sans-serif;
     position: absolute;
     /*top: 350px;*/
@@ -27,7 +27,8 @@
     border-top-left-radius: 90px;
     border-width: 10px;
     background-color: gray;
-    float: left;
+    position:absolute;
+    left:0px;
     height:150px;
     width:150px;
 }
@@ -37,7 +38,8 @@
     background-color: gray;
     font-size: x-large;
     padding: 15px;
-    float:left;
+    position:absolute;
+    left:169px;
 }
 .charlevels{
     font-size: small;

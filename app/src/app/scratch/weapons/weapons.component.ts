@@ -1,7 +1,9 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, Output, Input,EventEmitter } from '@angular/core';
 import { CharactersComponent } from 'src/app/characters/characters.component';
+import { AttackOptions } from '../models/attack-options';
 import { CharDataService } from '../services/char-data.service';
+import { GameService } from '../services/game.service';
 import { ProRuleService } from '../services/pro-rule.service';
 
 
@@ -16,6 +18,7 @@ export class WeaponsComponent implements OnInit {
   @Input() advantages:string | null=null;
   @Input() charc:any | null=null;
   @Output() atkanim = new EventEmitter();
+  @Output() attack = new EventEmitter<AttackOptions>()
   
   //sal= new CharDataService
   //charc= this.sal.barb[1]
@@ -26,8 +29,10 @@ export class WeaponsComponent implements OnInit {
   lvl
   atktxt:any='ready'
   atkdmg:any='go'
+  hand=['oneHanded','twoHanded']
+  
   dmgswtch(ip){
-    if (this.swnum<ip.dmg.length-1){
+    if (this.swnum<1){
     this.swnum=this.swnum+1
     this.swnam='2hnd'
   }
@@ -35,11 +40,32 @@ export class WeaponsComponent implements OnInit {
     this.swnam='1hnd'}
 
   }
+ 
+  itehand(ite,swnu){
+    var itestring
+    if(ite.damage[this.hand[swnu]]==null){
+      itestring="not"
+    }
+    else{
+    itestring=ite.damage[this.hand[swnu]].dice+'d'+ite.damage[this.hand[swnu]].sides
+    }
+    return itestring
+
+  }
+
+  weaponname(ite){
+    if (ite.flare==null){
+      return ite.name
+    }
+    else {
+      return ite.flare
+    }
+  }
   
 
   
 
-  constructor(private rule: ProRuleService) { 
+  constructor(private rule: ProRuleService, private game:GameService) { 
     
 
 
@@ -51,12 +77,58 @@ export class WeaponsComponent implements OnInit {
      this.lvl=this.rule.totlvl(this.charc)
      this.profic=this.rule.profic(this.lvl)
      this.strmod=this.rule.statmod('dex',this.charc)
+
+     this.game.eventFeed.subscribe(
+       message => this.onAttackEvent(message.payload.attack, message.payload.critical, message.payload.damage)
+     )
      
   }
   atkbonus=0;
   dmgbonus=0;
 
+  onAttack(weapon, swnum){
+
+    let handiness:"one-handed"|"two-handed" = swnum ? 'two-handed':'one-handed';
+    
+    this.game.attackTarget({ weapon: weapon, handiness: handiness});
+  }
+
+    onAttackEvent(attack:number,  critical:string, damage:number){
+    
+    console.log(`${attack} - ${damage}`)
+    this.atkanim.emit(this.atktxt)
+    document.getElementById('atak').style.color='crimson'
+    document.getElementById('dama').style.color='firebrick'
+
+    this.atktxt=attack
+    this.atkdmg=damage
+
+    document.getElementById('atak').style.transform='skew(-'+attack*1.4+'deg)'
+    document.getElementById("atak").style.animationDuration = 600-((attack-10)*20)+'ms';
+
+    if (critical=="success"){
+      document.getElementById('atak').style.color='gold'
+      document.getElementById('dama').style.color='darkorange'
+    }
+
+    else if(critical=="failure"){
+      document.getElementById('atak').style.color='gray'
+    }
+    document.getElementById('atak').classList.remove('atta');
+    void document.getElementById('atak').offsetWidth;
+    document.getElementById('atak').classList.add('atta');
+
+    document.getElementById('dama').classList.remove('damma');
+    document.getElementById('dama').style.fontSize=18+attack+'px'
+
+    void document.getElementById('dama').offsetWidth;
+    document.getElementById('dama').classList.add('damma');
+    document.getElementById('a1').style.visibility='visible';
+    document.getElementById('d1').style.visibility='visible';
+  }
+
   atknao(dmg,mod){
+
     this.atkanim.emit(this.atktxt)
     document.getElementById('atak').style.color='crimson'
     document.getElementById('dama').style.color='firebrick'

@@ -1,4 +1,9 @@
 import { Injectable } from '@angular/core';
+import {cant,spellcode} from '../services/spellist.service'
+import { spellson } from './spellson';
+import {Weapon} from '../classes/weapon'
+import { Enemy } from '../classes/enemy';
+import  {die} from '../classes/dice'
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +16,7 @@ export class CharDataService {
 }
 
 
-const staff={name:'Old Staff', type:'quarterstaff', dmg: ['1d6','1d8'], dmgtype:'blunt', properties:['versatile'], icon:'', art:''}
-const unarmed={name:'Fist', type:'unnamrmed', dmg: ['1d1'], dmgtype:'blunt', properties:['none'],icon:'("assets/images/fist.svg")',art:'', mod:'str'}
-const knuckles={name:'Brass Knuckles', type:'club', dmg: ['1d4'], dmgtype:'blunt', properties:['light']}
+
 
 
 function anyweap(
@@ -34,11 +37,25 @@ this.art='art.png'
 this.mod=mod
 }
 
+
+
+function dweapon(varname, type:string, flar?:string, iconfile?:string){
+ varname= new Weapon(type)
+ varname.flare=flar
+ varname.icon='("assets/images/'+iconfile+'")'
+ return varname
+}
 var gun = new anyweap('Matchlock','firearm',['1d10', '1d12'],'dex')
 gun.icon='("assets/images/mlok.svg")'
-var staff1 =new anyweap('Gnarled Staff','quarterstaff',['1d6','1d8'],'str')
-var axe = new anyweap('Garruks Rage', '2hnd Axe',['','1d12'],'str')
+var staff1 =new anyweap('Quarterstaff','quarterstaff',['1d6','1d8'],'str')
+var laxe = new anyweap('Garruks Rage', '2hnd Axe',['','1d12'],'str')
+var dugery= new Weapon('Barbed Dagger')
+var thugery= new Weapon('Quarterstaff')
+var axe=dweapon(axe,'Greataxe', "Garruks's Rages",'gaxe.jpg')
 
+
+dugery.flare='Dugerous Blade'
+dugery.icon='("assets/images/barbs.svg")'
 
 
 
@@ -84,13 +101,14 @@ class dndchar extends anychar{
     resources:any=
     [{name:'HP',max:10,min:9,bonus:0}]
 
-    items:Array<any>=[unarmed, gun]
+    items:Array<any>=[thugery, dugery]
 
 
 
         
     
-    
+   
+
     constructor(nom?:string,clas?:string,clevel?:number){
       super()
       this.bio.name=nom
@@ -137,7 +155,7 @@ var jam=new dndchar('Jam','Monk',10)
 dndAb(jam,11,16,13,8,18,12)
 //dndsk(jam,'athletics',10)
 
-var adven=[jam,sol,balco]
+export var adven=[jam,sol,balco]
 jam.bio.profile='("assets/images/jam.gif")'
 jam.bio.idlava="assets/images/jamid.gif"
 jam.bio.atkan="assets/images/ocused_v3.gif"
@@ -153,6 +171,28 @@ rlet.bio.profile='("assets/images/rleth.svg")'
 rlet.bio.idlava='assets/images/rletidl2.gif'
 rlet.bio.atkan='assets/images/rletatk.gif'
 adven.push(rlet)
+rlet.bio.spells=[]
+rlet.bio.spells.push(cant[2], cant[0], cant[5], cant[40], cant[23], cant[3], cant[15], cant[11], 
+  spellcode[0],spellcode[10], spellcode[8], spellcode[5], spellcode[70], spellcode[55], spellcode[45],
+  spellcode[120], spellcode[150], spellcode[170], spellcode[200], spellcode[210], spellcode[220],
+  )
 
 balco
 adven.push(apbot)
+
+var abd= new Enemy
+abd.name='Adult Black Dragon'
+abd.challenge=14
+abd.armorClass=19
+abd.maxHitPoints=abd.hitPoints= 17*die(12)+85
+abd.speed='40ft, fly80ft, swim40ft'
+abd.abilities={STR:23,DEX:14,CON:21, INT:14, WIS:13, CHR:17}
+abd.resistances.push({acid:100})
+abd.safethrowbonus.DEX=7
+abd.safethrowbonus.CON=10
+abd.safethrowbonus.WIS=6
+abd.safethrowbonus.CHR=8
+abd.skills.push({name:'stealth',value:7},{name:'perception', value:11})
+abd.senses='blinsight 60  ,darkvision 120, passive perception 21 '
+
+

@@ -1,22 +1,25 @@
-<div class=monwrap (click)='tdisplay()'>
-    <div class=monicon [style.backgroundImage]='"url("+monstone.icon+")"'>
-        <div class='targe'[style.display]='tdisp'></div>
+<div class='monwrap' (click)='tdisplay()'>
+    <div class='monicon' [style.backgroundImage]='"url("+monstone.icon+")"'>
+        <div class='targe' [style.display]='tdisp'></div>
 
     </div>
-    <div class=monblok>
-        <div class=montitle>
+    <div class='monblok'>
+        <div class='montitle'>
             {{monstone.name}} <br> <span class="mlign">{{monstone.align}}</span>
         </div>
-        <div class=mdetail>Detail</div>
+        <div class='mdetail'>Detail</div>
 
     </div>
-</div>
-<div class=enemycardwrap>
-<div class=evatar><img [attr.src]='monstone.avatar' style='max-height: 100%;'></div>
-<div class=ecard>
-    <div class=montitle>
-        {{monstone.name}} <br> <span class="mlign">{{monstone.align}}</span>
+    <div class='hptest'>{{monstone.hp.min}}/{{monstone.hp.max}}
+        <div class='hpbar' [style.width]='((monstone.hp.min/monstone.hp.max)*100)+"%"'></div>
     </div>
-
 </div>
+<div class='enemycardwrap'>
+    <div class='evatar'><img [attr.src]='monstone.avatar' style='max-height: 100%;'></div>
+    <div class='ecard'>
+        <div class='montitle'>
+            {{monstone.name}} <br> <span class="mlign">{{monstone.align}}</span>
+        </div>
+
+    </div>
 </div>

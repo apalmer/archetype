@@ -23,6 +23,6 @@
     <div class='wbox1'>
     <div [ngSwitch]='switchnum'>
         <app-weapons (atkanim)='onattack2()' [advantages]='advantages'[charc]='charc' *ngSwitchCase='1'></app-weapons>
-        <div id='abilities' *ngSwitchCase='2'>abab ba ba ab ab aba ba ab</div>
+        <div id='abilities' *ngSwitchCase='2'><div *ngFor='let spell of charc.bio.spells'>{{spell.name}}</div></div>
     </div>
 </div>
