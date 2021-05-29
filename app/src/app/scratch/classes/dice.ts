@@ -1,7 +1,6 @@
 
 import { Testability } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
-import { resourceUsage } from "process";
 import { AmbientLight } from "three";
 import { AttackOptions } from "../models/attack-options";
 import { CombatSystem } from "./combat-system";
