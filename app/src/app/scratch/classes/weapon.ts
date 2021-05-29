@@ -14,6 +14,7 @@ export class Weapon {
     cost:number;
     weight:number;
     property:string[];
+    requires:string
 
     constructor(name:string) {
         let data = weaponData.find(x => x.Name.toLowerCase() === name.toLowerCase());
@@ -21,6 +22,7 @@ export class Weapon {
         this.cost = Number(data.Cost.match(/(\d*)/)[0]);
         this.weight = Number(data.Weight.match(/(\d*)/)[0]);
         this.property = data.Properties;
+        this.requires=data.Requires
 
         let damage:RegExpMatchArray = data.Damage.match(/(\d*)d(\d*)(\s*)(.*)/);
         let damageType = data.Damagetype || damage[4];

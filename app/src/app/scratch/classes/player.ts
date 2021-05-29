@@ -5,12 +5,13 @@ export class Player extends Combatant {
     proficiencies:{
         skills:Array<string>
         weapon:Array<string>
+        weapontype:Array<string>
         saves:Array<Ability>
         armor:Array<string>
     }
     resources:any
     bio:any
-    classes:[{class:string, lvl:number }]
+    classes:Array<{class:string, lvl:number }>
     spells:any
 
     constructor() {

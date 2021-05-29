@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {cant,spellcode} from '../services/spellist.service'
 import { spellson } from './spellson';
 import {Weapon} from '../classes/weapon'
+import { Enemy } from '../classes/enemy';
+import  {die} from '../classes/dice'
 
 @Injectable({
   providedIn: 'root'
@@ -177,3 +179,20 @@ rlet.bio.spells.push(cant[2], cant[0], cant[5], cant[40], cant[23], cant[3], can
 
 balco
 adven.push(apbot)
+
+var abd= new Enemy
+abd.name='Adult Black Dragon'
+abd.challenge=14
+abd.armorClass=19
+abd.maxHitPoints=abd.hitPoints= 17*die(12)+85
+abd.speed='40ft, fly80ft, swim40ft'
+abd.abilities={STR:23,DEX:14,CON:21, INT:14, WIS:13, CHR:17}
+abd.resistances.push({acid:100})
+abd.safethrowbonus.DEX=7
+abd.safethrowbonus.CON=10
+abd.safethrowbonus.WIS=6
+abd.safethrowbonus.CHR=8
+abd.skills.push({name:'stealth',value:7},{name:'perception', value:11})
+abd.senses='blinsight 60  ,darkvision 120, passive perception 21 '
+
+

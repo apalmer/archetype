@@ -1,7 +1,8 @@
-import { EventListenerFocusTrapInertStrategy } from "@angular/cdk/a11y";
-import { resolveSanitizationFn } from "@angular/compiler/src/render3/view/template";
+
+import { Testability } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { resourceUsage } from "process";
+import { AmbientLight } from "three";
 import { AttackOptions } from "../models/attack-options";
 import { CombatSystem } from "./combat-system";
 import { Combatant } from "./combatant";
@@ -135,29 +136,60 @@ function savethrow(source, target, sourceability:Ability , tability:Ability, bon
     }
 
     if (target instanceof Player){
-        //incimplete, build isproficient method lookup
-    alert('Roll the '+tability+ ' Save Check!')}
+        var probonus=0
+        //maybe have alert and a response functiom later. automated for now
+        if(isproficient(target,tability)==='yes'){
+            probonus=getProficiency(target)}
+        var saferoll=abilityRoll(target,tability).value+probonus
+        if(saferoll>=dc){return 'pass'}
+        else{return 'fail'}
+        
+        }
 
     if (target instanceof Enemy) {
         var i
         var result
-        for (i=0;i<target.safethrowbonus.length;i++){
-            {if (target.safethrowbonus[i].ability===tability){
-                if (roll20('none')+target.safethrowbonus[i].value>=dc){result= 'pass'}
-                }
-
-            }
+        if (target.safethrowbonus[tability]){
+            result =roll20('none').value +target.safethrowbonus[tability]
+        }
+        else{
+           result=  roll20('none').value+ getMod(target,tability)
+        }
+        
+        if (result>=dc)
+        {return 'pass'}
+        else{return 'fail'}
 
         }
 
+    
 
+
+
+
+}
+
+
+function isproficient(player:Player, atathing, save?){
+if (atathing instanceof Weapon){
+    if (player.proficiencies.weapon.includes(atathing.name))
+    {return 'yes'}
+    else if(player.proficiencies.weapontype.includes(atathing.requires))
+    {return 'yes'}
+    else{return 'no'}
+}
+if(atathing as Skill)
+    {
+        if(player.proficiencies.skills.includes(atathing))
+        {return 'yes'}
+        else {return 'no'}
     }
-
-    //
-
-
-
-
+if(atathing as Ability)
+    {
+        if(player.proficiencies.saves.includes(atathing))
+        {return 'yes'}
+        else {return 'no'}
+    }
 }
 
 
