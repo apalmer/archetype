@@ -10,14 +10,19 @@ import { Enemy } from "./enemy";
 import { Player } from "./player";
 import { Weapon } from "./weapon";
 
-export type Ability = "STR" | "DEX" | "CON" | "INT" | "WIS" | "CHR";
+const abilityValues = ["STR", "DEX", "CON", "INT", "WIS", "CHR"] as ["STR", "DEX", "CON", "INT", "WIS", "CHR"];
+export type Ability = typeof abilityValues[number];
+
 export type Advantage = "advantage" | "disadvantage" | "none";
-export type Skill ="athletics" | "acrobatics" | "sleightofhand"|"stealth"|
-    "arcana"|"history"|"investigation"|"nature"|"religion"|"animalhandling"
-    |"insight"|"medecine"|"perception"|"survival"|"deception"|"intimidation"
-    |"perform"|"persuasion";
 
-
+const skillValues = ["athletics", "acrobatics", "sleightofhand", "stealth",
+    "arcana", "history", "investigation", "nature", "religion", "animalhandling"
+    , "insight", "medecine", "perception", "survival", "deception", "intimidation"
+    , "perform", "persuasion"] as ["athletics", "acrobatics", "sleightofhand", "stealth",
+        "arcana", "history", "investigation", "nature", "religion", "animalhandling"
+        , "insight", "medecine", "perception", "survival", "deception", "intimidation"
+        , "perform", "persuasion"];
+export type Skill = typeof skillValues[number];
 
 
 
@@ -25,7 +30,7 @@ export function die(sides) {
     return Math.floor((sides * Math.random()) + 1);
 }
 
-function roll20(advantage: Advantage, bonus?:number) {
+function roll20(advantage: Advantage, bonus?: number) {
     let value: number;
     let critical: "success" | "failure" | "normal";
 
@@ -52,14 +57,14 @@ function roll20(advantage: Advantage, bonus?:number) {
     return { value: value, critical: critical };
 }
 
-export function attackRoll(combatant: Combatant, ability: Ability, ability2:Ability){
+export function attackRoll(combatant: Combatant, ability: Ability, ability2: Ability) {
     let mod
-    if(ability2==null){
+    if (ability2 == null) {
         mod = getMod(combatant, ability);
-       
+
     }
-    else{
-        mod=Math.max(getMod(combatant,ability), getMod(combatant, ability2))
+    else {
+        mod = Math.max(getMod(combatant, ability), getMod(combatant, ability2))
     }
 
     let roll = roll20(combatant.advantage);
@@ -84,20 +89,20 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
     return roll;
 }
 
-export function damageRoll(combatant: Combatant, ability:Ability, ability2:Ability, 
-    dice:number, sides:number, isCritical?:boolean){
+export function damageRoll(combatant: Combatant, ability: Ability, ability2: Ability,
+    dice: number, sides: number, isCritical?: boolean) {
 
     let dagger = new Weapon('dagger');
     let mod
-    if(ability2==null){
+    if (ability2 == null) {
         mod = getMod(combatant, ability);
-       
+
     }
-    else{
-        mod=Math.max(getMod(combatant,ability), getMod(combatant, ability2))
+    else {
+        mod = Math.max(getMod(combatant, ability), getMod(combatant, ability2))
     }
-    
-    if(isCritical){
+
+    if (isCritical) {
         dice *= 2;
     }
 
@@ -105,7 +110,7 @@ export function damageRoll(combatant: Combatant, ability:Ability, ability2:Abili
     for (let index = 0; index < dice; index++) {
         sum += die(sides);
     }
-    sum+=mod
+    sum += mod
     return sum;
 }
 
@@ -127,69 +132,64 @@ function getProficiency(player: Player): number {
 }
 
 //do not use yet! sketching idea
-function savethrow(source, target, sourceability:Ability , tability:Ability, bonus?:number){
+function savethrow(source, target, sourceability: Ability, tability: Ability, bonus?: number) {
     var dc
-    if (source instanceof Player){
-    dc=8+ getMod(source,sourceability) + getProficiency(source)+bonus}
-    if (source instanceof Number){
-        dc=source
+    if (source instanceof Player) {
+        dc = 8 + getMod(source, sourceability) + getProficiency(source) + bonus
+    }
+    if (source instanceof Number) {
+        dc = source
     }
 
-    if (target instanceof Player){
-        var probonus=0
+    if (target instanceof Player) {
+        var probonus = 0
         //maybe have alert and a response functiom later. automated for now
-        if(isproficient(target,tability)==='yes'){
-            probonus=getProficiency(target)}
-        var saferoll=abilityRoll(target,tability).value+probonus
-        if(saferoll>=dc){return 'pass'}
-        else{return 'fail'}
-        
+        if (isproficient(target, tability)) {
+            probonus = getProficiency(target)
         }
+        var saferoll = abilityRoll(target, tability).value + probonus
+        if (saferoll >= dc) { return 'pass' }
+        else { return 'fail' }
+
+    }
 
     if (target instanceof Enemy) {
         var i
         var result
-        if (target.safethrowbonus[tability]){
-            result =roll20('none').value +target.safethrowbonus[tability]
+        if (target.safethrowbonus[tability]) {
+            result = roll20('none').value + target.safethrowbonus[tability]
         }
-        else{
-           result=  roll20('none').value+ getMod(target,tability)
-        }
-        
-        if (result>=dc)
-        {return 'pass'}
-        else{return 'fail'}
-
+        else {
+            result = roll20('none').value + getMod(target, tability)
         }
 
-    
+        if (result >= dc) { return 'pass' }
+        else { return 'fail' }
+
+    }
+
+
 
 
 
 
 }
 
-
-function isproficient(player:Player, atathing, save?){
-if (atathing instanceof Weapon){
-    if (player.proficiencies.weapon.includes(atathing.name))
-    {return 'yes'}
-    else if(player.proficiencies.weapontype.includes(atathing.requires))
-    {return 'yes'}
-    else{return 'no'}
-}
-if(atathing as Skill)
-    {
-        if(player.proficiencies.skills.includes(atathing))
-        {return 'yes'}
-        else {return 'no'}
+export function isproficient(player: Player, atathing, save?) {
+    if (atathing instanceof Weapon) {
+        if (player.proficiencies.weapon.includes(atathing.name)) { return true }
+        else if (player.proficiencies.weapontype.includes(atathing.requires)) { return true }
+        else { return false }
     }
-if(atathing as Ability)
-    {
-        if(player.proficiencies.saves.includes(atathing))
-        {return 'yes'}
-        else {return 'no'}
+    if (skillValues.includes(atathing)) {
+        if (player.proficiencies.skills.includes(atathing)) { return true }
+        else { return false }
     }
+    if (abilityValues.includes(atathing)) {
+        if (player.proficiencies.saves.includes(atathing)) { return true }
+        else { return false }
+    }
+    return false;
 }
 
 

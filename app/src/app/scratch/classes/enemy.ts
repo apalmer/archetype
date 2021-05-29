@@ -7,9 +7,9 @@ export class Enemy extends Combatant {
     speed:string
     senses:string
     actions:Array<any>;
-    safethrowbonus:any
-    skills:Array<{name:Skill, value:number}>
-    resistances:any;
+    safethrowbonus:any = {};
+    skills:Array<{name:Skill, value:number}> = []
+    resistances:any[] = [];
     //damage immunity=100% resistance Vulnerabilty =-100%resistance regular resistance =50% 
     //formula would be like, damage-(x%resistance*damage)
     immunityCon:Array<string>
@@ -27,7 +27,7 @@ export class Enemy extends Combatant {
         this.hitPoints = this.maxHitPoints = 33;
         this.armorClass = 17;
         this.icon = 'assets/monsta/mimages/bwyr.jpg'
-        
+
     }
 
 
