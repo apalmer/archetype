@@ -4,21 +4,44 @@
     </div>
     <div class='monblok'>
         <div class='montitle'>
-            {{enemy.name}} <br> <span class="mlign">{{enemy.armorClass}}</span>
+            {{enemy.name}} <br> <span class="mlign"> AC{{enemy.armorClass}}</span>
         </div>
-        <div class='mdetail' >
-            <input type="button" (click)="attack()" value="Attack">
+        <div class='mdetail' (click)='showdetail()'>
+            <!-- <input type="button" (click)="attack()" value="Attack"> -->
         </div>
     </div>
-    <div class='hptest'>{{enemy.hitPoints}}
-        <div class='hpbar'></div>
+    <div class='hptest'>{{enemy.hitPoints}} / {{enemy.maxHitPoints}}
+        <div class='hpbar' [style.width]='((enemy.hitPoints/enemy.maxHitPoints)*100)+"%"'></div>
     </div>
 </div>
-<div class='enemycardwrap'>
-    <div class='evatar'><img [attr.src]='enemy.icon' style='max-height: 100%;'></div>
+<div class='enemycardwrap' [style.display]='detailswitch'>
+    
+    <div class='evatar'><img [attr.src]='enemy.bio.avatar' style='max-height: 100%;'></div>
     <div class='ecard'>
-        <div class='montitle'>
-            {{enemy.name}} <br> <span class="mlign">{{enemy.armorClass}}</span>
+
+        <div class='mdetail2' (click)='showdetail()' style='position:absolute; right:0px; background-color: white;'> Hide
+            <!-- <input type="button" (click)="attack()" value="Attack"> -->
         </div>
+
+
+        <div class='montitle'>
+            {{enemy.name}} <br> <span class="mlign">Armor Class{{enemy.armorClass}} </span>
+        </div>
+
+        <div class='mlign'> HP {{enemy.hitPoints}} / {{enemy.maxHitPoints}} </div>
+        <div class='hptest2'>
+            <div class='hpbar' [style.width]='((enemy.hitPoints/enemy.maxHitPoints)*100)+"%"'></div>
+        </div>
+        <div *ngFor='let ab of enemy.abilities| keyvalue'><div class='abox'>{{ab.key}}<br>{{ab.value}}</div></div>
+        
+        <div style='clear:both; color:white; font-size: x-small;' >Saves<br>
+            <div *ngFor='let sa of enemy.safethrowbonus | keyvalue'>
+                <div class='abox' style='color:white'>{{sa.key}} {{sa.value}}</div>
+            </div>
+        
+
+
+        </div>
+        
     </div>
 </div>

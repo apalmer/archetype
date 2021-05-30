@@ -10,28 +10,28 @@
         <div [ngClass]='gloV' (click)="avante()">{{ntage}}</div>
     </div>
 
-    <div class="profile" [style.backgroundImage]='"url"+charc.bio.profile' style='background-size: 150px;'>
+    <div class="profile" [style.backgroundImage]='"url"+charc.icon' style='background-size: 150px;'>
     </div>
     <div class="charname">
-        <div>{{charc.bio.name}} 
-            <div class="charlevels">Lv {{allclasslvl(charc)}}  <span *ngFor='let cro of charc.bio.class'class="claslev">{{cro.name}} Lv{{cro.lvl}} </span>
+        <div>{{charc.name}} 
+            <div class="charlevels">Lv {{charc.TotalLevel}}  <span *ngFor='let cro of charc.classes'class="claslev">{{cro.class}} Lv{{cro.lvl}} </span>
             </div>
         </div>
         <div>
-            <div class="statz" *ngFor='let ab of charc.stats.abscores | keyvalue' style="border: solid cadetblue">{{ab.key}} {{ab.value}}
+            <div class="statz" *ngFor='let ab of charc.abilities | keyvalue' style="border: solid cadetblue">{{ab.key}} {{ab.value}}
             </div>
         </div>
            
         <div class='resourcebox'>
-            <div class='resoname' *ngFor='let rez of charc.resources'>{{rez.name}} {{rez.min}}/{{rez.max}} <br>
-                <div style='width: 150px; height: 10px; border: solid navy'>
+            <div class='resoname' style='font-size:small;'*ngFor='let rez of charc.resources'>{{rez.name}} {{rez.min}}/{{rez.max}} <br>
+                <div style='width: 80px; height: 6px; border: solid navy'>
                     <div [style.width]="(+rez.min/(+rez.max))*100+'%'" style='background-color: cadetblue;height:100%'id='hpcent'>
                     </div>
                 </div>
             </div>
             
         <div class='resourcebox'>
-            <div class='resoname' *ngFor='let rez of charc.resources'>HitPoints {{player.hitPoints}}/{{player.maxHitPoints}} <br>
+            <div class='resoname'>HP {{player.hitPoints}}/{{player.maxHitPoints}} <br>
             <div style='width: 150px; height: 10px; border: solid navy'>
                 <div [style.width]="(player.hitPoints/(player.maxHitPoints))*100+'%'" style='background-color: cadetblue;height:100%'id='hpcent'>
                 </div>

@@ -57,16 +57,21 @@ function roll20(advantage: Advantage, bonus?: number) {
     return { value: value, critical: critical };
 }
 
-export function attackRoll(combatant: Combatant, ability: Ability, ability2: Ability) {
+export function attackRoll(combatant,weapon:Weapon) {
     let mod
-    if (ability2 == null) {
-        mod = getMod(combatant, ability);
+if (combatant.features.includes('MartialArts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
+    mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "DEX"))}
+        else{
+
+    if (weapon.ability[1] == null) {
+        mod = getMod(combatant, weapon.ability[0]);
 
     }
     else {
-        mod = Math.max(getMod(combatant, ability), getMod(combatant, ability2))
+        mod = Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, weapon.ability[1]))
     }
 
+}
     let roll = roll20(combatant.advantage);
     roll.value += mod;
 
@@ -89,18 +94,22 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
     return roll;
 }
 
-export function damageRoll(combatant: Combatant, ability: Ability, ability2: Ability,
+export function weaponDamageRoll(combatant, weapon:Weapon, 
     dice: number, sides: number, isCritical?: boolean) {
+        let mod
 
-    let dagger = new Weapon('dagger');
-    let mod
-    if (ability2 == null) {
-        mod = getMod(combatant, ability);
+    if (combatant.features.includes('MartialArts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
+        mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "DEX"))}
+        else{
+    
+            if (weapon.ability[1] == null) {
+            mod = getMod(combatant, weapon.ability[0]);
 
-    }
-    else {
-        mod = Math.max(getMod(combatant, ability), getMod(combatant, ability2))
-    }
+            }
+            else {
+            mod = Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, weapon.ability[1]))
+            }
+        }
 
     if (isCritical) {
         dice *= 2;
@@ -112,6 +121,24 @@ export function damageRoll(combatant: Combatant, ability: Ability, ability2: Abi
     }
     sum += mod
     return sum;
+}
+
+function attackDamageRoll(dice, sides, isCritical?:Boolean, combatant?, ability?:Ability){
+    let mod=0
+    if (ability){
+    getMod(combatant,ability)}
+    if (isCritical) {
+        dice *= 2;
+    }
+
+    let sum = 0;
+    for (let index = 0; index < dice; index++) {
+        sum += die(sides);
+    }
+    sum += mod
+    return sum
+
+
 }
 
 function getMod(combatant: Combatant, ability: Ability) {

@@ -4,6 +4,7 @@ import { spellson } from './spellson';
 import {Weapon} from '../classes/weapon'
 import { Enemy } from '../classes/enemy';
 import  {die} from '../classes/dice'
+import { Player } from '../classes/player';
 
 @Injectable({
   providedIn: 'root'
@@ -96,7 +97,7 @@ class dndchar extends anychar{
     }
     bio:any={name:'Nom', 
          profile:'("assets/images/bil.svg")',
-         class:[{name:'none',lvl:0}]
+         class:[{class:'none',lvl:0}]
         }
     resources:any=
     [{name:'HP',max:10,min:9,bonus:0}]
@@ -112,7 +113,7 @@ class dndchar extends anychar{
     constructor(nom?:string,clas?:string,clevel?:number){
       super()
       this.bio.name=nom
-      this.bio.class[0]={name:clas,lvl:clevel}
+      this.bio.class[0]={class:clas,lvl:clevel}
 
     }
     
@@ -128,8 +129,8 @@ balco.resources.push({name:"ki",max:4, min:2,});
 balco.stats.skills.acrobatics=4
 
 var sol=new dndchar
-sol.bio.class.push({name:'Fighter',lvl:6})
-sol.bio.class[0]={name:'Barbarian', lvl:14}
+sol.bio.class.push({class:'Fighter',lvl:6})
+sol.bio.class[0]={class:'Barbarian', lvl:14}
 sol.bio.name='Sol Bad'
 sol.bio.profile='("assets/images/sol.svg")'
 sol.stats.abscores={str:20, dex:16, con:20, int:10, wis:10, chr:9}
@@ -180,7 +181,9 @@ rlet.bio.spells.push(cant[2], cant[0], cant[5], cant[40], cant[23], cant[3], can
 balco
 adven.push(apbot)
 
-var abd= new Enemy
+var MartialArts
+
+export var abd= new Enemy
 abd.name='Adult Black Dragon'
 abd.challenge=14
 abd.armorClass=19
@@ -196,3 +199,55 @@ abd.skills.push({name:'stealth',value:7},{name:'perception', value:11})
 abd.senses='blinsight 60  ,darkvision 120, passive perception 21 '
 
 
+export var gio= new Player
+gio.name='Gio Vanna'
+gio.abilities={STR:10, DEX:14, CON:16, INT:9, WIS:18, CHR:9}
+gio.hitPoints=gio.maxHitPoints=54
+gio.armorClass=10
+gio.icon='("assets/images/gioicon.png")'
+gio.classes=[{class:'Monk', lvl:6}]
+gio.proficiencies.weapon.push('Shortsword')
+gio.proficiencies.weapontype.push('Simple')
+gio.proficiencies.skills.push('athletics','stealth','acrobatics','perception')
+gio.proficiencies.saves.push('STR','DEX')
+gio.resources.push({name:'Ki', min:6,max:6})
+gio.bio={visuals:{idle:'assets/images/gio.gif'}}
+gio.bio.visuals.atk1='assets/images/gio2.gif'
+gio.weapons.push(thugery)
+gio.features=[]
+gio.features.push('MartialArts')
+
+function dndPlayerform(gio, dman:dndchar){
+gio= new Player
+gio.name=dman.bio.name
+gio.abilities={STR:dman.stats.abscores.str, 
+  DEX:dman.stats.abscores.dex, 
+  CON:dman.stats.abscores.con, 
+  INT:dman.stats.abscores.int, 
+  WIS:dman.stats.abscores.wis, 
+  CHR:dman.stats.abscores.chr}
+gio.hitPoints=gio.maxHitPoints=dman.resources[0].max
+gio.armorClass=10
+gio.icon=dman.bio.profile
+gio.classes=dman.bio.class
+gio.resources=[]
+if (dman.resources[1]){
+gio.resources.push(dman.resources[1])}
+gio.bio={visuals:{idle:dman.bio.idlava}}
+gio.bio.visuals.atk1=dman.bio.atkan
+gio.bio.visuals.rage=dman.bio.idlrag
+gio.weapons=[]
+gio.weapons.push(dman.items[0],dman.items[1])
+
+return gio
+
+
+}
+
+var solplay=dndPlayerform(solplay,sol)
+var jamplay=dndPlayerform(jamplay,jam)
+var applay=dndPlayerform(applay, apbot)
+var rathpl=dndPlayerform(rathpl, rlet)
+solplay.weapons.push(axe)
+
+export var dndplay=[solplay,jamplay,applay,rathpl,gio]

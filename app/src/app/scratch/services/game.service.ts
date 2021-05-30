@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Input,Output } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Combatant } from '../classes/combatant';
 import { Enemy } from '../classes/enemy';

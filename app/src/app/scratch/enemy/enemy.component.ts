@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MonstaService  } from '../services/monsta.service'
 import { Enemy } from '../classes/enemy'
+import {abd} from '../services/char-data.service'
 
 @Component({
   selector: 'app-enemy',

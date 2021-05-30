@@ -1,14 +1,15 @@
 import { AttrAst } from '@angular/compiler';
-import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CharDataService } from '../services/char-data.service';
+import { CharDataService, gio, dndplay } from '../services/char-data.service';
 import { ProRuleService } from '../services/pro-rule.service';
 import { CharOh } from "../models/char-oh";
 import { GameService } from '../services/game.service';
 import { Player } from '../classes/player';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 var bal = new CharOh;
+export var charc =dndplay[4]
 
 @Component({
   selector: 'app-char-ui',
@@ -19,10 +20,10 @@ var bal = new CharOh;
 export class CharUIComponent implements OnInit {
   charb = new CharOh;
   sal = new CharDataService
-  charc = this.sal.barb[3]
+  charc = charc
   //claszt = this.allclasslvl(this.charc);
   f: number = 1
-  anim = this.charc.bio.idlava
+  anim = this.charc.bio.visuals.idle
   avtop = '350px'
   avright = '40px'
   avright2 = '40px'
@@ -33,7 +34,7 @@ export class CharUIComponent implements OnInit {
   actiontop = '60%'
   advantages: string = 'non'
   charId = 1
-  player:Player;
+  player= this.charc
 
 
   constructor(private proRule: ProRuleService, private game: GameService, private snackBar: MatSnackBar) { 
@@ -46,12 +47,12 @@ export class CharUIComponent implements OnInit {
   charswitch() {
     if (this.charId < this.sal.barb.length - 1) {
       this.charId = this.charId + 1
-      this.charc = this.sal.barb[this.charId]
+      this.charc //= this.sal.barb[this.charId]
       this.anim = this.charc.bio.idlava
     }
     else {
       this.charId = 0
-      this.charc = this.sal.barb[this.charId]
+      this.charc //=this.sal.barb[this.charId]
       this.anim = this.charc.bio.idlava
     }
   }
@@ -66,10 +67,10 @@ export class CharUIComponent implements OnInit {
   }
 
   onattack() {
-    this.anim = this.charc.bio.atkan
+    this.anim = this.charc.bio.visuals.atk1
     setTimeout(() => {
-      this.anim = this.charc.bio.idlava;
-    }, 900)
+      this.anim = this.charc.bio.visuals.idle;
+    }, 1800)
   }
 
 
@@ -78,10 +79,10 @@ export class CharUIComponent implements OnInit {
     if (this.charc.resources[1].min == 0) { alert('too tired') }
     else {
       this.charc.resources[1].min = this.charc.resources[1].min - 1;
-      this.anim = this.charc.bio.idlrag
+      this.anim = this.charc.bio.visuals.rage
 
       setTimeout(() => {
-        this.anim = this.charc.bio.idlava;
+        this.anim = this.charc.bio.visuals.idle;
         (event.target as HTMLElement).style.backgroundColor = "red"
           ;
       }, 2000)
@@ -130,24 +131,31 @@ export class CharUIComponent implements OnInit {
       this.gloV = 'glo'
       this.ntage = 'Advantage'
       this.advantages = 'advantage'
+      this.charc.advantage=this.advantages
     }
     else if (this.ntage == 'Advantage') {
       this.gloV = 'blo'
       this.ntage = 'disadvantage'
       this.advantages = 'disadvantage'
+      this.charc.advantage =this.advantages
     }
     else if (this.ntage == 'disadvantage') {
       this.gloV = 'lo'
       this.ntage = 'No Vantage'
       this.advantages = 'non'
+      this.charc.advantage = this.advantages
     }
   }
+  
 
   ngOnInit(): void {
     document.body.style.overflow = 'hidden'
     //document.body.style.backgroundColor='black'
 
   }
+  
 }
+
+
 
 

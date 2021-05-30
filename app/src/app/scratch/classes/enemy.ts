@@ -27,6 +27,8 @@ export class Enemy extends Combatant {
         this.hitPoints = this.maxHitPoints = 33;
         this.armorClass = 17;
         this.icon = 'assets/monsta/mimages/bwyr.jpg'
+        this.bio={}
+        this.bio.avatar='assets/monsta/mimages/bigwyr.png '
 
     }
 
