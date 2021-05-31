@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 var bal = new CharOh;
-export var charc =dndplay[4]
+export var charc =dndplay[0]
 
 @Component({
   selector: 'app-char-ui',
@@ -45,15 +45,15 @@ export class CharUIComponent implements OnInit {
   }
 
   charswitch() {
-    if (this.charId < this.sal.barb.length - 1) {
+    if (this.charId < dndplay.length - 1) {
       this.charId = this.charId + 1
-      this.charc //= this.sal.barb[this.charId]
-      this.anim = this.charc.bio.idlava
+      this.charc =dndplay[this.charId]
+      this.anim = this.charc.bio.visuals.idle
     }
     else {
       this.charId = 0
-      this.charc //=this.sal.barb[this.charId]
-      this.anim = this.charc.bio.idlava
+      this.charc =dndplay[this.charId]
+      this.anim = this.charc.bio.visuals.idle
     }
   }
 
@@ -70,7 +70,7 @@ export class CharUIComponent implements OnInit {
     this.anim = this.charc.bio.visuals.atk1
     setTimeout(() => {
       this.anim = this.charc.bio.visuals.idle;
-    }, 1800)
+    }, 1000)
   }
 
 
