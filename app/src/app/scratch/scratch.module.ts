@@ -28,7 +28,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     EnemyComponent,
     SpelloComponent,
     DebuggerComponent,
-    EnemyCombatantComponent,
+    EnemyCombatantComponent
   ],
   imports: [
     CdkTreeModule,

@@ -7,20 +7,29 @@ import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 
-
+/////////////////////////////////////////////////////////
+// Wrapper for the core game logic, Integration between game engine classes and angular
+// Stores core state of the application
+/////////////////////////////////////////////////////////
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
   private engine: GameEngine;
-  player: Player;
   private target: Combatant;
+  // The Real Instance of Player that is used by the entire app
+  player: Player;
   eventFeed: Observable<GameEvent>;
 
   constructor() {
     this.engine = new GameEngine();
     this.player = this.engine.encounter.player;
     this.eventFeed = this.engine.gameEvents;
+  }
+
+  setPlayer(selectedPlayer:Player){
+    this.engine.encounter.player = selectedPlayer;
+    this.player = this.engine.encounter.player;
   }
 
   getEnemies(): Enemy[] {

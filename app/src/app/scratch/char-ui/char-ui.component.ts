@@ -55,6 +55,7 @@ export class CharUIComponent implements OnInit {
       this.charc =dndplay[this.charId]
       this.anim = this.charc.bio.visuals.idle
     }
+    this.game.setPlayer(this.charc);
   }
 
   allclasslvl(char: any) {

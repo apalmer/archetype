@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'enemmon', component: EnemyComponent },
   { path: 'spello', component: SpelloComponent },
   { path: 'debugger', component: DebuggerComponent },
-  { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) }
+  { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) },
+  { path: 'tactics', loadChildren: () => import('./tactics/tactics.module').then(m => m.TacticsModule) }
 ];
 
 @NgModule({

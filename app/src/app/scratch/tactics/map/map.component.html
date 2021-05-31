@@ -1,0 +1,7 @@
+<div class="map-container">
+    <div class="map-row" *ngFor="let row of grid">
+        <div class="map-cell" *ngFor="let cell of row">
+            <app-map-cell [cell]="cell"></app-map-cell>
+        </div>
+    </div>
+</div>
