@@ -11,11 +11,13 @@ export class MapComponent implements OnInit {
   grid:Cell[][];
   width:number;
   height:number;
+  scale:number;
 
   constructor() {
     this.width = 8;
     this.height = 8;
-
+    this.scale = 100;
+    
     this.grid = [];
     for (let y = 0; y < this.height; y++) {
       const row:Cell[] = [];

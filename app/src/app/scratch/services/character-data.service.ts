@@ -12,14 +12,18 @@ import { cant, spellcode } from "../services/spellist.service";
   providedIn: 'root'
 })
 export class CharacterDataService {
+  private _characters:Player[];
 
-  constructor() { }
+  constructor() { 
+    this._characters = this.getMockPlayers();
+  }
+
+  getCharacter(characterId:string):Observable<Player> {
+    return of(this._characters[0]);
+  }
 
   get(): Observable<Player[]> {
-
-    let characters = this.getMockPlayers();
-
-    return of(characters);
+    return of(this._characters);
   }
 
   private getMockPlayers(): Player[] {
@@ -31,7 +35,7 @@ export class CharacterDataService {
       return varname
     }
 
-    let dugery = dweapon('Dugerous Blade', 'Dugerous Blade', 'barbs.svg');
+    let dugery = dweapon('Barbed Dagger', 'Dugerous Blade', 'barbs.svg');
     let thugery = new Weapon('Quarterstaff')
     let axe = dweapon('Greataxe', "Garruks's Rages", 'gaxe.jpg')
 
@@ -184,8 +188,8 @@ export class CharacterDataService {
     let applay = dndPlayerform(apbot)
     let rathpl = dndPlayerform(rlet)
 
-    let characters = [solplay, jamplay, applay, rathpl, gio];
+    this._characters = [solplay, jamplay, applay, rathpl, gio];
 
-    return characters;
+    return this._characters;
   }
 }

@@ -1,11 +1,12 @@
-import { Injectable,Input,Output } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable, Input, Output } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Combatant } from '../classes/combatant';
 import { Enemy } from '../classes/enemy';
 import { GameEngine } from '../classes/game-engine';
 import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
+import { CharacterDataService } from './character-data.service';
 
 /////////////////////////////////////////////////////////
 // Wrapper for the core game logic, Integration between game engine classes and angular
@@ -17,19 +18,28 @@ import { AttackOptions } from '../models/attack-options';
 export class GameService {
   private engine: GameEngine;
   private target: Combatant;
+
   // The Real Instance of Player that is used by the entire app
-  player: Player;
+  player: BehaviorSubject<Player>;
+
   eventFeed: Observable<GameEvent>;
 
-  constructor() {
+  constructor(private characterService: CharacterDataService) {
     this.engine = new GameEngine();
-    this.player = this.engine.encounter.player;
+
+    this.characterService.getCharacter('defaultCharacterId').subscribe(
+      character => {
+        this.player = new BehaviorSubject<Player>(character);
+        this.setPlayer(character);
+      }
+    );
+
     this.eventFeed = this.engine.gameEvents;
   }
 
-  setPlayer(selectedPlayer:Player){
+  setPlayer(selectedPlayer: Player) {
     this.engine.encounter.player = selectedPlayer;
-    this.player = this.engine.encounter.player;
+    this.player.next(this.engine.encounter.player);
   }
 
   getEnemies(): Enemy[] {
@@ -48,11 +58,11 @@ export class GameService {
     if (!this.target) {
       //what should happen if nothing is selected?
     }
-    this.engine.combatSystem.attack(this.player, this.target, attackOptions);
+    this.engine.combatSystem.attack(this.player.value, this.target, attackOptions);
   }
 
   attackPlayer(attackOptions: AttackOptions): void {
-    this.engine.combatSystem.attack(this.target, this.player, attackOptions);
+    this.engine.combatSystem.attack(this.target, this.player.value, attackOptions);
   }
 
 }

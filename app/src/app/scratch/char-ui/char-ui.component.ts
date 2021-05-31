@@ -6,10 +6,9 @@ import { CharOh } from "../models/char-oh";
 import { GameService } from '../services/game.service';
 import { Player } from '../classes/player';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CharacterDataService } from '../services/character-data.service';
 
-
-var bal = new CharOh;
-export var charc =dndplay[0]
+export var charc; //=dndplay[0]
 
 @Component({
   selector: 'app-char-ui',
@@ -23,7 +22,7 @@ export class CharUIComponent implements OnInit {
   charc = charc
   //claszt = this.allclasslvl(this.charc);
   f: number = 1
-  anim = this.charc.bio.visuals.idle
+  anim;// = this.charc.bio.visuals.idle
   avtop = '350px'
   avright = '40px'
   avright2 = '40px'
@@ -33,29 +32,43 @@ export class CharUIComponent implements OnInit {
   mheight = '48%'
   actiontop = '60%'
   advantages: string = 'non'
-  charId = 1
-  player= this.charc
+  charId = 0
+  characterCandidates;
 
 
-  constructor(private proRule: ProRuleService, private game: GameService, private snackBar: MatSnackBar) { 
-    this.player = this.game.player;
+  constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
+
     this.game.eventFeed.subscribe(
       event => this.snackBar.open(event.payload,'close',{duration:2000})
     )
+
+    this.game.player.subscribe(
+      player => {
+        this.charc = player;
+        this.anim = this.charc.bio.visuals.idle;
+      }
+    );
+
+    this.characterService.get().subscribe(
+      characters => this.characterCandidates = characters
+    );
+
   }
 
   charswitch() {
-    if (this.charId < dndplay.length - 1) {
+    let selected:Player;
+    if (this.charId < this.characterCandidates.length - 1) {
       this.charId = this.charId + 1
-      this.charc =dndplay[this.charId]
-      this.anim = this.charc.bio.visuals.idle
+      selected =this.characterCandidates[this.charId]
+      // this.anim = this.charc.bio.visuals.idle
     }
     else {
       this.charId = 0
-      this.charc =dndplay[this.charId]
-      this.anim = this.charc.bio.visuals.idle
+      selected =this.characterCandidates[this.charId]
+      // this.anim = this.charc.bio.visuals.idle
     }
-    this.game.setPlayer(this.charc);
+
+    this.game.setPlayer(selected);
   }
 
   allclasslvl(char: any) {
