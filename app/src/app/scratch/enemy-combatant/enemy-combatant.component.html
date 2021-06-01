@@ -46,7 +46,7 @@
                 <div class='actiontip' *ngIf='tes["o"+i]'>
                     {{act.description}}
                     <div>
-                    <button class='useact' *ngIf=act.damage[0]>Use</button>
+                    <button class='useact' (click)='attack(act)' *ngIf=act.attackBonus>Use</button>
                     </div>
                 </div>
 

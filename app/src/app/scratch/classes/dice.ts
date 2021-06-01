@@ -5,7 +5,7 @@ import { AmbientLight } from "three";
 import { AttackOptions } from "../models/attack-options";
 import { CombatSystem } from "./combat-system";
 import { Combatant } from "./combatant";
-import { Enemy } from "./enemy";
+import { Action, Enemy } from "./enemy";
 import { Player } from "./player";
 import { Weapon } from "./weapon";
 
@@ -52,8 +52,16 @@ function roll20(advantage: Advantage, bonus?: number) {
     else {
         critical = "normal";
     }
+    if (bonus)
+
+    {value= value+bonus}
 
     return { value: value, critical: critical };
+}
+
+export function ActAttackRoll(combatant, action:Action){
+    let roll=roll20(combatant.advantage, action.attackBonus)
+    return roll
 }
 
 export function attackRoll(combatant,weapon:Weapon) {
@@ -122,7 +130,7 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
     return sum;
 }
 
-function attackDamageRoll(dice, sides, isCritical?:Boolean, combatant?, ability?:Ability){
+export function attackDamageRoll(dice, sides, isCritical?:Boolean, combatant?, ability?:Ability){
     let mod=0
     if (ability){
     getMod(combatant,ability)}

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Enemy } from '../classes/enemy';
+import { Action, Enemy } from '../classes/enemy';
 import { AttackOptions } from '../models/attack-options';
 import { GameService } from '../services/game.service';
 import {abd} from '../services/char-data.service'
@@ -33,9 +33,9 @@ export class EnemyCombatantComponent implements OnInit {
     return isSelected;
   }
 
-  attack(){
-    let attackOptions: AttackOptions = { weapon: "Bite", handiness: "one-handed" };
-    this.game.attackPlayer(attackOptions);
+  attack(ac){
+    let enattackOptions=ac
+    this.game.attackPlayer(enattackOptions);
   }
 
   showdetail(){

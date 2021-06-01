@@ -1,7 +1,7 @@
 import { Injectable, Input, Output } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Combatant } from '../classes/combatant';
-import { Enemy } from '../classes/enemy';
+import { Action, Enemy } from '../classes/enemy';
 import { GameEngine } from '../classes/game-engine';
 import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
@@ -61,8 +61,8 @@ export class GameService {
     this.engine.combatSystem.attack(this.player.value, this.target, attackOptions);
   }
 
-  attackPlayer(attackOptions: AttackOptions): void {
-    this.engine.combatSystem.attack(this.target, this.player.value, attackOptions);
+  attackPlayer(enattackOptions:Action): void {
+    this.engine.combatSystem.attack(this.target, this.player.value, enattackOptions);
   }
 
 }
