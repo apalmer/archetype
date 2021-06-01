@@ -25,7 +25,7 @@
 
 
         <div class='montitle'>
-            {{enemy.name}} <br> <span class="mlign">Armor Class{{enemy.armorClass}} </span>
+            {{enemy.name}} <br> <span class="mlign">Armor Class {{enemy.armorClass}} </span>
         </div>
 
         <div class='mlign'> HP {{enemy.hitPoints}} / {{enemy.maxHitPoints}} </div>
@@ -38,9 +38,20 @@
             <div *ngFor='let sa of enemy.safethrowbonus | keyvalue'>
                 <div class='abox' style='color:white'>{{sa.key}} {{sa.value}}</div>
             </div>
-        
+        </div>
+
+        <div class='eactionbox'><div class='actitle'>Actions</div>
+            <div class='eachaction'*ngFor='let act of enemy.actions;index as i'>
+                <div class='eachaction'(click)='tes["o"+i]=!tes["o"+i]'>{{act.name}}</div> 
+                <div class='actiontip' *ngIf='tes["o"+i]'>
+                    {{act.description}}
+                    <div>
+                    <button class='useact' *ngIf=act.damage[0]>Use</button>
+                    </div>
+                </div>
 
 
+            </div>
         </div>
         
     </div>

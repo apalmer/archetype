@@ -57,6 +57,22 @@ export class Enemy extends Combatant {
         this.icon = 'assets/monsta/mimages/bwyr.jpg'
         this.bio = {}
         this.bio.avatar = 'assets/monsta/mimages/bigwyr.png'
+        this.abilities={
+            STR:data.strength,
+            DEX:data.dexterity,
+            CON:data.constitution,
+            INT:data.intelligence,
+            WIS:data.wisdom,
+            CHR:data.charisma,
+        }
+        this.safethrowbonus=[]
+        if(data.constitution_save){this.safethrowbonus.CON=data.constitution_save}
+        if(data.strength_save){this.safethrowbonus.STR=data.strength_save}
+        if(data.dexterity_save){this.safethrowbonus.DEX=data.dexterity_save}
+        if(data.intelligence_save){this.safethrowbonus.INT=data.intelligence_save}
+        if(data.wisdom_save){this.safethrowbonus.WIS=data.wisdom_save}
+        if(data.charisma_save){this.safethrowbonus.CHR=data.charisma_save}
+
 
         this.actions = [];
         data.actions.forEach(

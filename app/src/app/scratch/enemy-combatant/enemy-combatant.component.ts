@@ -12,6 +12,11 @@ import {abd} from '../services/char-data.service'
 export class EnemyCombatantComponent implements OnInit {
   @Input() enemy:Enemy;
   detailswitch='none'
+  onoff='hidden'
+  
+  tes={}
+    
+
 
   constructor(private game:GameService) { }
 
@@ -35,7 +40,14 @@ export class EnemyCombatantComponent implements OnInit {
 
   showdetail(){
     if(this.detailswitch==='none')
-    this.detailswitch='block'
-    else{this.detailswitch='none'}}
+    {this.detailswitch='block'}
+    else{this.detailswitch='none'}
+  }
+
+  showactiontip($event, i){
+
+    
+  }
 
 }
+

@@ -2,6 +2,7 @@
     position: absolute;
     width: 180px;
     height: 75px;
+    
    /* border: dashed goldenrod*/
 }
 
@@ -61,17 +62,18 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     height: 300px;
     width:300px;
-    border: solid pink;
     position:absolute;
     display:none;
     z-index: 2;
+    line-height: 1;
     
 }
 
 .evatar{
     width:33%;
     height:100%;
-    border: dashed orange;
+    border: groove orange;
+    border-radius: 40px 0px 0px 40px;
     position:absolute;
     left:0px;
     top:0px;
@@ -103,13 +105,13 @@
     top: -20px;
     left: 30px;
     width: 100px; 
-    height: 8px;
+    height: 5px;
     border: solid black;
     
 }
 .hptest2{
     width: 100px;
-    height: 8px;
+    height: 5px;
     position: relative;
     border: solid black;
 }
@@ -129,4 +131,39 @@
     float: left;
     margin: 2px;
     line-height: 12px;
+}
+
+.eactionbox{
+    color:blanchedalmond;
+    font-size: x-small;
+    clear:both;
+    margin: 3px;
+}
+.actitle{border-bottom: solid blanchedalmond;}
+.eachaction{
+    position: relative;
+    height: 30px;
+    float:left;
+    clear: both;
+}
+.actiontip{
+    position: absolute;
+    top: -8px;
+    right: -470px;
+    background-color:gray;/* #b60900;*/
+    width: 450px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+  /* visibility: hidden;*/
+    z-index: 2;
+
+
+}
+
+.useact{
+    background-color: darkred;
+    color: whitesmoke;
+    transform: skewX(-30deg);
+    border-radius: 8px;
 }
