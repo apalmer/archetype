@@ -4,6 +4,7 @@ import { TacticsRoutingModule } from "./tactics-routing.module";
 import { TacticsComponent } from './tactics.component';
 import { MapComponent } from './map/map.component';
 import { MapCellComponent } from './map-cell/map-cell.component';
+import { TokenComponent } from './token/token.component';
 
 
 
@@ -11,7 +12,8 @@ import { MapCellComponent } from './map-cell/map-cell.component';
   declarations: [
     TacticsComponent,
     MapComponent,
-    MapCellComponent
+    MapCellComponent,
+    TokenComponent
   ],
   imports: [
     CommonModule,
