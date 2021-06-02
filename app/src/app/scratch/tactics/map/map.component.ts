@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridRowStyleBuilder } from '@angular/flex-layout/grid/typings/row/row';
 import { Cell } from '../classes/cell';
+import { Grid } from '../classes/grid';
 
 @Component({
   selector: 'app-map',
@@ -18,17 +19,7 @@ export class MapComponent implements OnInit {
     this.height = 8;
     this.scale = 100;
     
-    this.grid = [];
-    for (let y = 0; y < this.height; y++) {
-      const row:Cell[] = [];
-      for (let x = 0; x < this.height; x++) {
-        const cell:Cell = new Cell();
-        cell.x = x;
-        cell.y = y;
-        row.push(cell);     
-      }
-      this.grid.push(row);
-    }
+    this.grid = new Grid(this.width,this.height);
 
    }
 

@@ -107,7 +107,7 @@ export class Enemy extends Combatant {
                         }
                     }
                     action.damage.push(first);
-                    if(second){
+                    if(second) {
                         action.damage.push(second);
                     }
                 }
@@ -116,6 +116,4 @@ export class Enemy extends Combatant {
             }
         );
     }
-
-
 }
