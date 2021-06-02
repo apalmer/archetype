@@ -41,6 +41,7 @@ export class Player extends Combatant {
         saves:[],
         armor:[]}
         this.weapons=[]
+        this.resistances=[{}]
     
         
         

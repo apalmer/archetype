@@ -79,7 +79,7 @@ export class WeaponsComponent implements OnInit {
      this.strmod=this.rule.statmod('dex',this.charc)
 
      this.game.eventFeed.subscribe(
-       message => this.onAttackEvent(message.payload.attack, message.payload.critical, message.payload.damage)
+       message => this.onAttackEvent(message.payload.origin, message.payload.attack, message.payload.critical, message.payload.damage)
      )
      
   }
@@ -93,9 +93,11 @@ export class WeaponsComponent implements OnInit {
     this.game.attackTarget({ weapon: weapon, handiness: handiness});
   }
 
-    onAttackEvent(attack:number,  critical:string, damage:number){
+    onAttackEvent( origin, attack:number,  critical:string, damage:number){
     
     console.log(`${attack} - ${damage}`)
+    if(origin==='play')
+    {
     this.atkanim.emit(this.atktxt)
     document.getElementById('atak').style.color='crimson'
     document.getElementById('dama').style.color='firebrick'
@@ -126,6 +128,7 @@ export class WeaponsComponent implements OnInit {
     document.getElementById('a1').style.visibility='visible';
     document.getElementById('d1').style.visibility='visible';
   }
+}
 
   atknao(dmg,mod){
 

@@ -144,7 +144,7 @@ export const weaponData = [
         "Name": "Flamberge",
         "Cost": "15 gp",
         "Damage": "1d8 + 1d2",
-        "Damagetype": "Slashing + Ripping",
+        "Damagetype": "Slashing",
         "Weight": "6 lb",
         "Homebrew": "True",
         "Properties": [
@@ -282,7 +282,7 @@ export const weaponData = [
         "Name": "Knuckleduster",
         "Cost": "3 sp",
         "Damage": "Unarmed Damage + 1",
-        "Damagetype": "",
+        "Damagetype": "bludgeoning",
         "Weight": "2 lb",
         "Homebrew": "True",
         "Properties": [

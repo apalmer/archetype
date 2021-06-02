@@ -25,7 +25,7 @@ export class Weapon {
         this.requires=data.Requires
 
         let damage:RegExpMatchArray = data.Damage.match(/(\d*)d(\d*)(\s*)(.*)/);
-        let damageType = data.Damagetype || damage[4];
+        let damageType =data.Damagetype || damage[4];
         let twoHanded:boolean = data.Properties.includes("Two-Handed");
         let versatile:boolean = false;
         let versatileDamage:RegExpMatchArray = null;

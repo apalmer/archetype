@@ -23,6 +23,9 @@ const skillValues = ["athletics", "acrobatics", "sleightofhand", "stealth",
         , "perform", "persuasion"];
 export type Skill = typeof skillValues[number];
 
+export type DamageType = "Acid" |"Bludgeoning" | "Cold" |"Fire"|"Force"|"Lightning"|
+"Necrotic"|"Piercing"|"Poison"|"Psychic"|"Radiant"|"Slashing"|"Thunder";
+
 
 
 export function die(sides) {
@@ -102,7 +105,7 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
 }
 
 export function weaponDamageRoll(combatant, weapon:Weapon, 
-    dice: number, sides: number, isCritical?: boolean) {
+    dice: number, sides: number, isCritical?: boolean, bonus?) {
         let mod
 
     if (combatant.features.includes('MartialArts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
@@ -224,6 +227,18 @@ export function isproficient(player: Player, atathing, save?) {
         else { return false }
     }
     return false;
+}
+
+export function damageresist(dmg, target, dmgtype?)
+
+{
+    if(target.resistances.find((bo)=>bo.type===dmgtype))
+    {let resist=target.resistances.find((bo)=>bo.type===dmgtype)
+    dmg=Math.floor(dmg*resist.value)}
+    else {dmg=dmg}
+
+    return dmg
+
 }
 
 

@@ -1,5 +1,5 @@
 import { Combatant } from "./combatant";
-import { Ability, Skill } from "./dice";
+import { Ability, DamageType, Skill } from "./dice";
 import { enemyData } from "./enemy-data";
 
 export class DamageInfo {
@@ -24,7 +24,6 @@ export class Enemy extends Combatant {
     actions: Array<Action>;
     safethrowbonus: any = {};
     skills: Array<{ name: Skill, value: number }> = []
-    resistances: any[] = [];
     //damage immunity=100% resistance Vulnerabilty =-100%resistance regular resistance =50% 
     //formula would be like, damage-(x%resistance*damage)
     immunityCon: Array<string>
@@ -87,9 +86,11 @@ export class Enemy extends Combatant {
                     action.damage = new Array<DamageInfo>();
                     let first:DamageInfo = new DamageInfo();
                     let second:DamageInfo = null;
+                    let typeparser = dataAction.desc.match(/(?<=\(\d*d.*\) )\w+/g)
 
                     if (dataAction.damage_bonus) {
                         first.bonus = dataAction.damage_bonus;
+                        first.type=typeparser[0]
                     }
                     if (dataAction.damage_dice) {
 
@@ -102,6 +103,7 @@ export class Enemy extends Combatant {
                             second = new DamageInfo();
                             second.dice = Number(damageParser[5]);
                             second.sides = Number(damageParser[6]);
+                            second.type=typeparser[1]
                         }
                     }
                     action.damage.push(first);

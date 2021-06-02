@@ -6,6 +6,7 @@ export class Combatant {
     maxHitPoints:number;
     armorClass:number;
     icon:string;
+    resistances:any [] =[]
 
     advantage:Advantage;
 

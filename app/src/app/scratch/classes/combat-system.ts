@@ -3,10 +3,10 @@ import { AttackOptions } from "../models/attack-options";
 import { Combatant } from "./combatant";
 import { GameEvent } from "./game-event";
 import { Weapon } from "./weapon";
-import { attackRoll, weaponDamageRoll, ActAttackRoll, attackDamageRoll } from "./dice"
+import { attackRoll, weaponDamageRoll, ActAttackRoll, attackDamageRoll, damageresist } from "./dice"
 import { InstancedBufferAttribute } from "three";
 import { Player } from "./player";
-import { Action } from "./enemy";
+import { Action, DamageInfo } from "./enemy";
 
 export class CombatSystem {
     private combatEventSource: Subject<GameEvent> = new Subject<GameEvent>();
@@ -19,6 +19,8 @@ export class CombatSystem {
     attack(source, target: Combatant, attackOption) {
         let attack
         let weapon
+        if(source instanceof Player){var tacker='play'}
+        else{var tacker='enemy'}
         if(attackOption instanceof Action){
            attack=  ActAttackRoll(source,attackOption)
         }
@@ -39,31 +41,34 @@ export class CombatSystem {
             
             let damage = weaponDamageRoll(source, weapon,
                 weaponDamage.dice, weaponDamage.sides, isCritical);
+                damage= damageresist(damage,target,weapon.damageType)
 
             //apply damage to target
             target.hitPoints -= damage;
-            this.combatEventSource.next({ type: 'Combat', payload: { attack: attack.value, critical: attack.critical, damage: damage } });
+            this.combatEventSource.next({ type: 'Combat', payload: {origin:tacker, attack: attack.value, critical: attack.critical, damage: damage } });
 
         }
 
         else if(success && attackOption instanceof Action){
 
             let dam2=0
-          let dam1=  attackDamageRoll(attackOption.damage[0].dice,attackOption.damage[0].sides,isCritical)
+          let dam1=attackDamageRoll(attackOption.damage[0].dice,attackOption.damage[0].sides,isCritical)+attackOption.damage[0].bonus
+          dam1=damageresist(dam1,target,attackOption.damage[0].type)
           if (attackOption.damage[1]){
               dam2= attackDamageRoll(attackOption.damage[1].dice,attackOption.damage[1].sides,isCritical)
+              dam2=damageresist(dam2,target,attackOption.damage[1].type)
             }
-            let damage=dam1+dam2+attackOption.damage[0].bonus
+            let damage=dam1+dam2
 
             target.hitPoints -= damage
 
-            this.combatEventSource.next({ type: 'Combat', payload: { attack: attack.value, critical: attack.critical, damage: damage } });
+            this.combatEventSource.next({ type: 'Combat', payload: {origin:tacker, attack: attack.value, critical: attack.critical, damage: damage } });
 
 
 
         }
         else {
-            this.combatEventSource.next({ type: 'Combat', payload: { attack: attack.value, critical: attack.critical, damage:0 } });
+            this.combatEventSource.next({ type: 'Combat', payload: {origin:tacker, attack: attack.value, critical: attack.critical, damage:0 } });
         }
 
     }

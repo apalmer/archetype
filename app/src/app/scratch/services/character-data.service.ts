@@ -187,6 +187,7 @@ export class CharacterDataService {
     let jamplay = dndPlayerform(jam)
     let applay = dndPlayerform(apbot)
     let rathpl = dndPlayerform(rlet)
+    solplay.armorClass=18
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];
 

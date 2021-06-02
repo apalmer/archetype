@@ -14,7 +14,7 @@ export class Encounter {
         
         this.enemies = Array<Enemy>();
         
-        this.adult = JSON.parse(JSON.stringify(abd));
+        this.adult = new Enemy('Adult Black Dragon')
         this.black = new Enemy('Young Silver Dragon');
         this.drago = new Enemy('Ancient Green Dragon');
 
