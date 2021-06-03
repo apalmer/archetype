@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Player } from '../classes/player';
 import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
+import {raget} from '../classes/features'
 
 
 ///////////////////////////////////////////////
@@ -188,6 +189,7 @@ export class CharacterDataService {
     let applay = dndPlayerform(apbot)
     let rathpl = dndPlayerform(rlet)
     solplay.armorClass=18
+    solplay.features=[raget]
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];
 

@@ -14,6 +14,7 @@ export class Player extends Combatant {
     classes:Array<{class:string, lvl:number }>=[]
     spells:Array<any>=[]
     features:Array<any>=[]
+    actives:Array<any>=[]
     skills:Array<{name:Skill, value:number}>
     weapons:Array<any>=[]
 

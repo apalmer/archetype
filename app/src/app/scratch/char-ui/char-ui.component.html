@@ -11,6 +11,18 @@
     </div>
 
     <div class="profile" [style.backgroundImage]='"url"+charc.icon' style='background-size: 150px;'>
+        <div class='enatk'
+        [style.right]='atkright'
+        [style.opacity]='hishow'
+        [style.color]='encolor'
+        [style.transform]='skews'>{{enattack}}</div>
+        <div class='endmg'
+        [style.color]='encolorD'
+        [style.right]='dmgright'
+        [style.bottom]='dmgtop'
+        [style.fontSize]='dmgsize+"px"'
+        [style.opacity]='dmgopac'
+        >{{endamage}}</div>
         <div class='acp'style='position:absolute; bottom:0px;right:-10px;'>AC:{{charc.armorClass}}</div>
     </div>
     <div class="charname">
@@ -44,7 +56,7 @@
    
     <div class="itabwrap" style="clear:both;">
     </div>
-    <button class="press" (click)='onRage($event)'>R A G E</button>
+    <button class="press" (click)='rager(charc)'[style.backgroundColor]='rcolor'>R A G E</button>
 
 </div>
 <div class='vatar' (click)='avlayout()'[style.right]='avright2'><img id='ata'[src]='anim' style='vertical-align:bottom;'></div>

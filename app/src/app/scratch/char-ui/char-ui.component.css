@@ -147,3 +147,25 @@
     top:60px;
     transition: width 1s, height 1s;
 }
+
+.enatk, .endmg{
+    z-index: 2;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: darkred;
+    font-size: 30px;
+    position: absolute;
+    bottom: -5px;
+    text-shadow: 
+    -1px 1px 2px #fff,
+    1px 1px 2px #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+    transform: skewX(-30deg);
+    transition: right .2s, opacity .3s, font-size 1s, bottom 1s, transform .5s;
+
+}
+.endmg{
+    font-size: 60px;
+    color:cornflowerblue;
+    transition: right 1s, opacity .7s, font-size 1s, bottom 1s, transform .5s;
+}

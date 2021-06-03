@@ -7,6 +7,9 @@ export class Combatant {
     armorClass:number;
     icon:string;
     resistances:any [] =[]
+    conditions:any={rage:'off'}
+    bonusobject:any={dmg:0,atk:0}
+    
 
     advantage:Advantage;
 

@@ -7,6 +7,7 @@ import { GameService } from '../services/game.service';
 import { Player } from '../classes/player';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CharacterDataService } from '../services/character-data.service';
+import {raget} from '../classes/features'
 
 export var charc; //=dndplay[0]
 
@@ -34,6 +35,18 @@ export class CharUIComponent implements OnInit {
   advantages: string = 'non'
   charId = 0
   characterCandidates;
+  atkright='-5px'
+  hishow=0
+  skews
+  enattack:any=3
+  endamage:any=40
+  encolor
+  encolorD
+  dmgright
+  dmgtop
+  dmgsize
+  dmgopac=0
+  rcolor='blue'
 
 
   constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
@@ -42,6 +55,10 @@ export class CharUIComponent implements OnInit {
       event => this.snackBar.open(event.payload.origin+' attacks with '+ event.payload.attack+
       ' for '+event.payload.damage+' dmg.','close',{duration:2000})
     )
+      
+    this.game.eventFeed.subscribe(boom=> this.enatkanim(boom.payload.origin, boom.payload.attack, boom.payload.damage, boom.payload.critical)
+    )
+    
 
     this.game.player.subscribe(
       player => {
@@ -54,6 +71,18 @@ export class CharUIComponent implements OnInit {
       characters => this.characterCandidates = characters
     );
 
+  }
+
+
+  rager(player)
+  {
+    if (player.conditions.rage==='on')
+    {
+      player.features[0].off(player);
+      this.rcolor='slategray'}
+    else{
+      player.features[0].on(player);
+      this.rcolor='red'}
   }
 
   charswitch() {
@@ -128,6 +157,50 @@ export class CharUIComponent implements OnInit {
     this.actiontop = '70%'
 
   }
+
+  enatkanim(origin, attack, damage, critical){
+    if(origin==='enemy'){
+    this.enattack=attack
+    this.atkright='200px';
+    this.skews='skewX(-'+20+attack+'deg)'
+    this.encolor='red'
+    this.encolorD='orangered'
+    this.dmgsize=16
+    this.dmgtop='150px'
+    this.dmgright='-20px'
+
+    if (critical==='success')
+    {this.encolor='yellow'
+    this.encolorD='orange'
+    }
+    
+    setTimeout(() => {
+      this.atkright='-40px';
+      this.hishow=1
+    }, 200);
+
+    setTimeout(() => {
+      this.dmgright='20px'
+      this.dmgtop='70px'
+      this.dmgopac=1
+      this.dmgsize=20+(damage*2)
+      this.endamage=damage
+    }, 800);
+
+
+    setTimeout(() => {
+      this.hishow=0
+      this.skews='skewX(-15deg)'
+    },1100);
+
+    setTimeout(() => {
+      this.dmgopac=0
+    }, 1700);
+    
+  
+
+  }}
+
 
   actui1() {
     this.mwidth = '70%'

@@ -23,14 +23,16 @@ const skillValues = ["athletics", "acrobatics", "sleightofhand", "stealth",
         , "perform", "persuasion"];
 export type Skill = typeof skillValues[number];
 
-export type DamageType = "Acid" |"Bludgeoning" | "Cold" |"Fire"|"Force"|"Lightning"|
-"Necrotic"|"Piercing"|"Poison"|"Psychic"|"Radiant"|"Slashing"|"Thunder";
+export type DamageType = "Acid" |"bludgeoning" | "Cold" |"Fire"|"Force"|"Lightning"|
+"Necrotic"|"piercing"|"Poison"|"Psychic"|"Radiant"|"slashing"|"Thunder";
 
 
 
 export function die(sides) {
     return Math.floor((sides * Math.random()) + 1);
 }
+
+export var bonusobject=0
 
 function roll20(advantage: Advantage, bonus?: number) {
     let value: number;
@@ -125,13 +127,18 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
         dice *= 2;
     }
 
+    
+
     let sum = 0;
     for (let index = 0; index < dice; index++) {
         sum += die(sides);
     }
-    sum += mod
+    sum += mod+combatant.bonusobject.dmg
     return sum;
 }
+
+
+
 
 export function attackDamageRoll(dice, sides, isCritical?:Boolean, combatant?, ability?:Ability){
     let mod=0

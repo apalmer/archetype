@@ -3,7 +3,7 @@ export const weaponData = [
         "Name": "Barbed Dagger",
         "Cost": "10 gp",
         "Damage": "2d4",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "1 lb",
         "Homebrew": "True",
         "Properties": [
@@ -18,7 +18,7 @@ export const weaponData = [
         "Name": "Brandistock",
         "Cost": "10 gp",
         "Damage": "1d8",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "4 lb",
         "Homebrew": "True",
         "Properties": [
@@ -32,7 +32,7 @@ export const weaponData = [
         "Name": "Broken Sword",
         "Cost": "5 sp",
         "Damage": "1d4",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "1 lb",
         "Homebrew": "True",
         "Properties": [
@@ -46,7 +46,7 @@ export const weaponData = [
         "Name": "Cestus",
         "Cost": "5 sp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "0.5 lb",
         "Homebrew": "True",
         "Properties": [
@@ -60,7 +60,7 @@ export const weaponData = [
         "Name": "Club",
         "Cost": "1 sp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "2 lb",
         "Homebrew": "False",
         "Properties": [
@@ -73,7 +73,7 @@ export const weaponData = [
         "Name": "Dagger",
         "Cost": "2 gp",
         "Damage": "1d4",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "1 lb",
         "Homebrew": "False",
         "Properties": [
@@ -88,7 +88,7 @@ export const weaponData = [
         "Name": "Double Spear",
         "Cost": "5 gp",
         "Damage": "1d6",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "4 lb",
         "Homebrew": "True",
         "Properties": [
@@ -102,7 +102,7 @@ export const weaponData = [
         "Name": "Eye Sickle",
         "Cost": "10 gp",
         "Damage": "1d6",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "4 lb",
         "Homebrew": "True",
         "Properties": [
@@ -116,7 +116,7 @@ export const weaponData = [
         "Name": "Falx",
         "Cost": "8 gp",
         "Damage": "1d6",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "3 lb",
         "Homebrew": "True",
         "Properties": [
@@ -129,7 +129,7 @@ export const weaponData = [
         "Name": "Fauchard",
         "Cost": "10 gp",
         "Damage": "1d6",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "7 lb",
         "Homebrew": "True",
         "Properties": [
@@ -144,7 +144,7 @@ export const weaponData = [
         "Name": "Flamberge",
         "Cost": "15 gp",
         "Damage": "1d8 + 1d2",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "6 lb",
         "Homebrew": "True",
         "Properties": [
@@ -158,7 +158,7 @@ export const weaponData = [
         "Name": "Gavel",
         "Cost": "5 sp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "0.5 lb",
         "Homebrew": "True",
         "Properties": [
@@ -171,7 +171,7 @@ export const weaponData = [
         "Name": "Greatclub",
         "Cost": "2 sp",
         "Damage": "1d8",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "10 lb",
         "Homebrew": "False",
         "Properties": [
@@ -184,7 +184,7 @@ export const weaponData = [
         "Name": "Greatspear",
         "Cost": "25 gp",
         "Damage": "1d10",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "8 lb",
         "Homebrew": "True",
         "Properties": [
@@ -199,7 +199,7 @@ export const weaponData = [
         "Name": "Handaxe",
         "Cost": "5 gp",
         "Damage": "1d6",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "2 lb",
         "Homebrew": "False",
         "Properties": [
@@ -213,7 +213,7 @@ export const weaponData = [
         "Name": "Iron Claws",
         "Cost": "5 gp",
         "Damage": "1d4",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "2 lb",
         "Homebrew": "True",
         "Properties": [
@@ -227,7 +227,7 @@ export const weaponData = [
         "Name": "Javelin",
         "Cost": "5 sp",
         "Damage": "1d6",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "2 lb",
         "Homebrew": "False",
         "Properties": [
@@ -240,7 +240,7 @@ export const weaponData = [
         "Name": "Karambit",
         "Cost": "4 gp",
         "Damage": "1d4",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "1 lb",
         "Homebrew": "True",
         "Properties": [
@@ -254,7 +254,7 @@ export const weaponData = [
         "Name": "Katar",
         "Cost": "5 gp",
         "Damage": "1d4",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "1 lb",
         "Homebrew": "True",
         "Properties": [
@@ -268,7 +268,7 @@ export const weaponData = [
         "Name": "Knife",
         "Cost": "2 sp",
         "Damage": "1d3",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "0.25 lb",
         "Homebrew": "True",
         "Properties": [
@@ -296,7 +296,7 @@ export const weaponData = [
         "Name": "Ko",
         "Cost": "1 gp",
         "Damage": "1d4",
-        "Damagetype": "Piercing / bludgeoning",
+        "Damagetype": "piercing / bludgeoning",
         "Weight": "1 lb",
         "Homebrew": "True",
         "Properties": [
@@ -311,7 +311,7 @@ export const weaponData = [
         "Name": "Kukri",
         "Cost": "6 gp",
         "Damage": "1d6",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "2 lb",
         "Homebrew": "True",
         "Properties": [
@@ -325,7 +325,7 @@ export const weaponData = [
         "Name": "Light Hammer",
         "Cost": "2 gp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "2 lb",
         "Homebrew": "False",
         "Properties": [
@@ -339,7 +339,7 @@ export const weaponData = [
         "Name": "Mace",
         "Cost": "5 gp",
         "Damage": "1d6",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "2 lb",
         "Homebrew": "False",
         "Properties": [
@@ -352,7 +352,7 @@ export const weaponData = [
         "Name": "Needle",
         "Cost": "2 sp",
         "Damage": "1d4",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "0.25 lb",
         "Homebrew": "True",
         "Properties": [
@@ -366,7 +366,7 @@ export const weaponData = [
         "Name": "Quarterstaff",
         "Cost": "2 sp",
         "Damage": "1d6",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "4 lb",
         "Homebrew": "False",
         "Properties": [
@@ -379,7 +379,7 @@ export const weaponData = [
         "Name": "Sap",
         "Cost": "1 gp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "2 lb",
         "Homebrew": "True",
         "Properties": [
@@ -393,7 +393,7 @@ export const weaponData = [
         "Name": "Scythe",
         "Cost": "5 gp",
         "Damage": "2d4",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "5 lb",
         "Homebrew": "True",
         "Properties": [
@@ -407,7 +407,7 @@ export const weaponData = [
         "Name": "Sickle",
         "Cost": "1 gp",
         "Damage": "1d4",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "2 lb",
         "Homebrew": "False",
         "Properties": [
@@ -420,7 +420,7 @@ export const weaponData = [
         "Name": "Spade",
         "Cost": "2 gp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "4 lb",
         "Homebrew": "True",
         "Properties": [
@@ -433,7 +433,7 @@ export const weaponData = [
         "Name": "Spear",
         "Cost": "1 gp",
         "Damage": "1d4",
-        "Damagetype": "Slashing",
+        "Damagetype": "slashing",
         "Weight": "3 lb",
         "Homebrew": "False",
         "Properties": [
@@ -447,7 +447,7 @@ export const weaponData = [
         "Name": "Torch Mace",
         "Cost": "6 gp",
         "Damage": "1d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "2 lb",
         "Homebrew": "True",
         "Properties": [
@@ -460,7 +460,7 @@ export const weaponData = [
         "Name": "Torch Staff",
         "Cost": "12 gp",
         "Damage": "2d4",
-        "Damagetype": "Bludgeoning",
+        "Damagetype": "bludgeoning",
         "Weight": "7 lb",
         "Homebrew": "True",
         "Properties": [
@@ -475,7 +475,7 @@ export const weaponData = [
         "Name": "Zerka",
         "Cost": "10 sp",
         "Damage": "1d8",
-        "Damagetype": "Piercing",
+        "Damagetype": "piercing",
         "Weight": "3 lb",
         "Homebrew": "True",
         "Properties": [
