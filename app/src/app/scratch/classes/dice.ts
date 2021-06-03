@@ -137,6 +137,12 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
     return sum;
 }
 
+function critdice(dice,isCritical,)
+{
+    dice*=2
+    return dice
+}
+
 
 
 

@@ -7,7 +7,7 @@ import { GameService } from '../services/game.service';
 import { Player } from '../classes/player';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CharacterDataService } from '../services/character-data.service';
-import {raget} from '../classes/features'
+
 
 export var charc; //=dndplay[0]
 
@@ -76,12 +76,14 @@ export class CharUIComponent implements OnInit {
 
   rager(player)
   {
+    let rae=player.features.find(bo=>bo.name==='Rage')
     if (player.conditions.rage==='on')
     {
-      player.features[0].off(player);
+      rae.off(player);
       this.rcolor='slategray'}
     else{
-      player.features[0].on(player);
+      rae.on(player);
+      this.onRage()
       this.rcolor='red'}
   }
 
@@ -118,16 +120,17 @@ export class CharUIComponent implements OnInit {
   }
 
 
-  onRage(event: MouseEvent) {
-    (event.target as HTMLElement).style.backgroundColor = "blue";
-    if (this.charc.resources[1].min == 0) { alert('too tired') }
+  onRage(event?: MouseEvent) {
+    //(event.target as HTMLElement).style.backgroundColor = "blue";
+    let sae=this.charc.resources.find(bo=>bo.name==='Rage')
+    if (sae.min == 0) { alert('too tired') }
     else {
-      this.charc.resources[1].min = this.charc.resources[1].min - 1;
+      sae.min = sae.min - 1;
       this.anim = this.charc.bio.visuals.rage
 
       setTimeout(() => {
         this.anim = this.charc.bio.visuals.idle;
-        (event.target as HTMLElement).style.backgroundColor = "red"
+        //(event.target as HTMLElement).style.backgroundColor = "red"
           ;
       }, 2000)
     }
