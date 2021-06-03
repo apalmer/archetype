@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cell } from '../classes/cell';
+import { TokenData } from '../classes/token-data';
 
 @Component({
   selector: 'app-token',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./token.component.css']
 })
 export class TokenComponent implements OnInit {
+  @Input() cell:Cell;
+  @Input() data:TokenData;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data);
   }
 
 }

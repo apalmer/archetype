@@ -1,3 +1,6 @@
-<div>
-    {{ cell.x }}, {{cell.y}}
+<div class="map-cell" cdkDropList (cdkDropListDropped)=drop($event)>
+    {{ cell.x }},{{cell.y}}
+    <div *ngIf="cell.tokenData">
+        <app-token [cell]="cell" [data]="cell.tokenData"></app-token>
+    </div>
 </div>

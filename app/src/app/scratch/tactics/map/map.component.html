@@ -1,10 +1,9 @@
-<div class="map-container" [style.grid-template-columns]="'repeat(' + width + ', ' + scale + 'px)'">
+<div cdkDropListGroup class="map-container" [style.grid-template-columns]="'repeat(' + width + ', ' + scale + 'px)'">
     <ng-template ngFor let-row [ngForOf]="grid" let-y="index">
         <ng-template ngFor let-cell [ngForOf]="row" let-x="index">
             <div class="map-cell" [style.width]="scale +'px'" [style.height]="scale + 'px'">
-                <app-map-cell [cell]="cell"></app-map-cell>
+                <app-map-cell [cell]="cell" (dropped)="childCellDropped($event)"></app-map-cell>
             </div>
         </ng-template>
     </ng-template>
 </div>
-<app-token></app-token>
