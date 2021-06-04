@@ -60,5 +60,18 @@ rage.start=function(player?){
    player.actives.push(recklessAttack)
  }
 
+ export var brutalcrit=new Feature
+ brutalcrit.name='Brutal Critical'
+ brutalcrit.desc='you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee Attack.This increases to two additional dice at 13th level and three additional dice at 17th level.'
+ brutalcrit.start=function(player){
+   player.actives.push(brutalcrit)
+   let bb
+   let bblvl=player.classes.find(b=>b.class==='Barbarian').lvl
+   if (bblvl>8){bb=1}
+   if (bblvl>12&&bblvl<17){bb=2}
+   if (bblvl>16){bb=3}
+  player.bonusobject.cdice=bb
+ }
+
 
 

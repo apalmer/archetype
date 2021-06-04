@@ -123,9 +123,7 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
             }
         }
 
-    if (isCritical) {
-        dice *= 2;
-    }
+    dice=critdice(dice,isCritical, combatant, weapon)
 
     
 
@@ -137,10 +135,16 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
     return sum;
 }
 
-function critdice(dice,isCritical,)
-{
-    dice*=2
+function critdice(dice,isCritical,player?,weapon?)
+{ 
+    let bon=0
+    if(player.features.find(b=>b.name==='Brutal Critical'&& weapon.category==='melee'))
+    {bon=player.bonusobject.cdice}
+    if(isCritical){
+    dice*=2+bon
     return dice
+}
+else {return dice}
 }
 
 
@@ -182,12 +186,12 @@ function getProficiency(player: Player): number {
 }
 
 //do not use yet! sketching idea
-function savethrow(source, target, sourceability: Ability, tability: Ability, bonus?: number) {
+export function savethrow(source, target, tability: Ability, sourceability?, bonus?: number) {
     var dc
     if (source instanceof Player) {
         dc = 8 + getMod(source, sourceability) + getProficiency(source) + bonus
     }
-    if (source instanceof Number) {
+    if (!isNaN(source)) {
         dc = source
     }
 
@@ -198,23 +202,24 @@ function savethrow(source, target, sourceability: Ability, tability: Ability, bo
             probonus = getProficiency(target)
         }
         var saferoll = abilityRoll(target, tability).value + probonus
-        if (saferoll >= dc) { return 'pass' }
-        else { return 'fail' }
+        if (saferoll >= dc) 
+            { return {test:'succeeded', dc:dc, roll:saferoll} }
+             else { return {test:'failed', dc:dc, roll:saferoll }}
 
-    }
+   }
 
     if (target instanceof Enemy) {
-        var i
-        var result
-        if (target.safethrowbonus[tability]) {
-            result = roll20('none').value + target.safethrowbonus[tability]
+       var i
+       var result
+       if (target.safethrowbonus[tability]) {
+           result = roll20('none').value + target.safethrowbonus[tability]
         }
         else {
-            result = roll20('none').value + getMod(target, tability)
+           result = roll20('none').value + getMod(target, tability)
         }
 
-        if (result >= dc) { return 'pass' }
-        else { return 'fail' }
+        if (result >= dc) { return {test:'succeeded', dc:dc, roll:result }}
+        else { return {test:'failed', dc:dc, roll:result }}
 
     }
 

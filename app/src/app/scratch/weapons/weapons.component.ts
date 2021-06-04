@@ -121,7 +121,7 @@ export class WeaponsComponent implements OnInit {
     document.getElementById('atak').classList.add('atta');
 
     document.getElementById('dama').classList.remove('damma');
-    document.getElementById('dama').style.fontSize=18+attack+'px'
+    document.getElementById('dama').style.fontSize=18+attack*1.2+'px'
 
     void document.getElementById('dama').offsetWidth;
     document.getElementById('dama').classList.add('damma');

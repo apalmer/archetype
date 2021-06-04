@@ -9769,7 +9769,8 @@ export const enemyData = [
           "name": "Hurl Flame",
           "desc": "Ranged Spell Attack: +7 to hit, range 150 ft., one target. Hit: 14 (4d6) fire damage. If the target is a flammable object that isn't being worn or carried, it also catches fire.",
           "attack_bonus": 7,
-          "damage_dice": "4d6"
+          "damage_dice": "4d6",
+          
         }
       ]
     },

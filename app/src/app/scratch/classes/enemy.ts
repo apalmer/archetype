@@ -1,3 +1,4 @@
+import { ɵBrowserGetTestability } from "@angular/platform-browser";
 import { Combatant } from "./combatant";
 import { Ability, DamageType, Skill } from "./dice";
 import { enemyData } from "./enemy-data";
@@ -14,6 +15,7 @@ export class Action {
     description: string;
     attackBonus: number;
     damage?: DamageInfo[];
+    save?:any;
 }
 
 export class Enemy extends Combatant {
@@ -82,16 +84,35 @@ export class Enemy extends Combatant {
                 action.description = dataAction.desc;
                 action.attackBonus = dataAction.attack_bonus;
 
+                let dcparser=dataAction.desc.match(/(DC) (\d*) (\w+)/)
+                function beAbility(longab){
+                    if (longab==='Constitution'){longab='CON'}
+                    else if (longab==='Strength'){longab='STR'}
+                    else if (longab==='Dexterity'){longab='DEX'}
+                    else if (longab==='Intelligence'){longab='INT'}
+                    else if (longab==='Wisdom'){longab='WIS'}
+                    else if (longab==='Charisma'){longab='CHR'}
+                    else {longab=null}
+                    return longab
+            
+
+                }
+                if (dcparser)
+               {
+                    action.save={DC:dcparser[2], ability:beAbility(dcparser[3])}
+              }
+
                 if (dataAction.damage_dice || dataAction.damage_bonus) {
                     action.damage = new Array<DamageInfo>();
                     let first:DamageInfo = new DamageInfo();
                     let second:DamageInfo = null;
                     let typeparser = dataAction.desc.match(/(?<=\(\d*d.*\) )\w+/g)
 
-                    if (dataAction.damage_bonus) {
+                   if (dataAction.damage_bonus) {
                         first.bonus = dataAction.damage_bonus;
                         first.type=typeparser[0]
-                    }
+                   }
+                   else{first.bonus=0;first.type=typeparser[0]}
                     if (dataAction.damage_dice) {
 
                         let damageParser: RegExpMatchArray = dataAction.damage_dice.match(/(\d+)d(\d+)((\s*\+*\s*)(\d+)d(\d+))*/);

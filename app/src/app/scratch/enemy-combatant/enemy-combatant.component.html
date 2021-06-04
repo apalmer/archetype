@@ -47,6 +47,7 @@
                     {{act.description}}
                     <div>
                     <button class='useact' (click)='attack(act)' *ngIf=act.attackBonus>Use</button>
+                    <button class='assact' (click)='assault(act)' *ngIf='act.save'>Assault {{aresult}}</button>
                     </div>
                 </div>
 

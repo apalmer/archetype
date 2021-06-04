@@ -161,9 +161,11 @@
 
 }
 
-.useact{
+.useact,.assact{
     background-color: darkred;
     color: whitesmoke;
     transform: skewX(-30deg);
     border-radius: 8px;
 }
+
+.assact{background-color: orangered;}

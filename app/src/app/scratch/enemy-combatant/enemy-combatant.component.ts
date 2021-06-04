@@ -15,6 +15,7 @@ export class EnemyCombatantComponent implements OnInit {
   onoff='hidden'
   
   tes={}
+  aresult
     
 
 
@@ -46,6 +47,10 @@ export class EnemyCombatantComponent implements OnInit {
 
   showactiontip($event, i){
 
+    
+  }
+  assault(act){
+     this.aresult=this.game.assaultplayer(act)
     
   }
 

@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Player } from '../classes/player';
 import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
-import {rage} from '../classes/features'
+import {brutalcrit, rage} from '../classes/features'
 
 
 ///////////////////////////////////////////////
@@ -191,6 +191,7 @@ export class CharacterDataService {
     solplay.armorClass=18
     solplay.features=[rage]
     solplay.bio.visuals.rage='assets/images/solrg.gif'
+    solplay.features.push(brutalcrit)
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];
 

@@ -14,9 +14,9 @@ export class Encounter {
         
         this.enemies = Array<Enemy>();
         
-        this.adult = new Enemy('Adult Black Dragon')
+        this.adult = new Enemy('Horned Devil')
         this.black = new Enemy('Young Silver Dragon');
-        this.drago = new Enemy('Ancient Green Dragon');
+        this.drago = new Enemy('Hyena');
 
         this.enemies.push(this.adult);
         this.enemies.push(this.black);

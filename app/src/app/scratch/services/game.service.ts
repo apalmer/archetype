@@ -7,6 +7,7 @@ import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 import { CharacterDataService } from './character-data.service';
+import { savethrow} from '../classes/dice'
 
 /////////////////////////////////////////////////////////
 // Wrapper for the core game logic, Integration between game engine classes and angular
@@ -63,6 +64,12 @@ export class GameService {
 
   attackPlayer(enattackOptions:Action): void {
     this.engine.combatSystem.attack(this.target, this.player.value, enattackOptions);
+  }
+
+  assaultplayer(act){
+    let end=savethrow(act.save.DC,this.player.value,act.save.ability)
+
+    return end.test
   }
 
 }

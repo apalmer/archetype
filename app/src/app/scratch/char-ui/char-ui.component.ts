@@ -47,7 +47,7 @@ export class CharUIComponent implements OnInit {
   dmgsize
   dmgopac=0
   rcolor='blue'
-
+  
 
   constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
 
@@ -66,6 +66,8 @@ export class CharUIComponent implements OnInit {
         this.anim = this.charc.bio.visuals.idle;
       }
     );
+
+    
 
     this.characterService.get().subscribe(
       characters => this.characterCandidates = characters
@@ -235,13 +237,21 @@ export class CharUIComponent implements OnInit {
       this.ntage = 'No Vantage'
       this.advantages = 'non'
       this.charc.advantage = this.advantages
+      
     }
+    
   }
   
 
   ngOnInit(): void {
     document.body.style.overflow = 'hidden'
     //document.body.style.backgroundColor='black'
+    //function featinit()
+    let ipsos=0
+      for (ipsos=0;ipsos<this.charc.features.length;ipsos++)
+        {this.charc.features[ipsos].start(this.charc)}
+   // }
+   // featinit()
 
   }
   
