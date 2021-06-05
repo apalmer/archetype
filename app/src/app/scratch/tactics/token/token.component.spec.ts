@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TokenData } from '../classes/token-data';
 
 import { TokenComponent } from './token.component';
 
@@ -16,6 +17,7 @@ describe('TokenComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TokenComponent);
     component = fixture.componentInstance;
+    component.data = new TokenData();
     fixture.detectChanges();
   });
 

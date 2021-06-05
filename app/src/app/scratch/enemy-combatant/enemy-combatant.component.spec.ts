@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Enemy } from '../classes/enemy';
 
 import { EnemyCombatantComponent } from './enemy-combatant.component';
 
@@ -16,6 +17,7 @@ describe('EnemyCombatantComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EnemyCombatantComponent);
     component = fixture.componentInstance;
+    component.enemy = new Enemy();
     fixture.detectChanges();
   });
 
