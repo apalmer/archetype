@@ -27,6 +27,6 @@ describe('dice', () => {
     player.proficiencies.skills = ["athletics"];
     let thing = "athltics";
     let actual:boolean = isproficient(player,thing);
-    expect(actual).toBeTrue();
+    expect(actual).toBeFalse();
   });
 });

@@ -2,6 +2,6 @@ import { Grid } from './grid';
 
 describe('Grid', () => {
   it('should create an instance', () => {
-    expect(new Grid()).toBeTruthy();
+    expect(new Grid(10,10)).toBeTruthy();
   });
 });
