@@ -10,6 +10,7 @@ import { MaproundComponent } from './mapround/mapround.component';
 import { EnemyComponent } from './enemy/enemy.component';
 import { SpelloComponent } from './spello/spello.component';
 import { DebuggerComponent } from './debugger/debugger.component';
+import { SavethroComponent } from './savethro/savethro.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'mapro', component: MaproundComponent },
   { path: 'enemmon', component: EnemyComponent },
   { path: 'spello', component: SpelloComponent },
+  { path: 'save' , component: SavethroComponent},
   { path: 'debugger', component: DebuggerComponent },
   { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) },
   { path: 'tactics', loadChildren: () => import('./tactics/tactics.module').then(m => m.TacticsModule) }

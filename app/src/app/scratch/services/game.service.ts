@@ -68,8 +68,11 @@ export class GameService {
 
   assaultplayer(act){
     let end=savethrow(act.save.DC,this.player.value,act.save.ability)
+    this.engine.combatSystem.safeevent(end)
 
     return end.test
+
+    
   }
 
 }

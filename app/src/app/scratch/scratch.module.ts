@@ -15,6 +15,7 @@ import { SpelloComponent } from './spello/spello.component';
 import { DebuggerComponent } from './debugger/debugger.component';
 import { EnemyCombatantComponent } from './enemy-combatant/enemy-combatant.component';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { SavethroComponent } from './savethro/savethro.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     EnemyComponent,
     SpelloComponent,
     DebuggerComponent,
-    EnemyCombatantComponent
+    EnemyCombatantComponent,
+    SavethroComponent
   ],
   imports: [
     CdkTreeModule,

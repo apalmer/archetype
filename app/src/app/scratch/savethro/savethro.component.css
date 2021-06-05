@@ -1,0 +1,47 @@
+.throwbox{
+    position:absolute;
+    right: 500px;
+    top: 200px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    transition: opacity .4s;
+
+}
+.x{position: absolute;transition: transform .1s, top .1s}
+
+.dc, .roll, .rezult{
+    position:absolute;
+    font-size: 50px;
+    color: cornflowerblue;
+    text-shadow: 
+    -1px 1px 2px #fff,
+    1px 1px 2px #fff,
+    1px -1px 0 #fff,
+    -1px -1px 0 #fff;
+    transition: font-size 1s, opacity .6s, width .1s, height .1s;
+}
+
+.roll{
+    transform: rotate(-720deg);
+    position:absolute;
+    right: 150px;
+    color: slategray;
+    font-size: 22px;
+    transition: transform .5s ease-out, right 1s, top 1s, opacity .5s, font-size 1s;
+}
+
+.rezult{
+    position:absolute;
+    right: 200px;
+    color: gold;
+    font-size: 25px;
+    transition: right 1s, opacity .5s, transform .8s;
+
+    
+
+}
+
+.louie{
+    background-color: green;
+    position: absolute;
+    top: 180px; 
+    color:white}
