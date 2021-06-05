@@ -51,7 +51,7 @@ function roll20(advantage: Advantage, bonus?: number) {
     if (value === 1) {
         critical = "failure";
     }
-    else if (value === 20) {
+    else if (value===20) {
         critical = "success";
     }
     else {
