@@ -16,6 +16,7 @@ export class EnemyCombatantComponent implements OnInit {
   
   tes={}
   aresult
+  tipswitch
     
 
 
@@ -52,6 +53,13 @@ export class EnemyCombatantComponent implements OnInit {
   assault(act){
      this.aresult=this.game.assaultplayer(act)
     
+  }
+
+  tipper(event,i){
+    if (this.tipswitch===i)
+    {this.tipswitch=null}
+    else{
+    this.tipswitch=i}
   }
 
 }

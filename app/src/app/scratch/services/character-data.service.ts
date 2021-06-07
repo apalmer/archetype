@@ -192,6 +192,7 @@ export class CharacterDataService {
     solplay.features=[rage]
     solplay.bio.visuals.rage='assets/images/solrg.gif'
     solplay.features.push(brutalcrit)
+    solplay.proficiencies.saves.push("STR","CON")
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];
 

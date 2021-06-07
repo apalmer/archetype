@@ -99,9 +99,9 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
     let roll = roll20(combatant.advantage);
     roll.value += mod;
 
-    if (proficiencyApplies(combatant)) {
-        roll.value += getProficiency(combatant as Player);
-    }
+   // if (proficiencyApplies(combatant)) {
+      //  roll.value += getProficiency(combatant as Player);
+   // }
 
     return roll;
 }
@@ -196,12 +196,12 @@ export function savethrow(source, target, tability: Ability, sourceability?, bon
     }
 
     if (target instanceof Player) {
-        var probonus = 0
+        let probonus = 0
         //maybe have alert and a response functiom later. automated for now
         if (isproficient(target, tability)) {
             probonus = getProficiency(target)
         }
-        var saferoll = abilityRoll(target, tability).value + probonus
+        let saferoll = abilityRoll(target, tability).value +probonus
         if (saferoll >= dc) 
             { return {test:'succeeded', dc:dc, roll:saferoll} }
              else { return {test:'failed', dc:dc, roll:saferoll }}

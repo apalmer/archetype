@@ -40,20 +40,24 @@
             </div>
         </div>
 
-        <div class='eactionbox'><div class='actitle'>Actions</div>
-            <div class='eachaction'*ngFor='let act of enemy.actions;index as i'>
-                <div class='eachaction'(click)='tes["o"+i]=!tes["o"+i]'>{{act.name}}</div> 
-                <div class='actiontip' *ngIf='tes["o"+i]'>
+        <div class='eactionbox'><div class='actitle'>Actions
+
+        </div>
+            
+            <div class='eachaction'*ngFor='let act of enemy.actions;index as i' [ngSwitch]='tipswitch'>
+                <div class='eachaction'(click)='tipper($event,i)'>{{act.name}}
+
+                </div> 
+                <div class='actiontip' *ngSwitchCase='i'>
                     {{act.description}}
                     <div>
                     <button class='useact' (click)='attack(act)' *ngIf=act.attackBonus>Use</button>
                     <button class='assact' (click)='assault(act)' *ngIf='act.save'>Assault</button>
                     </div>
                 </div>
-
-
             </div>
-        </div>
+            
+        
         
     </div>
 </div>
