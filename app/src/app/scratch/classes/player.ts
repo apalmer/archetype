@@ -23,7 +23,8 @@ export class Player extends Combatant {
 
         this.name = "WuTang";
         this.hitPoints = this.maxHitPoints = 20;
-        this.armorClass = 12
+        
+        
         this.abilities = {
             "CHR": 10,
             "CON": 10,
@@ -44,12 +45,17 @@ export class Player extends Combatant {
         this.weapons=[]
         this.resistances=[{}]
         this.actives=[]
+        this.armorClass=12
+        
+        
+
+    }
     
         
         
         
         
-    }
+    
 
 
     get TotalLevel(): number {
@@ -65,4 +71,21 @@ export class Player extends Combatant {
             return tlvl
         }
     }
+
+        get armorClas():number{
+            let ac=10
+            if(this.classes.find(b=>b.class==='Monk')){
+            ac= ((this.abilities.DEX+this.abilities.WIS-20)/2)+10
+        }
+            else if(this.classes.find(b=>b.class==='Barbarian')){
+                ac= ((this.abilities.STR+this.abilities.CON-20)/2)+10}
+            return ac}
+    
+    
+    
+    
+    
+
+    
+    
 }

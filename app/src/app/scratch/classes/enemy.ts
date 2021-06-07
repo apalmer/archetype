@@ -32,6 +32,7 @@ export class Enemy extends Combatant {
     //immunity for conditions
     challenge: any;
     traits: any
+    
 
 
 

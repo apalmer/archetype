@@ -9,14 +9,14 @@ import { Player } from "./player";
 import { Action, DamageInfo } from "./enemy";
 
 export class CombatSystem {
-    private combatEventSource: Subject<GameEvent> = new Subject<GameEvent>();
+    public combatEventSource: Subject<GameEvent> = new Subject<GameEvent>();
     combatEvents: Observable<GameEvent> = this.combatEventSource.asObservable();
 
     constructor() {
 
     }
 
-    attack(source, target: Combatant, attackOption) {
+    attack(source, target, attackOption) {
         let attack
         let weapon
         if(source instanceof Player){var tacker='play'}

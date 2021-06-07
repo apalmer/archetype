@@ -247,9 +247,9 @@ export class CharUIComponent implements OnInit {
     document.body.style.overflow = 'hidden'
     //document.body.style.backgroundColor='black'
     //function featinit()
-    let ipsos=0
-      for (ipsos=0;ipsos<this.charc.features.length;ipsos++)
-        {this.charc.features[ipsos].start(this.charc)}
+    //let ipsos=0
+     // for (ipsos=0;ipsos<this.charc.features.length;ipsos++)
+      //  {this.charc.features[ipsos].start(this.charc)}
    // }
    // featinit()
 

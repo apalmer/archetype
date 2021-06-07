@@ -71,7 +71,7 @@ export function ActAttackRoll(combatant, action:Action){
 
 export function attackRoll(combatant,weapon:Weapon) {
     let mod
-if (combatant.features.includes('MartialArts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
+if (combatant.features.find(b=>b.name==='Martial Arts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
     mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "DEX"))}
         else{
 
@@ -110,7 +110,7 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
     dice: number, sides: number, isCritical?: boolean, bonus?) {
         let mod
 
-    if (combatant.features.includes('MartialArts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
+    if (combatant.features.find(c=>c.name==='Martial Arts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
         mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "DEX"))}
         else{
     

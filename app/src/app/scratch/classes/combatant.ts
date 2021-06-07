@@ -4,7 +4,7 @@ export class Combatant {
     name:string;
     hitPoints:number;
     maxHitPoints:number;
-    armorClass:number;
+    armorClass:any;
     icon:string;
     resistances:any [] =[]
     conditions:any={rage:'off'}

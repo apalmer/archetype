@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Player } from '../classes/player';
 import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
-import {brutalcrit, rage} from '../classes/features'
+import {brutalcrit, ki, martial, rage, recklessAttack} from '../classes/features'
 
 
 ///////////////////////////////////////////////
@@ -141,7 +141,7 @@ export class CharacterDataService {
     gio.name = 'Gio Vanna'
     gio.abilities = { STR: 10, DEX: 14, CON: 16, INT: 9, WIS: 18, CHR: 9 }
     gio.hitPoints = gio.maxHitPoints = 54
-    gio.armorClass = 10
+    gio.armorClass=gio.armorClas
     gio.icon = '("assets/images/gioicon.png")'
     gio.classes = [{ class: 'Monk', lvl: 6 }]
     gio.proficiencies.weapon.push('Shortsword')
@@ -153,7 +153,7 @@ export class CharacterDataService {
     gio.bio.visuals.atk1 = 'assets/images/gio2.gif'
     gio.weapons.push(thugery)
     gio.features = []
-    gio.features.push('MartialArts')
+    //gio.features.push(martial)
 
     function dndPlayerform(dman: Dndchar) {
       let person = new Player();
@@ -178,7 +178,8 @@ export class CharacterDataService {
       person.bio.visuals.atk1 = dman.bio.atkan
       person.bio.visuals.rage = dman.bio.idlrag
       person.weapons = []
-      person.weapons.push(dman.items[0], dman.items[1])
+      person.weapons.push(dman.items[1])
+      person.features=[]
 
       return person
     }
@@ -188,13 +189,23 @@ export class CharacterDataService {
     let jamplay = dndPlayerform(jam)
     let applay = dndPlayerform(apbot)
     let rathpl = dndPlayerform(rlet)
-    solplay.armorClass=18
+    solplay.armorClass=solplay.armorClas
     solplay.features=[rage]
     solplay.bio.visuals.rage='assets/images/solrg.gif'
-    solplay.features.push(brutalcrit)
+    solplay.features.push(brutalcrit,recklessAttack)
     solplay.proficiencies.saves.push("STR","CON")
+    gio.armorClass=gio.armorClas
+    gio.features.push(martial,ki)
+    
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];
+    var j
+    for (j=0;j<this._characters.length;j++){
+
+    var ipsos=0
+      for (ipsos=0;ipsos<this._characters[j].features.length;ipsos++)
+        {this._characters[j].features[ipsos].start(this._characters[j])}
+    }
 
     return this._characters;
   }

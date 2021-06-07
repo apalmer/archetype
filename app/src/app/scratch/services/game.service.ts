@@ -75,4 +75,8 @@ export class GameService {
     
   }
 
+  activesFeed(player, activename){
+    this.engine.combatSystem.combatEventSource.next({type:'Combat',payload:{player:player.name, active:activename}})
+  }
+
 }
