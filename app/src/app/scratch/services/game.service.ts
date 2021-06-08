@@ -17,6 +17,7 @@ import { Ability, savethrow} from '../classes/dice'
   providedIn: 'root'
 })
 export class GameService {
+  ini
   private engine: GameEngine;
   public target: Combatant;
 
@@ -74,8 +75,8 @@ export class GameService {
     
   }
 
-  assaultother(tability,sourceability){
-    let end=savethrow(this.player.value,this.target,tability,sourceability)
+  assaultother(player, tability,sourceability){
+    let end=savethrow(player,this.target,tability,sourceability)
     this.engine.combatSystem.safeevent(end)
     return end.test
   }

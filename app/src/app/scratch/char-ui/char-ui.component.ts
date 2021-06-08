@@ -7,6 +7,7 @@ import { GameService } from '../services/game.service';
 import { Player } from '../classes/player';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CharacterDataService } from '../services/character-data.service';
+import { Ability } from '../classes/dice';
 
 
 export var charc; //=dndplay[0]
@@ -47,7 +48,7 @@ export class CharUIComponent implements OnInit {
   dmgsize
   dmgopac=0
   rcolor='blue'
-  
+  ender
 
   constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
 
@@ -73,6 +74,13 @@ export class CharUIComponent implements OnInit {
       characters => this.characterCandidates = characters
     );
 
+  }
+
+  stuntest(player, ab1:Ability, ab2:Ability)
+  {
+    this.ender=this.game.assaultother(player,ab1,ab2)
+    return this.ender
+    
   }
 
 

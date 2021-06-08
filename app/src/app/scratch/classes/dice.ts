@@ -188,8 +188,10 @@ function getProficiency(player: Player): number {
 //do not use yet! sketching idea
 export function savethrow(source, target, tability: Ability, sourceability?, bonus?: number) {
     var dc
+    var ronus=0
+    if(bonus){ronus=bonus}
     if (source instanceof Player) {
-        dc = 8 + getMod(source, sourceability) + getProficiency(source) + bonus
+        dc = 8 + getMod(source, sourceability) + getProficiency(source) + ronus
     }
     if (!isNaN(source)) {
         dc = source

@@ -6,8 +6,11 @@ import { Input } from '@angular/core';
 import {savethrow} from '../classes/dice'
 import { GameEngine } from './game-engine';
 import {CharacterDataService} from '../services/character-data.service'
+import { buildMapFromList } from '@angular/flex-layout/extended/typings/style/style-transforms';
+
 
  
+
 export class Feature{
     name:string;
     desc:string;
@@ -169,6 +172,8 @@ stunstrike.start=function (player){
   player.actives.push(stunstrike)
 }
 stunstrike.on=function (player){
+  
+  
   
   
 
