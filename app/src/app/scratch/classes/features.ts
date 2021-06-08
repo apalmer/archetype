@@ -2,20 +2,26 @@
 import {weaponDamageRoll} from '../classes/dice'
 import { Weapon } from './weapon';
 import {GameService} from '../services/game.service'
+import { Input } from '@angular/core';
+import {savethrow} from '../classes/dice'
+import { GameEngine } from './game-engine';
+import {CharacterDataService} from '../services/character-data.service'
 
  
-
-
-
 export class Feature{
     name:string;
     desc:string;
     scrap:any;
     
+    
     start(player?){}
     on(player?){}
     off(player?){}
+
+   constructor(){}
+    
 }
+
 
 export var rage= new Feature
 
@@ -66,7 +72,6 @@ rage.start=function(player?){
  brutalcrit.name='Brutal Critical'
  brutalcrit.desc='you can roll one additional weapon damage die when determining the extra damage for a critical hit with a melee Attack.This increases to two additional dice at 13th level and three additional dice at 17th level.'
  brutalcrit.start=function(player){
-   player.actives.push(brutalcrit)
    let bb
    let bblvl=player.classes.find(b=>b.class==='Barbarian').lvl
    if (bblvl>8){bb=1}
@@ -127,7 +132,9 @@ ki.start=function(player){
   flurry.desc='Immediately after you take the Attack action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action.'
   flurry.on=function(player){
     let kiref=player.resources.find(b=>b.name==='Ki')
-    kiref.min-=1
+    if (kiref.min===0){alert('You need a short Meditation')}
+    else{
+    kiref.min-=1}
     
   }
 
@@ -136,8 +143,9 @@ ki.start=function(player){
   patient.desc='You can spend 1 ki point to take the Dodge action as a bonus action on your turn'
   patient.on=function(player){
     let kiref=player.resources.find(b=>b.name==='Ki')
-    kiref.min-=1
-    
+    if (kiref.min===0){alert('You need a short Meditation')}
+    else{
+    kiref.min-=1}
   }
 
   const step=new Feature
@@ -145,11 +153,25 @@ ki.start=function(player){
   step.desc='You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn'
   step.on=function(player){
     let kiref=player.resources.find(b=>b.name==='Ki')
-    kiref.min-=1
+    if (kiref.min===0){alert('You need a short Meditation')}
+    else{
+    kiref.min-=1}
     
   }
 
   player.actives.push(flurry,patient,step)
+}
+
+export var stunstrike=new Feature
+stunstrike.name='Stunning Strike'
+stunstrike.desc="you can interfere with the flow of ki in an opponent's body. When you ht another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn."
+stunstrike.start=function (player){
+  player.actives.push(stunstrike)
+}
+stunstrike.on=function (player){
+  
+  
+
 }
 
 

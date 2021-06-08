@@ -1,0 +1,21 @@
+<div class='actibox'>
+    <div class='ocirc'
+    [style.transform]='ocsize'
+    [style.borderColor]='ocolo'
+    [style.opacity]='opec'>
+    <div class='circle'
+    [style.backgroundColor]='ocolo'>
+
+
+    </div>
+    </div><div class="usecase" (click)='useAc()'[style.color]='ocolor'>Use {{actfeat}}</div>
+    <div class='actibox2' [ngSwitch]='switchact' style='margin-top:10px;'>
+        <div class='activs'  (click)="swi(activs,i)" *ngFor='let activs of charp.actives;let i = index'>
+            <div class='activsname'>{{activs.name}}</div>
+            <div class='descbox' *ngSwitchCase='i'>{{activs.desc}}</div>
+        </div>
+
+    </div>
+
+
+</div>

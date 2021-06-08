@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Player } from '../classes/player';
 import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
-import {brutalcrit, ki, martial, rage, recklessAttack} from '../classes/features'
+import {brutalcrit, ki, martial, rage, recklessAttack, stunstrike} from '../classes/features'
 
 
 ///////////////////////////////////////////////
@@ -195,7 +195,8 @@ export class CharacterDataService {
     solplay.features.push(brutalcrit,recklessAttack)
     solplay.proficiencies.saves.push("STR","CON")
     gio.armorClass=gio.armorClas
-    gio.features.push(martial,ki)
+    gio.features.push(martial,ki,stunstrike)
+
     
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];

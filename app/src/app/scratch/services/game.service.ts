@@ -1,4 +1,4 @@
-import { Injectable, Input, Output } from '@angular/core';
+import { Attribute, Injectable, Input, Output } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Combatant } from '../classes/combatant';
 import { Action, Enemy } from '../classes/enemy';
@@ -7,7 +7,7 @@ import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 import { CharacterDataService } from './character-data.service';
-import { savethrow} from '../classes/dice'
+import { Ability, savethrow} from '../classes/dice'
 
 /////////////////////////////////////////////////////////
 // Wrapper for the core game logic, Integration between game engine classes and angular
@@ -18,7 +18,7 @@ import { savethrow} from '../classes/dice'
 })
 export class GameService {
   private engine: GameEngine;
-  private target: Combatant;
+  public target: Combatant;
 
   // The Real Instance of Player that is used by the entire app
   player: BehaviorSubject<Player>;
@@ -71,12 +71,22 @@ export class GameService {
     this.engine.combatSystem.safeevent(end)
 
     return end.test
-
     
+  }
+
+  assaultother(tability,sourceability){
+    let end=savethrow(this.player.value,this.target,tability,sourceability)
+    this.engine.combatSystem.safeevent(end)
+    return end.test
   }
 
   activesFeed(player, activename){
     this.engine.combatSystem.combatEventSource.next({type:'Combat',payload:{player:player.name, active:activename}})
   }
+
+  bom(tab:Ability, low:Ability){
+   let bang=tab+low
+  }
+  
 
 }

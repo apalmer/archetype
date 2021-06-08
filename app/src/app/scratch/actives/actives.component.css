@@ -1,0 +1,73 @@
+.actibox{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    font-size: 20px;
+    width: 300px;
+    line-height: 120%;
+  /*  border: solid skyblue;*/
+
+    /*line-height: 150%;*/
+}
+
+.actibox2{
+    position: absolute;
+    left: 25px;
+   /* border: dashed goldenrod;*/
+    padding: 3px;
+
+}
+
+.activs{
+    width: 500px;
+    
+}
+
+.activsname:hover{
+    color: cornflowerblue;
+
+}
+
+.descbox{
+    line-height: 14px;
+    width: 300px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    position:absolute;
+    right:0px;
+    top:0px
+}
+
+.circle{
+    margin:auto;
+    width: 40px;
+    height: 40px;
+    background-color: darkred;
+    border-radius:50%;
+    transition: color .5s;
+    
+}
+
+.ocirc{
+    position: relative;
+    left:25px;
+    width:42px;
+    height: 42px;
+    border-radius: 50%;
+    border: solid darkred;
+    border-width: 5px;
+    transition: color 1s, transform 1s, opacity 1s;
+}
+
+.usecase{
+    transition: color .8s;
+    color: white;
+    position:absolute;
+    left:45px;
+    top:15px;
+    font-size: 35px;
+    text-shadow: 
+    -1px 1px 1px #000,
+    1px 1px 1px #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+}

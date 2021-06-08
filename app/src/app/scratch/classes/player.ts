@@ -17,6 +17,7 @@ export class Player extends Combatant {
     actives:Array<any>=[]
     skills:Array<{name:Skill, value:number}>
     weapons:Array<any>=[]
+    speed:number
 
     constructor() {
         super();
@@ -46,6 +47,7 @@ export class Player extends Combatant {
         this.resistances=[{}]
         this.actives=[]
         this.armorClass=12
+        this.speed=30
         
         
 
