@@ -6,7 +6,6 @@ import { Input } from '@angular/core';
 import {savethrow} from '../classes/dice'
 import { GameEngine } from './game-engine';
 import {CharacterDataService} from '../services/character-data.service'
-import { buildMapFromList } from '@angular/flex-layout/extended/typings/style/style-transforms';
 
 
  
@@ -15,6 +14,7 @@ export class Feature{
     name:string;
     desc:string;
     scrap:any;
+    subject:string;
     
     
     start(player?){}
@@ -166,6 +166,7 @@ ki.start=function(player){
 }
 
 export var stunstrike=new Feature
+stunstrike.subject='others'
 stunstrike.name='Stunning Strike'
 stunstrike.desc="you can interfere with the flow of ki in an opponent's body. When you ht another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn."
 stunstrike.start=function (player){
@@ -173,11 +174,15 @@ stunstrike.start=function (player){
 }
 stunstrike.on=function (player){
   
-  
-  
-  
-
-}
+  function onon(target){
+    let kiref=player.resources.find(b=>b.name==='Ki')
+    if (kiref.min===0){alert('You need a short Meditation')}
+    else{
+    kiref.min-=1
+    return savethrow(player,target,'CON','WIS')}
+  } 
+  return onon
+  }
 
 
 

@@ -29,8 +29,7 @@ export class ActivesComponent implements OnInit {
   }
 
   useAc(){
-    let newi=this.charp.actives.find(b=>b.name===this.actfeat)
-    newi.on(this.charp)
+    this.game.featonother(this.actfeat,this.charp)
     this.ocsize="scale(2,2)"
     this.opec=0
     this.ocolo= 'gold'

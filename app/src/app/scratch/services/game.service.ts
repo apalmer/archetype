@@ -85,8 +85,20 @@ export class GameService {
     this.engine.combatSystem.combatEventSource.next({type:'Combat',payload:{player:player.name, active:activename}})
   }
 
-  bom(tab:Ability, low:Ability){
-   let bang=tab+low
+  featonother(featname,player){
+    
+    let feat=player.actives.find(b=>(b.name===featname))
+    if (feat.subject==='others'){
+    let featactive=feat.on(player)
+    let end=featactive(this.target)
+    this.engine.combatSystem.safeevent(end)}
+    else{
+      feat.on(player)
+    }
+
+
+     
+
   }
   
 
