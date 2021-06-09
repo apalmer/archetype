@@ -32,6 +32,10 @@ rage.name='Rage'
 rage.desc='rage does stuff'
 
 rage.on=function(player){
+    if(player.conditions.rage==='on'){rage.off(player)}
+    else{
+    let rages=player.resources.find(b=>b.name==='Rage')
+    rages.min-=1
     player.resistances.push(
       {type:'slashing', value:.5, source:'rage'},
       {type:'piercing', value:.5, source:'rage'},
@@ -45,6 +49,7 @@ rage.on=function(player){
     
     player.bonusobject.dmg+=bb
     player.conditions.rage='on'
+  }
 
 }
 rage.off=function(player){
