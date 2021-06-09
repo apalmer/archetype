@@ -93,7 +93,8 @@ export class GameService {
     let end=featactive(this.target)
     this.engine.combatSystem.safeevent(end)}
     else{
-      feat.on(player)
+      let end=feat.on(player)
+      this.engine.combatSystem.safeevent(end)
     }
 
 

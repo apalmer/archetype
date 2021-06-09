@@ -27,8 +27,8 @@ export class SavethroComponent implements OnInit {
 
   constructor(private game: GameService) {
     this.game.eventFeed.subscribe(zoom => {
-      if (zoom.payload.dc) {
-        this.gosave(zoom.payload.dc, zoom.payload.roll, zoom.payload.test)
+      if (zoom.payload.end) {
+        this.gosave(zoom.payload.end.dc, zoom.payload.end.roll, zoom.payload.end.test)
       }
     })
 

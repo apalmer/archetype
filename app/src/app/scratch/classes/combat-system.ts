@@ -75,6 +75,6 @@ export class CombatSystem {
 
     safeevent(end){
 
-        this.combatEventSource.next({ type: 'Combat', payload:{dc:end.dc, roll:end.roll, test:end.test}})
+        this.combatEventSource.next({ type: 'Combat', payload:{end}})
     }
 }

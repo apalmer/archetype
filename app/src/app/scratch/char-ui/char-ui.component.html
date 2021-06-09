@@ -60,7 +60,7 @@
     <button class="press" (click)='stuntest(charc,"CON","WIS")'[style.backgroundColor]='rcolor'>R A G E</button>
 
 </div>
-<div class='vatar' (click)='avlayout()'[style.right]='avright2'><img id='ata'[src]='anim' style='vertical-align:bottom;'></div>
+<div class='vatar' (click)='avlayout()'[style.right]='avright2'><img id='ata'[src]='anim' style='vertical-align:bottom;transition:filter 1s;'[style.filter]='mixo'></div>
 <div class=actUIbox (click)='actui1()'[style.top]='actiontop'>
 <app-actionui (atkan)='onattack()' [charc]='charc' [advantages]='advantages'></app-actionui>
 

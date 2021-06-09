@@ -49,6 +49,7 @@ export class CharUIComponent implements OnInit {
   dmgopac=0
   rcolor='blue'
   ender
+  mixo
 
   constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
 
@@ -68,11 +69,43 @@ export class CharUIComponent implements OnInit {
       }
     );
 
+    this.game.eventFeed.subscribe(boo=>
+      {
+        if(boo.payload.end.status){
+          this.animatestate(boo.payload.end)
+       }
+      }
+      )
+
     
 
     this.characterService.get().subscribe(
       characters => this.characterCandidates = characters
     );
+
+  }
+
+  animatestate(end){
+    if(end.status==='rage'&&end.state==='on'){
+      this.mixo='saturate(5)'
+      this.anim=this.charc.bio.visuals.rage
+    setTimeout(() => {
+      this.anim=this.charc.bio.visuals.idle
+    }, 1900);
+  }
+  if(end.status==='rage'&&end.state==='off'){
+    this.mixo='none'
+  }
+  }
+
+
+  emote(statusname,end){
+  if(end.status===statusname&&end.state==='on'&&this.charc.bio.visuals[statusname]){
+    this.anim=this.charc.bio.visuals[statusname]
+    setTimeout(() => {
+      this.anim=this.charc.bio.visuals.idle
+    }, 1900);
+  }
 
   }
 
