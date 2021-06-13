@@ -1,4 +1,5 @@
 <div id="form-container" *ngIf="form">
+    <button mat-button (click)="deleteCharacter()" [disabled]="!canDeleteCharacter">Delete</button>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div id="field-container">
             <mat-form-field>

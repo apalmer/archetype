@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { MatTreeNestedDataSource } from "@angular/material/tree";
@@ -22,12 +22,14 @@ export class ArchetypeEditorComponent implements OnInit {
   archetype: Archetype;
   treeControl: NestedTreeControl<PropertyNode>;
   dataSource: MatTreeNestedDataSource<PropertyNode>;
+  canDeleteArchetype: boolean;
 
   constructor(
     private archetypeService: ArchetypeService, 
     private schemaService: SchemaEditorService, 
     private dialog: MatDialog, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) {
     this.treeControl = new NestedTreeControl<PropertyNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource<PropertyNode>();
@@ -46,7 +48,9 @@ export class ArchetypeEditorComponent implements OnInit {
     this.archetypeService.getArchetype(archetypeId).subscribe(
       archtype => {
         this.archetype = archtype.data();
+        this.archetype.id = archetypeId;
         this.schemaService.loadFromJsonSchema(this.archetype.schema);
+        this.canDeleteArchetype = true;
       });
     }else{
       this.archetype = this.archetypeService.newArchetype();
@@ -64,7 +68,7 @@ export class ArchetypeEditorComponent implements OnInit {
     return node.type === 'object'
   }
 
-  addNewProperty(node): void {
+  addNewProperty(node:PropertyNode): void {
     const dialogRef = this.dialog.open(PropertyDialogComponent, {
       width: '250px',
       data: { name: '', type: '' }
@@ -78,9 +82,26 @@ export class ArchetypeEditorComponent implements OnInit {
     });
   }
 
+  canDeleteProperty(node:PropertyNode):boolean {
+    let root = this.dataSource.data[0];
+    return node !== root;
+  }
+
+  deleteProperty(node:PropertyNode): void{
+    this.schemaService.deleteProperty(this.dataSource.data[0], node);
+  }
+
   saveArchetype():void{
     console.log('saving archetype');
     this.archetype.schema = this.schemaService.getJsonSchema(this.dataSource.data);
     this.archetypeService.save(this.archetype); 
+  }
+
+  deleteArchetype():void{
+    console.log('deleting archetype');
+    this.archetypeService.delete(this.archetype)
+      .then(() => {
+        this.router.navigate(['archetypes'])
+      }); 
   }
 }

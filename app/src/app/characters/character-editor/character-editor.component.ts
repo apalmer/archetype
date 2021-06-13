@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
 
@@ -24,12 +24,14 @@ export class CharacterEditorComponent implements OnInit {
   form: FormGroup;
   schemaForm: SchemaFormGroup;
   data: SchemaFormGroup;
+  canDeleteCharacter: boolean;
 
   constructor(
     private characterService: CharacterService,
     private archetypeService: ArchetypeService,
     private editorFormService: EditorFormService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +43,9 @@ export class CharacterEditorComponent implements OnInit {
     if (characterId) {
       this.characterService.getCharacter(characterId).subscribe(
         character => {
-          this.onCharacterChange(character.data());
+          let data = character.data();
+          data.id = characterId;
+          this.onCharacterChange(data);
         });
     }
     else {
@@ -51,6 +55,9 @@ export class CharacterEditorComponent implements OnInit {
 
   onCharacterChange(character: Character) {
     this.character = character;
+    if (this.character.id) {
+      this.canDeleteCharacter = true;
+    }
 
     if (this.character.archetypeId) {
       this.onArchetypeChange(this.character.archetypeId);
@@ -86,5 +93,12 @@ export class CharacterEditorComponent implements OnInit {
     this.character.archetypeId = this.form.get('archetypeId').value;
     this.character.data = this.editorFormService.extractSchemaFormGroupData(this.data);
     this.characterService.save(this.character);
+  }
+
+  deleteCharacter(): void {
+    this.characterService.delete(this.character)
+      .then(() => {
+        this.router.navigate(['characters'])
+      });
   }
 }

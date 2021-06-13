@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { PropertyNode } from "../models/property-node";
 import { JsonSchema, JsonSchemaProperty } from "../../models/json-schema";
 import { BehaviorSubject } from 'rxjs';
+import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -90,5 +91,25 @@ export class SchemaEditorService {
     let data:PropertyNode[] = [];
     data.push(next);
     this.dataChange.next(data);
+  }
+  
+  deleteProperty(node: PropertyNode, childNode: PropertyNode) {
+    this.recursiveDeleteProperty(node,childNode);
+    
+    let next: PropertyNode = { name: this.data[0].name, type:this.data[0].type, properties: this.data[0].properties }
+    let data:PropertyNode[] = [];
+    data.push(next);
+    this.dataChange.next(data);     
+  }
+
+  recursiveDeleteProperty(node: PropertyNode, childNode: PropertyNode){
+    if(!node.properties){ return; }
+
+    if(node.properties.includes(childNode)) {
+      node.properties = node.properties.filter(item => item !== childNode);
+    }
+    else {
+      node.properties.forEach(property => this.deleteProperty(property, childNode));
+    }
   }
 }

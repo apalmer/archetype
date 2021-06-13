@@ -1,4 +1,5 @@
 <div *ngIf="archetype" class="container">
+    <button mat-button (click)="deleteArchetype()" [disabled]="!canDeleteArchetype">Delete</button>
     <mat-form-field>
         <mat-label>Archetype Name</mat-label>
         <input matInput [(ngModel)]="archetype.name">
@@ -16,6 +17,9 @@
                 <!-- use a disabled button to provide padding for tree leaf -->
                 <button mat-icon-button disabled></button>
                 {{node.name}}:{{node.type}}
+                <button mat-icon-button (click)="deleteProperty(node)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
             </li>
         </mat-tree-node>
 
@@ -32,6 +36,11 @@
                     <button mat-icon-button (click)="addNewProperty(node)">
                         <mat-icon>add</mat-icon>
                     </button>
+                    <div *ngIf="canDeleteProperty(node)">
+                        <button mat-icon-button (click)="deleteProperty(node)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </div>
                 </div>
                 <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
                     <ng-container matTreeNodeOutlet></ng-container>
@@ -46,6 +55,9 @@
                 {{node.name}}:{{node.type}}
                 <button mat-icon-button (click)="addNewProperty(node)">
                     <mat-icon>add</mat-icon>
+                </button>
+                <button mat-icon-button (click)="deleteProperty(node)">
+                    <mat-icon>delete_forever</mat-icon>
                 </button>
             </li>
         </mat-tree-node>
