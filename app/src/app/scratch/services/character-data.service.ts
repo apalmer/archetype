@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { getModuleFactory, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Player } from '../classes/player';
 import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
+import {getMod} from '../classes/dice'
 import {brutalcrit, ki, martial, rage, recklessAttack, stunstrike} from '../classes/features'
 
 
@@ -39,6 +40,7 @@ export class CharacterDataService {
     let dugery = dweapon('Barbed Dagger', 'Dugerous Blade', 'barbs.svg');
     let thugery = new Weapon('Quarterstaff')
     let axe = dweapon('Greataxe', "Garruks's Rages", 'gaxe.jpg')
+    let dag= new Weapon('Dagger')
 
     class Dndchar {
       stats: any =
@@ -154,6 +156,21 @@ export class CharacterDataService {
     gio.weapons.push(thugery)
     gio.features = []
     //gio.features.push(martial)
+
+    let butter= new Player
+    butter.name='Buttercup'
+    butter.abilities={STR:14,DEX:16,CON:10, INT:10, WIS:10,CHR:16}
+    butter.hitPoints=butter.maxHitPoints=25
+    butter.armorClass=15
+    butter.classes=[{class:'Bard', lvl:4}]
+    butter.proficiencies.weapon.push('Longsword','Shortsword','Rapier','Hand Crossbow')
+    butter.proficiencies.weapontype.push('Simple')
+    butter.proficiencies.saves.push('DEX','CHR')
+    butter.proficiencies.skills.push('athletics','acrobatics','deception','intimidation','perform','persuasion')
+    butter.resources.push({name:'Bardic Inspiration',min:1,max:getMod(butter,'CHR')})
+    butter.weapons.push(dag)
+    butter.features=[]
+
 
     function dndPlayerform(dman: Dndchar) {
       let person = new Player();

@@ -19,7 +19,7 @@ export class CombatSystem {
     attack(source, target, attackOption) {
         let attack
         let weapon
-        if(source instanceof Player){var tacker='play'}
+        if(source instanceof Player){var tacker=source.name}
         else{var tacker='enemy'}
         if(attackOption instanceof Action){
            attack=  ActAttackRoll(source,attackOption)

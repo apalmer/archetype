@@ -17,6 +17,7 @@ import { EnemyCombatantComponent } from './enemy-combatant/enemy-combatant.compo
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { SavethroComponent } from './savethro/savethro.component';
 import { ActivesComponent } from './actives/actives.component';
+import { AllyUiComponent } from './ally-ui/ally-ui.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ActivesComponent } from './actives/actives.component';
     DebuggerComponent,
     EnemyCombatantComponent,
     SavethroComponent,
-    ActivesComponent
+    ActivesComponent,
+    AllyUiComponent
   ],
   imports: [
     CdkTreeModule,

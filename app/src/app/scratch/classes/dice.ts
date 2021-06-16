@@ -168,7 +168,7 @@ export function attackDamageRoll(dice, sides, isCritical?:Boolean, combatant?, a
 
 }
 
-function getMod(combatant: Combatant, ability: Ability) {
+export function getMod(combatant: Combatant, ability: Ability) {
     let value = combatant.abilities[ability];
     let mod = Math.floor((value - 10) / 2);
     return mod;

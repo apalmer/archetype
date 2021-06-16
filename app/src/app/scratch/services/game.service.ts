@@ -58,7 +58,7 @@ export class GameService {
 
   attackTarget(attackOptions: AttackOptions): void {
     if (!this.target) {
-      //what should happen if nothing is selected?
+      alert('There is no target')
     }
     this.engine.combatSystem.attack(this.player.value, this.target, attackOptions);
   }

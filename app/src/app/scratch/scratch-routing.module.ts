@@ -12,6 +12,7 @@ import { SpelloComponent } from './spello/spello.component';
 import { DebuggerComponent } from './debugger/debugger.component';
 import { SavethroComponent } from './savethro/savethro.component';
 import { ActivesComponent } from './actives/actives.component';
+import { AllyUiComponent } from './ally-ui/ally-ui.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,9 @@ const routes: Routes = [
   { path: 'enemmon', component: EnemyComponent },
   { path: 'spello', component: SpelloComponent },
   { path: 'save' , component: SavethroComponent},
+  { path: 'allyUi' , component: AllyUiComponent},
   { path: 'debugger', component: DebuggerComponent },
+
   { path: 'activ', component: ActivesComponent},
   { path: 'communication', loadChildren: () => import('./communication/communication.module').then(m => m.CommunicationModule) },
   { path: 'tactics', loadChildren: () => import('./tactics/tactics.module').then(m => m.TacticsModule) }

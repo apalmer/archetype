@@ -71,7 +71,7 @@ export class CharUIComponent implements OnInit {
 
     this.game.eventFeed.subscribe(boo=>
       {
-        if(boo.payload.end.status){
+        if(boo.payload.end){
           this.animatestate(boo.payload.end)
        }
       }
