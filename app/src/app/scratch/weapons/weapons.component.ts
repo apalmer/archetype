@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, Output, Input,EventEmitter } from '@angular/core';
 import { CharactersComponent } from 'src/app/characters/characters.component';
+import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 import { CharDataService } from '../services/char-data.service';
 import { GameService } from '../services/game.service';
@@ -96,7 +97,7 @@ export class WeaponsComponent implements OnInit {
     onAttackEvent( origin, attack:number,  critical:string, damage:number){
     
     console.log(`${attack} - ${damage}`)
-    if(origin==='play')
+    if(origin instanceof Player)
     {
     this.atkanim.emit(this.atktxt)
     document.getElementById('atak').style.color='crimson'

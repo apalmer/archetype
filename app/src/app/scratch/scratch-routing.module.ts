@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'enemmon', component: EnemyComponent },
   { path: 'spello', component: SpelloComponent },
   { path: 'save' , component: SavethroComponent},
-  { path: 'allyUi' , component: AllyUiComponent},
+  { path: 'allyui' , component: AllyUiComponent},
   { path: 'debugger', component: DebuggerComponent },
 
   { path: 'activ', component: ActivesComponent},

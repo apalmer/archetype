@@ -17,7 +17,7 @@ import { Ability, savethrow} from '../classes/dice'
   providedIn: 'root'
 })
 export class GameService {
-  ini
+  
   private engine: GameEngine;
   public target: Combatant;
 

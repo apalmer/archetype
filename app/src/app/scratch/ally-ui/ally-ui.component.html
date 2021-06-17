@@ -1,10 +1,20 @@
+
+
+
 <div class='allbox'>
     <div class=alltoken>
-        <div class='allpro'></div>
-        <div class='allside'></div>
-        <div class='allavatar'>
-            <img class='allyimg' style='height: 100px;' [src]='allyanim'>
+        <div class='allpro'[style.backgroundImage]='"url"+allychar.icon'></div>
+        <div class='allside'>
+            {{allychar.name}}
+            <div style='font-size: 9px;'>HP {{allychar.hitPoints}}/{{allychar.maxHitPoints}}</div>
+            <div class='hpbar'><div class='fill' [style.width]='(allychar.hitPoints/allychar.maxHitPoints)*100+"%"' style='background-color: aquamarine;'></div>
+               
+            </div>
         </div>
     </div>
-
+        <div class='allavatar'>
+            <img [src]='allyanim' style='height: 150px;'>
+        </div>
 </div>
+
+

@@ -1,0 +1,57 @@
+.allbox{position:absolute;
+    transform-origin: top left;
+    /*transform: scale(3,3);*/
+
+}
+.alltoken{
+    position: absolute;
+    top: 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.allpro{
+    position: absolute;
+    top:0px;
+    background: gray;
+    background-size: 100%;
+    border: solid gray; 
+    border-radius: 50%;
+    border-width: 7px;
+    height: 50px;
+    width: 50px;
+    z-index: 2;
+}
+.allside{
+    position: absolute;
+    top:0px;
+    left: 30px;
+    padding-left: 35px;
+    padding-top: 4px;
+    background-color: gray;
+    color:honeydew;
+    font-size: 12px;
+    height: 50px;
+    width: 75px;
+    line-height: 11px;
+    border-radius: 0px 15px 15px 0px;
+    z-index: 1;
+}
+.allavatar{
+    position:absolute;
+    left:35px;
+    width: 120px;
+    height: 132px;
+    overflow:hidden;
+    
+}
+
+
+.hpbar{
+    float: left;
+    margin: 2px;
+    height: 4px;
+    width: 50px;
+    border: solid floralwhite;
+    border-width: 1px;
+}
+.fill{height:100%}
+

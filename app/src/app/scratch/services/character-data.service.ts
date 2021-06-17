@@ -5,6 +5,7 @@ import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
 import {getMod} from '../classes/dice'
 import {brutalcrit, ki, martial, rage, recklessAttack, stunstrike} from '../classes/features'
+import { charc } from '../char-ui/char-ui.component';
 
 
 ///////////////////////////////////////////////
@@ -22,6 +23,9 @@ export class CharacterDataService {
 
   getCharacter(characterId:string):Observable<Player> {
     return of(this._characters[0]);
+  }
+  getCharnumber(num){
+    return (this._characters[num])
   }
 
   get(): Observable<Player[]> {
@@ -217,13 +221,17 @@ export class CharacterDataService {
     
 
     this._characters = [solplay, jamplay, applay, rathpl, gio];
+
+    function impfeats(chararray){
     var j
-    for (j=0;j<this._characters.length;j++){
+    for (j=0;j<chararray.length;j++){
 
     var ipsos=0
-      for (ipsos=0;ipsos<this._characters[j].features.length;ipsos++)
-        {this._characters[j].features[ipsos].start(this._characters[j])}
+      for (ipsos=0;ipsos<chararray[j].features.length;ipsos++)
+        {chararray[j].features[ipsos].start(chararray[j])}
     }
+  }
+  impfeats(this._characters)
 
     return this._characters;
   }

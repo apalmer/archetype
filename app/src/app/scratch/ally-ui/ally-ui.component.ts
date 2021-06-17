@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterDataService} from '../services/character-data.service'
 
 @Component({
   selector: 'app-ally-ui',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllyUiComponent implements OnInit {
   allyanim
+  allychar
 
-  constructor() { }
+  constructor(private characterservice:CharacterDataService) {
+    this.allychar=this.characterservice.getCharnumber(0)
+    this.allyanim=this.allychar.bio.visuals.idle
+    
+
+
+   }
 
   ngOnInit(): void {
   }
