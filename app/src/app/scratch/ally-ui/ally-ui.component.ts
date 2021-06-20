@@ -11,7 +11,7 @@ export class AllyUiComponent implements OnInit {
   allychar
 
   constructor(private characterservice:CharacterDataService) {
-    this.allychar=this.characterservice.getCharnumber(0)
+    this.allychar=this.characterservice.getCharnumber(3)
     this.allyanim=this.allychar.bio.visuals.idle
     
 
