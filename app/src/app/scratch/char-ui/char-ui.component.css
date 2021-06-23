@@ -1,7 +1,7 @@
 
 
 .charwrap{
-    border: solid red;
+    border: none red;
     width:460px;
     font-family: 'Exo 2', sans-serif;
     position: absolute;

@@ -8,6 +8,7 @@ import { GameService } from '../services/game.service';
   styleUrls: ['./mapround.component.css']
 })
 export class MaproundComponent implements OnInit {
+  ghide='hidden'
   enemies:Enemy[];
 
   scale=1
@@ -26,5 +27,11 @@ export class MaproundComponent implements OnInit {
     this.scale=(this.scale*.9)
     this.scalet='scale('+this.scale+')'
   
+  }
+  ghider(){
+    if(this.ghide==='hidden'){
+      this.ghide='visible'
+    }
+    else{this.ghide='hidden'}
   }
 }

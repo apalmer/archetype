@@ -16,7 +16,7 @@
     height:100%;
 
 }
-.zbut,.zbutm{
+.zbut,.zbutm, .zbutg{
     font-size: 30px;
     height:5%;
     width:1%;
@@ -33,6 +33,11 @@
 }
 .zbutm{
     top:14%;
+}
+
+.zbutg{
+    top:28%;
+    font-size: 15px;
 }
 .sbo{
     position:absolute;

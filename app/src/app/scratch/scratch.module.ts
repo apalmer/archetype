@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 
 import { ScratchRoutingModule } from './scratch-routing.module';
@@ -18,6 +19,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { SavethroComponent } from './savethro/savethro.component';
 import { ActivesComponent } from './actives/actives.component';
 import { AllyUiComponent } from './ally-ui/ally-ui.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { AllyUiComponent } from './ally-ui/ally-ui.component';
     CdkTreeModule,
     CommonModule,
     ScratchRoutingModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    DragDropModule,
   ]
 })
 export class ScratchModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {GameService} from '../services/game.service'
 
 @Component({
@@ -7,7 +7,8 @@ import {GameService} from '../services/game.service'
   styleUrls: ['./actives.component.css']
 })
 export class ActivesComponent implements OnInit {
-  charp
+  @Input() charp:any | null=null;
+  
   switchact
   actfeat
   ocolo
@@ -16,6 +17,8 @@ export class ActivesComponent implements OnInit {
   ocolor
 
   constructor(private game:GameService) { 
+    
+    
 
     this.charp=this.game.player.value
   }
@@ -43,6 +46,7 @@ export class ActivesComponent implements OnInit {
     }, 1050);
     setTimeout(() => {
       this.opec=1
+      
 
     }, 1801);
 

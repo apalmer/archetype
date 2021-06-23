@@ -1,10 +1,18 @@
-<div class='mwrap'>
+<div class='mwrap'
+
+
+>
     <div class='acmap'>
         <div id='sbo' style='transform-origin:top left;'[style.transform]='"scale("+scale+")"'>
+        <div style="background-size: 150px 150px;
+        background-image: linear-gradient(to right, gray 1px, transparent 1px),
+        linear-gradient(to bottom, gray 1px, transparent 1px); position: absolute; top:0px;left:0px;
+        height:100%; width:200%; z-index: 1;" [style.visibility]='ghide' 
+        ></div>
             <img src='assets/images/map1.jpg'>
 
             <div *ngFor="let enemy of enemies; index as i;">
-                <div class='enemy' [style.top]='200+i*100+"px"' [style.left]='300+i*100+"px"'>
+                <div class='enemy' style='z-index: 2;'[style.top]='200+i*100+"px"' [style.left]='300+i*100+"px"'cdkDrag >
                     <app-enemy-combatant [enemy]="enemy"></app-enemy-combatant>
                 </div>
             </div>
@@ -17,5 +25,6 @@
     </div>
     <div class='zbut' (click)='zoomp()'>+</div>
     <div class='zbutm' (click)='zoomm()'>-</div>
+    <div class='zbutg'(click)='ghider()'>Grid</div>
     <!--  <div class='zbut'  (click)=''-->
 </div>
