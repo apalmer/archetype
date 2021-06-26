@@ -1,7 +1,7 @@
 
 <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@600&display=swap" rel="stylesheet">
 </head>
 <div id='olflow'>
 <div class="charwrap"  [style.top]='avtop' [style.right]='avright' style='transform: scale(.85,.85);'>
@@ -9,6 +9,7 @@
     <div class='adwrap'  >
         <div [ngClass]='gloV' (click)="avante()">{{ntage}}</div>
     </div>
+    <div class='inwrap'>Roll InI</div>
 
     <div class="profile" [style.backgroundImage]='"url"+charc.icon' style='background-size: 150px;'>
         <div class='enatk'
@@ -70,7 +71,7 @@
     <app-mapround></app-mapround>
 </div>
 
-<div class='glo' (click)='charswitch()' style='position:absolute;top:1%;left:45%;'>
+<div class='glo' (click)='charswitch()' style='position:absolute;top:1%;right:7%;'>
     Next Char</div>
 
 

@@ -20,6 +20,7 @@ import { SavethroComponent } from './savethro/savethro.component';
 import { ActivesComponent } from './actives/actives.component';
 import { AllyUiComponent } from './ally-ui/ally-ui.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { InitialComponent } from './initial/initial.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     EnemyCombatantComponent,
     SavethroComponent,
     ActivesComponent,
-    AllyUiComponent
+    AllyUiComponent,
+    InitialComponent
   ],
   imports: [
     CdkTreeModule,

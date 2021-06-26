@@ -215,6 +215,7 @@ export class CharacterDataService {
     solplay.bio.visuals.rage='assets/images/solrg.gif'
     solplay.features.push(brutalcrit,recklessAttack)
     solplay.proficiencies.saves.push("STR","CON")
+    applay.bio.visuals.atk1='assets/images/apbotful.jpg'
     gio.armorClass=gio.armorClas
     gio.features.push(martial,ki,stunstrike)
 

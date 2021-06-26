@@ -2,7 +2,6 @@
     font-family: 'Nova Flat', cursive;
     position:relative;
     height: 50px;
-    border: dashed salmon;
     color:whitesmoke;
     margin-bottom: 20px;
     width: 320px;
@@ -81,7 +80,7 @@
 .logbox{
     width: 100px;
     height: 100px;
-    border: solid gold;
+  /*  border: solid gold;*/
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: crimson;
     font-size: 30px;

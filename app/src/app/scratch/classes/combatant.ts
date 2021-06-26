@@ -8,7 +8,7 @@ export class Combatant {
     icon:string;
     resistances:any [] =[]
     conditions:any={rage:'off'}
-    bonusobject:any={dmg:0,atk:0,cdice:0}
+    bonusobject:any={dmg:0,atk:0,cdice:0, ini:0}
     
 
     advantage:Advantage;

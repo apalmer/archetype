@@ -13,6 +13,7 @@ import { DebuggerComponent } from './debugger/debugger.component';
 import { SavethroComponent } from './savethro/savethro.component';
 import { ActivesComponent } from './actives/actives.component';
 import { AllyUiComponent } from './ally-ui/ally-ui.component';
+import { InitialComponent } from './initial/initial.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'spello', component: SpelloComponent },
   { path: 'save' , component: SavethroComponent},
   { path: 'allyui' , component: AllyUiComponent},
+  { path: 'ini' , component: InitialComponent},
   { path: 'debugger', component: DebuggerComponent },
 
   { path: 'activ', component: ActivesComponent},

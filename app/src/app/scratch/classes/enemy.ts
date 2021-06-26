@@ -45,7 +45,7 @@ export class Enemy extends Combatant {
             this.name = "Dragon";
             this.hitPoints = this.maxHitPoints = 33;
             this.armorClass = 17;
-            this.icon = 'assets/monsta/mimages/bwyr.jpg'
+            this.icon = '("assets/images/sol.svg")'
             this.bio = {}
             this.bio.avatar = 'assets/monsta/mimages/bigwyr.png '
             return;
@@ -56,7 +56,7 @@ export class Enemy extends Combatant {
         this.hitPoints = this.maxHitPoints = Number(data.hit_points);
         this.armorClass = Number(data.armor_class);
 
-        this.icon = 'assets/monsta/mimages/bwyr.jpg'
+        this.icon = '("assets/monsta/mimages/bwyr.jpg")'
         this.bio = {}
         this.bio.avatar = 'assets/monsta/mimages/bigwyr.png'
         this.abilities={

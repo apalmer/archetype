@@ -1,0 +1,55 @@
+.units,.units2{
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    border: solid lightsteelblue;
+    border-width: 3px;
+    color:white;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 4px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    transition: left .5s;
+
+}
+
+.units2{
+    float:left;
+    position: relative;
+    left: 45px;
+    margin:4px;
+    z-index: 2;
+    
+    
+}
+
+.carouwrap{
+    height: 60px;
+    width: 230px;
+    overflow:hidden;
+    position: absolute;
+}
+
+.endarrow{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 25px;
+    height: 62px;
+    width: 80px;
+    margin: 15px;
+    color:cornflowerblue;
+    float:left;
+}
+
+.neme{
+    white-space: nowrap;
+    text-shadow: 
+    -1px 1px 1px #000,
+    1px 1px 1px #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+    font-size: 16px;
+    line-height: 12px;
+
+}

@@ -1,6 +1,7 @@
 
 import { Testability } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
+//import { get } from "https";
 import { AmbientLight } from "three";
 import { AttackOptions } from "../models/attack-options";
 import { CombatSystem } from "./combat-system";
@@ -62,6 +63,21 @@ function roll20(advantage: Advantage, bonus?: number) {
     {value= value+bonus}
 
     return { value: value, critical: critical };
+}
+
+export function rollIntit(combatant,bonus?){
+    let inibonus=0
+    let bon=0
+    if(bonus){bon=bonus}
+    if(combatant.bonusobject.ini){
+    inibonus=combatant.bonusobject.ini}
+   // if(combatant instanceof Player){
+        let roll=roll20(combatant.advantage, inibonus)
+        let mod=getMod(combatant, "DEX")
+        roll.value+= mod +bon
+        return roll.value
+  //  }
+    
 }
 
 export function ActAttackRoll(combatant, action:Action){
@@ -170,7 +186,7 @@ export function attackDamageRoll(dice, sides, isCritical?:Boolean, combatant?, a
 
 export function getMod(combatant: Combatant, ability: Ability) {
     let value = combatant.abilities[ability];
-    let mod = Math.floor((value - 10) / 2);
+    let mod = Math.floor((value- 10) / 2);
     return mod;
 }
 
