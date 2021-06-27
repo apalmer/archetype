@@ -5,4 +5,5 @@ export class Cell {
     y:number;
     data:any;
     tokenData:TokenData;
+    overlay:any;
 }

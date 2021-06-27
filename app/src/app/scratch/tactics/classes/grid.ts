@@ -1,6 +1,7 @@
 import { Cell } from "./cell";
 
 export class Grid extends Array<Array<Cell>>{
+
     constructor(width: number, height: number) {
         super();
 
@@ -14,5 +15,9 @@ export class Grid extends Array<Array<Cell>>{
             }
             this.push(row);
         }
+    }
+    
+    recalculate() {
+        throw new Error('Method not implemented.');
     }
 }

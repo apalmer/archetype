@@ -7,7 +7,8 @@ import { GameEvent } from '../classes/game-event';
 import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 import { CharacterDataService } from './character-data.service';
-import { Ability, savethrow} from '../classes/dice'
+import { Ability, savethrow} from '../classes/dice';
+import { TurnTracker } from '../classes/encounter'
 
 /////////////////////////////////////////////////////////
 // Wrapper for the core game logic, Integration between game engine classes and angular
@@ -46,6 +47,10 @@ export class GameService {
 
   getEnemies(): Enemy[] {
     return this.engine.encounter.enemies;
+  }
+
+  getTurnTracker(): TurnTracker {
+    return this.engine.encounter.turnTracker;
   }
 
   setTarget(target: Combatant): void {

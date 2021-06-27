@@ -11,7 +11,7 @@ import { TokenDropData } from '../classes/token-drop-data';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  grid: Cell[][];
+  grid: Grid;
   width: number;
   height: number;
   scale: number;
@@ -35,6 +35,7 @@ export class MapComponent implements OnInit {
     if (data.target !== data.source) {
       data.target.tokenData = data.source.tokenData;
       data.source.tokenData = null;
+      this.grid.recalculate();
     }
   }
 }
