@@ -37,6 +37,7 @@ jobs:
           args: deploy --only hosting
         env:
           PROJECT_PATH: ./app
+          PROJECT_ID: archetype-297c3
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           
 
