@@ -36,5 +36,7 @@ jobs:
         with:
           args: deploy --only hosting
         env:
+          PROJECT_PATH: ./app
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          
 
