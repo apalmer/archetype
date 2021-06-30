@@ -8,7 +8,7 @@ import { Player } from '../classes/player';
 import { AttackOptions } from '../models/attack-options';
 import { CharacterDataService } from './character-data.service';
 import { Ability, savethrow} from '../classes/dice';
-import { TurnTracker } from '../classes/encounter'
+import { TurnTracker } from '../classes/turn-tracker'
 
 /////////////////////////////////////////////////////////
 // Wrapper for the core game logic, Integration between game engine classes and angular

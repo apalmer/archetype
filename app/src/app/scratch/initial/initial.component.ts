@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../services/game.service';
 import { rollIntit } from '../classes/dice'
-import { TurnTracker } from '../classes/encounter';
+import { TurnTracker } from '../classes/turn-tracker';
 import { Combatant } from '../classes/combatant';
 
 @Component({
