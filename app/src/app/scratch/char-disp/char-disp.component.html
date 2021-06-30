@@ -1,0 +1,18 @@
+
+<head>
+
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<div class='charback2'>
+    <div class='icon' [style.backgroundImage]='"url"+newchar.icon'></div>
+    <div class='avatar'><img class='avimg' [src]='newchar.bio.visuals.idle'> </div>
+    <div class="nam">{{newchar.name}}</div>
+    <div class='bio'>
+        <div class="des">
+          <div style='text-align: right; font-size: 16px;'> Description: </div>
+          {{newchar.bio.desc}}
+        </div>
+    
+    </div>
+</div>

@@ -21,5 +21,5 @@ export class Combatant {
         WIS:number;
         CHR:number;
     }
-    bio:any;
+    bio:any={};
 }

@@ -10,7 +10,6 @@ export class Player extends Combatant {
         armor:Array<string>
     }
     resources:Array<{name:string, min:number, max:number}>=[]
-    bio:any
     classes:Array<{class:string, lvl:number }>=[]
     spells:Array<any>=[]
     features:Array<any>=[]
@@ -24,6 +23,8 @@ export class Player extends Combatant {
 
         this.name = "WuTang";
         this.hitPoints = this.maxHitPoints = 20;
+        this.bio.desc='Someone who does something somwhere for some reason'
+        
         
         
         this.abilities = {

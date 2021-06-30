@@ -1,0 +1,61 @@
+.charback2{
+    font-family: 'Righteous', cursive;
+    font-size: 14px;
+    /*background-color: darkgray;*/
+    border-radius: 20px;
+    width:48%;
+    min-height:80%;
+    position: absolute;
+    right:0px
+}
+.icon{
+    width: 60px;
+    height: 60px;
+    border-radius: 20%;
+    border: solid black;
+    border-width: 1%;
+    background-size: 100%;
+    position: absolute;
+    top:1%;
+    right:320px;
+}
+
+.avatar{
+    background-color: #c9bdb9;
+   /* mix-blend-mode: darken;*/
+    border: double white;
+    border-radius: 3%;
+    height:475px;
+    width:300px;
+    position: absolute;
+    right:1%;
+    top:1%;
+    overflow: hidden;
+
+}
+
+.avimg{
+
+    height:100%
+}
+
+.des{
+    font-size: 12px;
+    width: 150px;;
+    height:250px;
+    /*border: solid black;*/
+    border-radius: 15px;
+    position: absolute;
+    right: 310px;
+    top: 75px;
+    line-height: 12px;
+}
+.nam{
+    font-size: 35px;
+    position: absolute;
+    right: 2%;
+    top:65%;
+    color:whitesmoke;
+}
+
+

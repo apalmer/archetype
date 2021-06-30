@@ -13,12 +13,19 @@ export class InitialComponent implements OnInit {
   combatants: any = []
   play1
   nprime = 0
+  diameter=40
+  mprime=''
+  dot=''
+  hid=''
+  rota=0
+  rad=1
   eye = 0
   eye2 = 1
   eye3 = 2
   counter = 0
   turnTracker:TurnTracker
   current:Combatant
+  cindex:number
 
   constructor(game: GameService) {
     game.player.subscribe(
@@ -37,6 +44,12 @@ export class InitialComponent implements OnInit {
     this.turnTracker.current.subscribe(
       current => {
         this.current = current;
+      }
+    )
+
+    this.turnTracker.currentIndex.subscribe(
+      cindex=>{
+        this.cindex=cindex
       }
     )
 
@@ -65,10 +78,21 @@ export class InitialComponent implements OnInit {
   shuffle() {
     this.turnTracker.next();
     //this.combatants.push(this.combatants.shift())
-    // this.nprime -= 60
+    //this.nprime -= 60
+    this.rad=.01
+    this.dot='1px'
+    this.hid='1000%'
+    this.rota+=1
+    setTimeout(() => {
+      //this.nprime+=60
+      this.rad=1
+      this.dot='20px'
+      this.hid='100%'
+    }, 500);
 
-    // if (this.counter >= this.combatants.length - 1) { this.nprime = 0; this.counter = 0 }
-    // else { this.counter += 1 }
+    if (this.counter >= this.combatants.length - 1) { this.nprime = 0; this.counter = 0 }
+    else { this.counter += 1 }
+
 
     // //this.counter+=1
     // if (this.eye < this.combatants.length - 1) { this.eye += 1 }

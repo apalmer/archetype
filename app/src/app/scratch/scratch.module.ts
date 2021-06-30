@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ScratchRoutingModule } from './scratch-routing.module';
 import { ScratchComponent } from './scratch.component';
@@ -21,6 +22,8 @@ import { ActivesComponent } from './actives/actives.component';
 import { AllyUiComponent } from './ally-ui/ally-ui.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { InitialComponent } from './initial/initial.component';
+import { CharformComponent } from './charform/charform.component';
+import { CharDispComponent } from './char-disp/char-disp.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { InitialComponent } from './initial/initial.component';
     SavethroComponent,
     ActivesComponent,
     AllyUiComponent,
-    InitialComponent
+    InitialComponent,
+    CharformComponent,
+    CharDispComponent
   ],
   imports: [
     CdkTreeModule,
@@ -46,6 +51,7 @@ import { InitialComponent } from './initial/initial.component';
     ScratchRoutingModule,
     MatSnackBarModule,
     DragDropModule,
+    FormsModule,
   ]
 })
 export class ScratchModule { }

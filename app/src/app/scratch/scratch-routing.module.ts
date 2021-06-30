@@ -14,6 +14,7 @@ import { SavethroComponent } from './savethro/savethro.component';
 import { ActivesComponent } from './actives/actives.component';
 import { AllyUiComponent } from './ally-ui/ally-ui.component';
 import { InitialComponent } from './initial/initial.component';
+import { CharformComponent } from './charform/charform.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'save' , component: SavethroComponent},
   { path: 'allyui' , component: AllyUiComponent},
   { path: 'ini' , component: InitialComponent},
+  { path: 'charform', component: CharformComponent},
   { path: 'debugger', component: DebuggerComponent },
 
   { path: 'activ', component: ActivesComponent},

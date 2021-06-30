@@ -1,0 +1,28 @@
+.charback{
+    font-family: 'Righteous', cursive;
+    font-size: 14px;
+    background-color: darkgray;
+    border-radius: 20px;
+    width:95%;
+    min-height:80%;
+    position: absolute;
+
+}
+
+input[type=text],textarea{
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 4px;
+    
+
+}
+.bio{
+    
+    position:absolute;
+    left:1%;
+    top:.5%
+}
+
+
+
+

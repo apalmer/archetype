@@ -76,7 +76,16 @@ export class TurnTracker {
     }
 
     insertCombatant(orderer, combatant:Combatant){
-        this.combatants.value.push(combatant);
+        function drats(bo){
+            return bo===combatant
+
+        }
+        if(this.combatants.value.find(drats))
+        {alert('qlready added')}
+       else{
+           alert('not found')
+       this.combatants.value.push(combatant);
+     
 
         this.shuffle(individual => {
             if(individual === combatant){
@@ -86,6 +95,7 @@ export class TurnTracker {
                 return this.initiativeCombatant.get(individual);
             }
         });
+        }
         
     };
 
@@ -122,6 +132,7 @@ export class Encounter {
     adult;//= JSON.parse(JSON.stringify(abd))
     black;//= JSON.parse(JSON.stringify(abd))
     drago;//= JSON.parse(JSON.stringify(abd))
+    lio;
 
     constructor(){
         
@@ -130,10 +141,12 @@ export class Encounter {
         this.adult = new Enemy('Horned Devil')
         this.black = new Enemy('Young Silver Dragon');
         this.drago = new Enemy('Aboleth');
+        this.lio= new Enemy('Lion')
 
         this.enemies.push(this.adult);
         this.enemies.push(this.black);
         this.enemies.push(this.drago);
+        this.enemies.push(this.lio)
 
         this.combatants = new Array<Combatant>(...this.enemies);
 

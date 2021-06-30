@@ -54,11 +54,23 @@ export class CharUIComponent implements OnInit {
   constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
 
     this.game.eventFeed.subscribe(
-      event => this.snackBar.open(event.payload.origin.name+' attacks with '+ event.payload.attack+
-      ' for '+event.payload.damage+' dmg.','close',{duration:2000})
+
+     event => {
+       if(event.payload.origin){
+       this.snackBar.open(event.payload.origin.name+' attacks with '+ event.payload.attack+
+       ' for '+event.payload.damage+' dmg.','close',{duration:2000})
+      }
+    }
     )
       
-    this.game.eventFeed.subscribe(boom=> this.enatkanim(boom.payload.origin.name, boom.payload.attack, boom.payload.damage, boom.payload.critical)
+    this.game.eventFeed.subscribe(boom=> 
+      {
+        if(boom.payload.attack)
+        {
+        this.enatkanim(boom.payload.origin.name, boom.payload.attack,
+         boom.payload.damage, boom.payload.critical)
+        }
+      }
     )
     
 

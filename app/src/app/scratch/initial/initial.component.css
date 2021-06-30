@@ -11,15 +11,17 @@
     margin: 4px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 20px;
-    transition: left .5s;
+    transition: left .5s, height .5s, width .5s, transform .5s;
+    transform-origin: center;
 
 }
 
 .units2{
+    transform: scale(1.5,1.5);
     float:left;
     position: relative;
     left: 45px;
-    top: 140px;
+    top: 1px;
     margin:4px;
     z-index: 2;
     
@@ -29,7 +31,7 @@
 .carouwrap{
     height: 60px;
     width: 230px;
-    /*overflow:hidden;*/
+    overflow:hidden;
     position: absolute;
 }
 
@@ -44,6 +46,8 @@
 }
 
 .neme{
+    transition: left .8s;
+    position: relative;
     white-space: nowrap;
     text-shadow: 
     -1px 1px 1px #000,
@@ -52,5 +56,13 @@
     -1px -1px 0 #000;
     font-size: 16px;
     line-height: 12px;
+    animation: piz .4s;
+
+
+}
+@keyframes piz{
+    0%{left:500px}
+    95%{left:-8px}
+    100%{left:0px}
 
 }
