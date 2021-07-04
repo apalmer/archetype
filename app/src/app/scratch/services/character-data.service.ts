@@ -4,7 +4,7 @@ import { Player } from '../classes/player';
 import { Weapon } from '../classes/weapon';
 import { cant, spellcode } from "../services/spellist.service";
 import {getMod} from '../classes/dice'
-import {brutalcrit, ki, martial, rage, recklessAttack, stunstrike} from '../classes/features'
+import {brutalcrit, ki, martial, rage, recklessAttack, stunstrike,bready, fsDuel} from '../classes/features'
 import { charc } from '../char-ui/char-ui.component';
 
 
@@ -45,6 +45,9 @@ export class CharacterDataService {
     let thugery = new Weapon('Quarterstaff')
     let axe = dweapon('Greataxe', "Garruks's Rages", 'gaxe.jpg')
     let dag= new Weapon('Dagger')
+    let emc= new Weapon('Flail')
+    emc.flare='Engine Knuckles';
+    emc.magic=2
 
     class Dndchar {
       stats: any =
@@ -151,7 +154,7 @@ export class CharacterDataService {
     gio.icon = '("assets/images/gioicon.png")'
     gio.classes = [{ class: 'Monk', lvl: 6 }]
     gio.proficiencies.weapon.push('Shortsword')
-    gio.proficiencies.weapontype.push('Simple')
+    gio.proficiencies.weapontype.push('Simple', 'Martial')
     gio.proficiencies.skills.push('athletics', 'stealth', 'acrobatics', 'perception')
     gio.proficiencies.saves.push('STR', 'DEX')
     gio.resources.push({ name: 'Ki', min: 6, max: 6 })
@@ -160,6 +163,27 @@ export class CharacterDataService {
     gio.weapons.push(thugery)
     gio.features = []
     //gio.features.push(martial)
+
+    let alo= new Player
+    alo.name='Sense Allon'
+    alo.abilities={STR:12, DEX:12, CON:12, INT:20, WIS:15, CHR:10}
+    alo.hitPoints=alo.maxHitPoints=59
+    alo.armorClass=10
+    alo.proficiencies.weapontype.push('Simple')
+    alo.proficiencies.skills.push('investigation','arcana')
+    alo.proficiencies.saves.push('CON', 'INT')
+    alo.proficiencies.armor.push('light', 'medium', 'shield')
+    alo.resources.push({name:'1stSpell', min:4, max:4},{name:'2ndSpell', min:3,max:3},{name:'3rdSpell',min:2, max:2})
+    alo.weapons.push(emc, thugery)
+    alo.features=[]
+    alo.bio={visuals:{idle:'assets/images/hayidle.png'}}
+    alo.icon='("assets/images/hayicon.png")'
+    alo.classes=[{class:'Artificer', lvl:9},{class:'Fighter', lvl:1}]
+    alo.features.push(bready, fsDuel)
+
+
+
+
 
     let butter= new Player
     butter.name='Buttercup'
@@ -221,7 +245,7 @@ export class CharacterDataService {
 
     
 
-    this._characters = [solplay, jamplay, applay, rathpl, gio];
+    this._characters = [solplay, jamplay, applay, rathpl, gio, alo];
 
     function impfeats(chararray){
     var j

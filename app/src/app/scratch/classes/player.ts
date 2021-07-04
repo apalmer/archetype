@@ -17,6 +17,8 @@ export class Player extends Combatant {
     skills:Array<{name:Skill, value:number}>
     weapons:Array<any>=[]
     speed:number
+    equipment:Array<any>;
+    attunement=1||2||3;
 
     constructor() {
         super();

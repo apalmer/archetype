@@ -13,7 +13,7 @@
                 <div class='iteminfo'><button style="transform:skew(-30deg);"> info</button></div>
             </div>
             <div class='actionbar'>
-                <div class='action'><button class='actbutton' (click)='onAttack(ite.name, swnum)'>ATTACK</button></div> 
+                <div class='action'><button class='actbutton' (click)='onAttack(ite, swnum)'>ATTACK</button></div> 
                 <!-- <div class='action'><button class='actbutton' (click)='atknao(ite.dmg[swnum], ite.mod)'>ATTACK</button></div> -->
                 <div class='dmg'>{{itehand(ite,swnum)}}</div>
                 <div class='dmode'><button (click)='dmgswtch(ite)'>{{swnam}}</button></div>

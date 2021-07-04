@@ -55,6 +55,15 @@ export class Enemy extends Combatant {
         this.name = data.name;
         this.hitPoints = this.maxHitPoints = Number(data.hit_points);
         this.armorClass = Number(data.armor_class);
+        if(data.damage_immunities)
+        {
+            if (data.damage_immunities.includes("acid")){this.resistances.push({type:"acid", value:0, source:"natural"})}
+            if (data.damage_immunities.includes("bludgeoning")){this.resistances.push({type:"bludegeoning", value:0, source:"natural"})}
+
+        
+        }
+        
+
 
         this.icon = '("assets/monsta/mimages/bwyr.jpg")'
         this.bio = {}

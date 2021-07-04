@@ -14,8 +14,10 @@ export class Weapon {
     cost:number;
     weight:number;
     property:string[];
-    requires:string
-    category:string
+    requires:string;
+    category:string;
+    magic:number;
+    dmgbonus:number;
 
     constructor(name:string) {
         let data = weaponData.find(x => x.Name.toLowerCase() === name.toLowerCase());

@@ -89,6 +89,11 @@ export function attackRoll(combatant,weapon:Weapon) {
     let mod
 if (combatant.features.find(b=>b.name==='Martial Arts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
     mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "DEX"))}
+
+    else if(combatant.features.find(c=>c.name==='Battle Ready'&& weapon.magic) // || weapon.name==='Shortsword')
+        )
+        {
+            mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "INT"))}
         else{
 
     if (weapon.ability[1] == null) {
@@ -101,7 +106,9 @@ if (combatant.features.find(b=>b.name==='Martial Arts') && (weapon.requires==='s
 
 }
     let roll = roll20(combatant.advantage);
-    roll.value += mod;
+    let weap=0
+    if(weapon.magic){weap=weapon.magic}
+    roll.value += mod+weap;
 
     if (proficiencyApplies(combatant)) {
         roll.value += getProficiency(combatant as Player);
@@ -125,9 +132,18 @@ function abilityRoll(combatant: Combatant, ability: Ability) {
 export function weaponDamageRoll(combatant, weapon:Weapon, 
     dice: number, sides: number, isCritical?: boolean, bonus?) {
         let mod
+        let boni=0
+
+    if(combatant.features.find(c=>c.name==='Fighting Style: Dueling')&& weapon.damage.oneHanded.sides=== sides)
+    {boni=2}
 
     if (combatant.features.find(c=>c.name==='Martial Arts') && (weapon.requires==='simple' || weapon.name==='Shortsword')){
         mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "DEX"))}
+
+        else if(combatant.features.find(c=>c.name==='Battle Ready'&& weapon.magic) // || weapon.name==='Shortsword')
+        )
+        {
+            mod= Math.max(getMod(combatant, weapon.ability[0]), getMod(combatant, "INT"))}
         else{
     
             if (weapon.ability[1] == null) {
@@ -144,10 +160,12 @@ export function weaponDamageRoll(combatant, weapon:Weapon,
     
 
     let sum = 0;
+    let weap=0;
     for (let index = 0; index < dice; index++) {
         sum += die(sides);
     }
-    sum += mod+combatant.bonusobject.dmg
+    if(weapon.magic){weap=weapon.magic}
+    sum += mod+combatant.bonusobject.dmg+weap+boni
     return sum;
 }
 

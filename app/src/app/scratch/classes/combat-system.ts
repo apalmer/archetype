@@ -27,7 +27,7 @@ export class CombatSystem {
         //figure out attack based on attack options
         //is attackOptions valid for the source
         else{
-            weapon = new Weapon(attackOption.weapon);
+            weapon = attackOption.weapon;
         //figure out attack chance to hit based on source, dice and modifiers
             attack = attackRoll(source, weapon);
         //figure out attack chance to hit based on target

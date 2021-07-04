@@ -200,6 +200,16 @@ stunstrike.on=function (player){
   return onon
   }
 
+  export var bready=new Feature
+  bready.name='Battle Ready'
+  //stub
+
+  export var fsDuel=new Feature
+  fsDuel.name='Fighting Style: Dueling'
+  fsDuel.desc='When you are wielding a melee weapon in one hand and no other weapons, you gain a +2 bonus to damage rolls with that weapon.'
+  
+
+
 
 
 
