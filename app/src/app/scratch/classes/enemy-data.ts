@@ -2192,7 +2192,7 @@ export const enemyData = [
         },
         {
           "name": "Cold Breath (Recharge 5-6)",
-          "desc": "The dragon exhales an icy blast in a 90-foot cone. Each creature in that area must make a DC 22 Constitution saving throw, taking 72 (l6d8) cold damage on a failed save, or half as much damage on a successful one.",
+          "desc": "The dragon exhales an icy blast in a 90-foot cone. Each creature in that area must make a DC 22 Constitution saving throw, taking 72 (16d8) cold damage on a failed save, or half as much damage on a successful one.",
           "attack_bonus": 0,
           "damage_dice": "16d8"
         }
@@ -2439,7 +2439,7 @@ export const enemyData = [
       "arcana": 13,
       "history": 13,
       "damage_vulnerabilities": "",
-      "damage_resistances": "damage from spells; non magical bludgeoning, piercing, and slashing (from stoneskin)",
+      "damage_resistances": "damage from spells",
       "damage_immunities": "",
       "condition_immunities": "",
       "senses": "passive Perception 12",
@@ -3382,7 +3382,7 @@ export const enemyData = [
         },
         {
           "name": "Acid Breath (Recharge 5-6)",
-          "desc": "The dragon exhales acid in a 15-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 22 (Sd8) acid damage on a failed save, or half as much damage on a successful one.",
+          "desc": "The dragon exhales acid in a 15-foot line that is 5 feet wide. Each creature in that line must make a DC 11 Dexterity saving throw, taking 22 (5d8) acid damage on a failed save, or half as much damage on a successful one.",
           "attack_bonus": 0,
           "damage_dice": "5d8"
         }
@@ -8948,7 +8948,7 @@ export const enemyData = [
       "wisdom": 14,
       "charisma": 5,
       "damage_vulnerabilities": "",
-      "damage_resistances": "bludgeoning, piercing, and slashing damage from nonmagical weapons",
+      "damage_resistances": "bludgeoning, piercing, and slashing from nonmagical weapons",
       "damage_immunities": "",
       "condition_immunities": "",
       "senses": "darkvision 60 ft., passive Perception 12",
@@ -10078,7 +10078,7 @@ export const enemyData = [
       "persuasion": 4,
       "stealth": 5,
       "damage_vulnerabilities": "",
-      "damage_resistances": "cold; bludgeoning, piercing, and slashing from nonmagical/nonsilver weapons",
+      "damage_resistances": "cold; bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
       "damage_immunities": "fire, poison",
       "condition_immunities": "poisoned",
       "senses": "darkvision 120 ft., passive Perception 11",
@@ -10240,7 +10240,7 @@ export const enemyData = [
         },
         {
           "name": "Poison Breath (Recharge 5-6)",
-          "desc": "The golem exhales poisonous gas in a 15-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 45 (l0d8) poison damage on a failed save, or half as much damage on a successful one.",
+          "desc": "The golem exhales poisonous gas in a 15-foot cone. Each creature in that area must make a DC 19 Constitution saving throw, taking 45 (10d8) poison damage on a failed save, or half as much damage on a successful one.",
           "attack_bonus": 0,
           "damage_dice": "10d8"
         }
@@ -14032,7 +14032,7 @@ export const enemyData = [
         },
         {
           "name": "Shortsword",
-          "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1 d6 + 3) piercing damage.",
+          "desc": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 6 (1d6 + 3) piercing damage.",
           "attack_bonus": 5,
           "damage_dice": "1d6",
           "damage_bonus": 3
@@ -16804,7 +16804,7 @@ export const enemyData = [
       "perception": 7,
       "damage_vulnerabilities": "",
       "damage_resistances": "",
-      "damage_immunities": "bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered",
+      "damage_immunities": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
       "condition_immunities": "",
       "senses": "passive Perception 17",
       "languages": "Common (can't speak in bear form)",
@@ -16869,7 +16869,7 @@ export const enemyData = [
       "perception": 2,
       "damage_vulnerabilities": "",
       "damage_resistances": "",
-      "damage_immunities": "bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered",
+      "damage_immunities": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
       "condition_immunities": "",
       "senses": "passive Perception 12",
       "languages": "Common (can't speak in boar form)",
@@ -16934,7 +16934,7 @@ export const enemyData = [
       "stealth": 4,
       "damage_vulnerabilities": "",
       "damage_resistances": "",
-      "damage_immunities": "bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered",
+      "damage_immunities": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
       "condition_immunities": "",
       "senses": "darkvision 60 ft. (rat form only), passive Perception 12",
       "languages": "Common (can't speak in rat form)",
@@ -17000,7 +17000,7 @@ export const enemyData = [
       "stealth": 4,
       "damage_vulnerabilities": "",
       "damage_resistances": "",
-      "damage_immunities": "bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered",
+      "damage_immunities": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
       "condition_immunities": "",
       "senses": "darkvision 60 ft., passive Perception 15",
       "languages": "Common (can't speak in tiger form)",
@@ -17077,7 +17077,7 @@ export const enemyData = [
       "perception": 4,
       "damage_vulnerabilities": "",
       "damage_resistances": "",
-      "damage_immunities": "bludgeoning, piercing, and slashing damage from nonmagical weapons that aren't silvered",
+      "damage_immunities": "bludgeoning, piercing, and slashing from nonmagical weapons that aren't silvered",
       "condition_immunities": "",
       "senses": "passive Perception 14",
       "languages": "Common (can't speak in wolf form)",
