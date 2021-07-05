@@ -18,6 +18,7 @@ export class Weapon {
     category:string;
     magic:number;
     dmgbonus:number;
+    damageType:string;
 
     constructor(name:string) {
         let data = weaponData.find(x => x.Name.toLowerCase() === name.toLowerCase());
@@ -30,6 +31,7 @@ export class Weapon {
 
         let damage:RegExpMatchArray = data.Damage.match(/(\d*)d(\d*)(\s*)(.*)/);
         let damageType =data.Damagetype || damage[4];
+        this.damageType=damageType;
         let twoHanded:boolean = data.Properties.includes("Two-Handed");
         let versatile:boolean = false;
         let versatileDamage:RegExpMatchArray = null;
