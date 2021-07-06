@@ -1,0 +1,46 @@
+
+
+.eavatar{
+    position: absolute;
+    right:1%;
+    mix-blend-mode: multiply;
+    opacity: 30%;
+}
+
+.allequi{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    width: 290px;
+    min-height: 600px;
+    position:absolute;
+    
+    right: 200px;
+}
+.action{
+    position: absolute;
+    left: 140px;
+    top:0px;
+    border-radius: 8px;
+    background-color:slategrey;
+    height: 50px;
+    width: 80px;
+}
+button{
+    transform: scale(.9,.8);
+    margin: -2px;
+}
+
+.attune{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    color:orangered;
+    text-align: right;
+    position: absolute;
+    width: 90px;
+    min-height:70px;
+    right: 20px;
+    top: 200px;
+    padding:10px;
+    border:solid orangered;
+    border-radius: 16px;
+}

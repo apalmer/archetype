@@ -24,6 +24,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { InitialComponent } from './initial/initial.component';
 import { CharformComponent } from './charform/charform.component';
 import { CharDispComponent } from './char-disp/char-disp.component';
+import { EquipComponent } from './equip/equip.component';
+import { ItemcardComponent } from './itemcard/itemcard.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { CharDispComponent } from './char-disp/char-disp.component';
     AllyUiComponent,
     InitialComponent,
     CharformComponent,
-    CharDispComponent
+    CharDispComponent,
+    EquipComponent,
+    ItemcardComponent
   ],
   imports: [
     CdkTreeModule,

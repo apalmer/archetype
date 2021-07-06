@@ -41,7 +41,8 @@ export class CombatSystem {
             
             let damage = weaponDamageRoll(source, weapon,
                 weaponDamage.dice, weaponDamage.sides, isCritical);
-                damage= damageresist(damage,target,weapon.damageType)
+                damage= damageresist(damage,target,weaponDamage.type
+)
 
             //apply damage to target
             target.hitPoints -= damage;

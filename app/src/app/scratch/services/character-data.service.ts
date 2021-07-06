@@ -6,6 +6,8 @@ import { cant, spellcode } from "../services/spellist.service";
 import {getMod} from '../classes/dice'
 import {brutalcrit, ki, martial, rage, recklessAttack, stunstrike,bready, fsDuel} from '../classes/features'
 import { charc } from '../char-ui/char-ui.component';
+import { armo1, blows, itemray} from '../classes/items';
+//import { itemray, Items } from '../classes/items';
 
 
 ///////////////////////////////////////////////
@@ -22,7 +24,7 @@ export class CharacterDataService {
   }
 
   getCharacter(characterId:string):Observable<Player> {
-    return of(this._characters[0]);
+    return of(this._characters[5]);
   }
   getCharnumber(num){
     return (this._characters[num])
@@ -180,6 +182,7 @@ export class CharacterDataService {
     alo.icon='("assets/images/hayicon.png")'
     alo.classes=[{class:'Artificer', lvl:9},{class:'Fighter', lvl:1}]
     alo.features.push(bready, fsDuel)
+    alo.equipment.push(armo1,itemray[1],itemray[2],itemray[3])
 
 
 

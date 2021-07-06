@@ -1,5 +1,6 @@
 import { Combatant } from "./combatant";
 import { Ability, Skill } from "./dice";
+import { Items } from "./items";
 
 export class Player extends Combatant {
     proficiencies:{
@@ -17,8 +18,9 @@ export class Player extends Combatant {
     skills:Array<{name:Skill, value:number}>
     weapons:Array<any>=[]
     speed:number
-    equipment:Array<any>;
-    attunement=1||2||3;
+    equipment:Array<any>=[];
+    attunement:Array<Items>=[];
+    maxattune:number;
 
     constructor() {
         super();
@@ -26,6 +28,8 @@ export class Player extends Combatant {
         this.name = "WuTang";
         this.hitPoints = this.maxHitPoints = 20;
         this.bio.desc='Someone who does something somwhere for some reason'
+        this.maxattune=3
+        this.attunement=[]
         
         
         

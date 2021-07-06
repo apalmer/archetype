@@ -1,0 +1,30 @@
+<div class='eavatar'>
+    <app-char-disp [newchar]='charl'></app-char-disp>
+</div>
+<div class='allequi'>Equipment
+    <div *ngFor='let equip of filthyEQBL(charl.equipment); index as i'>
+        <div style='position: relative;'>
+            <app-itemcard [itemA]='equip' [chare]='charl'></app-itemcard>
+            <div class='action'>
+                <button>Info</button>
+                <ng-container *ngIf='equip.equippable'><button (click)='eq(equip,i)'>Equip/Unequip</button></ng-container>
+               <ng-container *ngIf='equip.attunereq'><button (click)='att(equip,i)'>Attune/Unattune</button></ng-container>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class='currenteq'>Equipped
+    <div *ngFor='let cequip of filthyEQ(charl.equipment)'>
+        <app-itemcard [itemA]='cequip'></app-itemcard>
+    </div>
+</div>
+<div class='attune'>Attuned Items
+    <div *ngFor='let attune of charl.attunement' style='filter:saturate(300%); 
+    background-color:darkred; width:fit-content;
+    transform: scale(.6,.6);
+
+    '>
+        <app-itemcard [itemA]='attune' style='float:left'></app-itemcard>
+    </div>
+</div>
