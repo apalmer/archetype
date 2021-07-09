@@ -8,6 +8,7 @@ import { Player } from '../classes/player';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CharacterDataService } from '../services/character-data.service';
 import { Ability } from '../classes/dice';
+import { CharacterFirebaseService } from '../services/character-firebase.service';
 
 
 export var charc; //=dndplay[0]
@@ -51,7 +52,7 @@ export class CharUIComponent implements OnInit {
   ender
   mixo
 
-  constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private snackBar: MatSnackBar) { 
+  constructor(private proRule: ProRuleService, private game: GameService, private characterService:CharacterDataService, private charFirestore:CharacterFirebaseService, private snackBar: MatSnackBar) { 
 
     this.game.eventFeed.subscribe(
 
@@ -155,6 +156,9 @@ export class CharUIComponent implements OnInit {
       // this.anim = this.charc.bio.visuals.idle
     }
 
+    // this.charFirestore.getCharacter("JwBvY4uK2NmnAhPzCwsM").subscribe(
+    //   player => this.game.setPlayer(player)
+    // )
     this.game.setPlayer(selected);
   }
 

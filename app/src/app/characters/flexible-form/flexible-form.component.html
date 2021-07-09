@@ -14,7 +14,7 @@
                         <ng-template #elseBlock>
                             <mat-form-field>
                                 <mat-label>{{ child.name }}</mat-label>
-                                <input matInput formControlName="{{child.name}}">
+                                <input [attr.type]="getControlType(child.type)" matInput formControlName="{{child.name}}">
                             </mat-form-field>
                         </ng-template>
                     </div>

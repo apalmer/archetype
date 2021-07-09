@@ -17,4 +17,7 @@ export class FlexibleFormComponent implements OnInit {
     console.log(this.schemaFormGroup);
   }
 
+  getControlType(dataType:string){
+    return (dataType === "number") ? "number":"text"
+  }
 }
