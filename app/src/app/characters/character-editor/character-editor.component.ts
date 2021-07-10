@@ -92,7 +92,10 @@ export class CharacterEditorComponent implements OnInit {
     this.character.description = this.form.get('description').value;
     this.character.archetypeId = this.form.get('archetypeId').value;
     this.character.data = this.editorFormService.extractSchemaFormGroupData(this.data);
-    this.characterService.save(this.character);
+    this.characterService.save(this.character)
+      .then(() => {
+        this.router.navigate(['characters'])
+      });
   }
 
   deleteCharacter(): void {
