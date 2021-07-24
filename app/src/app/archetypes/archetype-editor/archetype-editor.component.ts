@@ -25,12 +25,12 @@ export class ArchetypeEditorComponent implements OnInit {
   canDeleteArchetype: boolean;
 
   constructor(
-    private archetypeService: ArchetypeService, 
-    private schemaService: SchemaEditorService, 
-    private dialog: MatDialog, 
+    private archetypeService: ArchetypeService,
+    private schemaService: SchemaEditorService,
+    private dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router
-    ) {
+  ) {
     this.treeControl = new NestedTreeControl<PropertyNode>(this._getChildren);
     this.dataSource = new MatTreeNestedDataSource<PropertyNode>();
 
@@ -44,21 +44,33 @@ export class ArchetypeEditorComponent implements OnInit {
 
     let archetypeId: string = this.route.snapshot.paramMap.get('archetypeId');
     console.log(archetypeId);
-    if(archetypeId){
-    this.archetypeService.getArchetype(archetypeId).subscribe(
-      archtype => {
-        this.archetype = archtype.data();
-        this.archetype.id = archetypeId;
-        this.schemaService.loadFromJsonSchema(this.archetype.schema);
-        this.canDeleteArchetype = true;
-      });
-    }else{
+    if (archetypeId) {
+      this.archetypeService.getArchetype(archetypeId).subscribe(
+        archtype => {
+          this.archetype = archtype.data();
+          this.archetype.id = archetypeId;
+          this.schemaService.loadFromJsonSchema(this.archetype.schema);
+          this.canDeleteArchetype = true;
+        });
+    } else {
       this.archetype = this.archetypeService.newArchetype();
       this.schemaService.loadFromJsonSchema(this.archetype.schema);
     }
   }
 
-  private _getChildren = (node: PropertyNode) => of(node.properties);
+  private _getChildren = (node: PropertyNode) => { 
+    let children:PropertyNode[];
+
+    if(node.properties){
+      children = node.properties
+    }
+    else if(node.items){
+      children = new Array<PropertyNode>();
+      children.push(node.items);
+    }
+
+    return of(children); 
+  }
 
   hasChild(_: number, node: PropertyNode): Boolean {
     return !!node.properties && node.properties.length > 0;
@@ -67,8 +79,26 @@ export class ArchetypeEditorComponent implements OnInit {
   nodeIsObject(_: number, node: PropertyNode): Boolean {
     return node.type === 'object'
   }
+  
+  nodeIsArray(_: number, node: PropertyNode): Boolean {
+    return node.type === 'array'
+  }
 
-  addNewProperty(node:PropertyNode): void {
+  defineItems(node: PropertyNode): void {
+    const dialogRef = this.dialog.open(PropertyDialogComponent, {
+      width: '250px',
+      data: { name: '', type: '', mode: 'items' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.schemaService.defineItem(node, result.type);
+        this.treeControl.expand(node);
+      }
+    }); 
+  }
+  
+  addNewProperty(node: PropertyNode): void {
     const dialogRef = this.dialog.open(PropertyDialogComponent, {
       width: '250px',
       data: { name: '', type: '' }
@@ -82,26 +112,26 @@ export class ArchetypeEditorComponent implements OnInit {
     });
   }
 
-  canDeleteProperty(node:PropertyNode):boolean {
+  canDeleteProperty(node: PropertyNode): boolean {
     let root = this.dataSource.data[0];
     return node !== root;
   }
 
-  deleteProperty(node:PropertyNode): void{
+  deleteProperty(node: PropertyNode): void {
     this.schemaService.deleteProperty(this.dataSource.data[0], node);
   }
 
-  saveArchetype():void{
+  saveArchetype(): void {
     console.log('saving archetype');
     this.archetype.schema = this.schemaService.getJsonSchema(this.dataSource.data);
-    this.archetypeService.save(this.archetype); 
+    this.archetypeService.save(this.archetype);
   }
 
-  deleteArchetype():void{
+  deleteArchetype(): void {
     console.log('deleting archetype');
     this.archetypeService.delete(this.archetype)
       .then(() => {
         this.router.navigate(['archetypes'])
-      }); 
+      });
   }
 }

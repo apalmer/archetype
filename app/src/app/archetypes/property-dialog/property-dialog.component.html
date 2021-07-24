@@ -1,7 +1,8 @@
-<h1 mat-dialog-title>Add Property</h1>
+<ng-template [ngIf]="data.mode === 'items'"><h1 mat-dialog-title>Type of Item</h1></ng-template>
+<ng-template [ngIf]="data.mode !== 'items'"><h1 mat-dialog-title>Add Property</h1></ng-template>
 <div mat-dialog-content>
-    <mat-form-field>
-        <mat-label>Property Name</mat-label>
+    <mat-form-field *ngIf="data.mode !== 'items'">
+        <mat-label>Property Name {{data.mode}}</mat-label>
         <input matInput [(ngModel)]="data.name">
     </mat-form-field>
     <div>

@@ -1,7 +1,8 @@
 export interface PropertyNode {
     name: string;
     type: string;
-    properties?: PropertyNode[]
+    properties?: PropertyNode[];
+    items?: PropertyNode;
 }
 
 

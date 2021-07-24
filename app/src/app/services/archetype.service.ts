@@ -62,7 +62,7 @@ export class ArchetypeService {
   }
 
   newSchema(): JsonSchema {
-    return { type:'object', properties : {}};
+    return { type:'object', properties : {} };
   }
 
   add(archetype: Archetype) : Promise<DocumentReference<Archetype>>{

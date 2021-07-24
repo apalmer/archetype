@@ -11,4 +11,5 @@ export interface JsonSchema {
 export interface JsonSchemaProperty {
     type:string,
     properties?: any
+    items?: JsonSchemaProperty
 }
