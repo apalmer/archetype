@@ -16,7 +16,8 @@ import { CharacterListComponent } from './character-list/character-list.componen
 import { CharacterSummaryComponent } from './character-summary/character-summary.component';
 import { CharacterEditorComponent } from './character-editor/character-editor.component';
 import { FlexibleFormComponent } from './flexible-form/flexible-form.component';
-
+import { FlexibleRecursiveFormComponent } from './flexible-recursive-form/flexible-recursive-form.component';
+import { FlexibleFormBackupComponent } from './flexible-form-backup/flexible-form-backup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { FlexibleFormComponent } from './flexible-form/flexible-form.component';
     CharacterListComponent,
     CharacterSummaryComponent,
     CharacterEditorComponent,
-    FlexibleFormComponent
+    FlexibleFormComponent,
+    FlexibleRecursiveFormComponent,
+    FlexibleFormBackupComponent
   ],
   imports: [
     CommonModule, 

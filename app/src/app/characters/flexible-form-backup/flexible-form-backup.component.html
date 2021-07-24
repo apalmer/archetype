@@ -1,0 +1,25 @@
+<div *ngIf="schemaFormGroup">
+    <mat-card class="data-card">
+        <mat-card-header>
+            <mat-card-subtitle>{{ schemaFormGroup.name }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngIf="schemaFormGroup">
+                <div [formGroup]="schemaFormGroup.control">
+                    <div *ngFor="let child of schemaFormGroup.controls">
+                        <div *ngIf="child.type === 'object'; then thenBlock else elseBlock"></div>
+                        <ng-template #thenBlock>
+                            <app-flexible-form-backup [schemaFormGroup]="child"></app-flexible-form-backup>
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <mat-form-field>
+                                <mat-label>{{ child.name }}</mat-label>
+                                <input [attr.type]="getControlType(child.type)" matInput formControlName="{{child.name}}">
+                            </mat-form-field>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

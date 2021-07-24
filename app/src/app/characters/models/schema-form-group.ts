@@ -1,4 +1,5 @@
-import { AbstractControl, FormControl, FormGroup } from "@angular/forms";
+import { AbstractControl, FormArray, FormControl, FormGroup } from "@angular/forms";
+import { JsonSchemaProperty } from "src/app/models/json-schema";
 
 export interface SchemaPropertyControl {
     name: string;
@@ -19,6 +20,53 @@ export class SchemaPropertyFormControl implements SchemaPropertyControl {
     }
 
     getData() {
+        return this.control.value;
+    }
+}
+
+export class SchemaFormArray implements SchemaPropertyControl {
+    name: string;
+    type: string;
+    control: FormArray;
+    controls: SchemaPropertyControl[];
+
+    constructor(name: string, items:JsonSchemaProperty, data:any[]){
+        this.name = name;
+        this.type = 'array';
+        //this.controls = new Array<SchemaPropertyControl>()
+        let children = new Array<AbstractControl>();
+        
+        if(Array.isArray(data)){ 
+            data.forEach((datum,index) => {
+                let child: SchemaPropertyControl;
+                let itemsType:string = items ? items.type : typeof datum
+                let childItems:JsonSchemaProperty = items? items.items : null;
+                switch (itemsType) {
+                    case "object":
+                        child = new SchemaFormGroup(index.toString(), items, datum);
+                        break;
+                    case "array":
+                        child = new SchemaFormArray(index.toString(), childItems, datum);
+                        break;
+                    case "string":
+                    case "number":
+                    case "bigint":
+                    case "boolean":
+                    case "symbol":
+                        child = new SchemaPropertyFormControl(index.toString(), itemsType, datum);
+                        break;
+                    default:
+                        break;
+                }
+                //this.controls.push(child);
+                children.push(child.control);
+            });
+        }
+
+        this.control = new FormArray(children);
+    }
+
+    getData(){
         return this.control.value;
     }
 }
@@ -45,6 +93,9 @@ export class SchemaFormGroup implements SchemaPropertyControl {
                 switch (property.type) {
                     case "object":
                         child = new SchemaFormGroup(key, property, datum);
+                        break;
+                    case "array":
+                        child = new SchemaFormArray(key, property.items, datum);
                         break;
                     case "string":
                     case "number":
