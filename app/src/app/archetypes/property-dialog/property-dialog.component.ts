@@ -16,8 +16,12 @@ export class PropertyDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<PropertyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PropertyDialogData
    ){}
-
+  
   ngOnInit(): void {
+    if(this.data.mode === 'items'){
+      let arrayIndex = this.schemaTypes.indexOf('array');
+      this.schemaTypes.splice(arrayIndex,1);
+    }
   }
  
   onCancel(): void {

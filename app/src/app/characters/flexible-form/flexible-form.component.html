@@ -18,7 +18,7 @@
         <div *ngSwitchCase="'array'">
             <div [formGroup]="schemaPropertyFormGroup.control">
                 <div>{{schemaPropertyControl.name}}</div>
-                <button click=addArrayItem(schemaPropertyControl)>Add</button>
+                <button type="button" (click)="addArrayItem(schemaPropertyControl)">Add</button>
                 <div formArrayName='{{schemaPropertyControl.name}}'>
                     <div *ngFor="let child of schemaPropertyControl.controls; index as i">
                         <div *ngIf="child.type !== 'object' && child.type !== 'array'; then thenBlock else elseBlock"></div>

@@ -47,9 +47,10 @@ export class SchemaFormArray implements SchemaPropertyControl {
                     case "object":
                         child = new SchemaFormGroup(index.toString(), items, datum);
                         break;
-                    case "array":
-                        child = new SchemaFormArray(index.toString(), childItems, datum);
-                        break;
+                    //Nested Arrays are not supported by firebase
+                    //case "array":
+                    //    child = new SchemaFormArray(index.toString(), childItems, datum);
+                    //    break;
                     case "string":
                     case "number":
                     case "bigint":
@@ -72,9 +73,43 @@ export class SchemaFormArray implements SchemaPropertyControl {
         return this.control.value;
     }
 
-    addNewItem(){
-
+    registerChild(child : SchemaPropertyControl){
+        this.control.push(child.control);
+        this.controls.push(child);
     }
+    
+    addNewItem(){
+        let newItem = this.convertSchemaPropertyControl(this.items)
+        this.registerChild(newItem);
+    }
+
+    convertSchemaPropertyControl(items:JsonSchemaProperty):SchemaPropertyControl{
+        let child: SchemaPropertyControl;
+        let itemsType:string = items.type;
+        let childItems:JsonSchemaProperty = items? items.items : null;
+        let itemName = this.name + "_item_" + this.controls.length.toString();
+
+        switch (itemsType) {
+            case "object":
+                child = new SchemaFormGroup(itemName, items, {});
+                break;
+            //Nested Array are not supported by firebase
+            //case "array":
+            //    child = new SchemaFormArray(itemName, childItems, []);
+            //    break;
+            case "string":
+            case "number":
+            case "bigint":
+            case "boolean":
+            case "symbol":
+                child = new SchemaPropertyFormControl(itemName, itemsType, '');
+                break;
+            default:
+                break;
+        }
+        return child;
+    }
+    
 }
 
 export class SchemaFormGroup implements SchemaPropertyControl {

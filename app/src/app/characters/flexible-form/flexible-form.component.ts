@@ -21,8 +21,7 @@ export class FlexibleFormComponent implements OnInit {
     return (dataType === "number") ? "number":"text"
   }
 
-  addArrayItem(schemaPropertyControl:SchemaFormArray){
-    let schemaPropertyFormArray = schemaPropertyControl;
-    schemaPropertyControl.addNewItem();
+  addArrayItem(schemaFormArray:SchemaFormArray){
+    schemaFormArray.addNewItem();
   }
 }
