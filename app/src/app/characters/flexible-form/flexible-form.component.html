@@ -1,26 +1,37 @@
-<div *ngIf="schemaFormGroup">
-    <mat-card class="data-card">
-        <mat-card-header>
-            <mat-card-subtitle>{{ schemaFormGroup.name }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <div *ngIf="schemaFormGroup">
-                <div [formGroup]="schemaFormGroup.control">
-                    <div *ngFor="let child of schemaFormGroup.controls">
-                        <div *ngIf="child.type === 'object'; then thenBlock else elseBlock"></div>
+<div *ngIf="schemaPropertyControl">
+    <div [ngSwitch]="schemaPropertyControl.type">
+        <div *ngSwitchCase="'object'">
+            <div [formGroup]="schemaPropertyControl.control">
+                <div>{{schemaPropertyControl.name}}</div>
+                <div *ngFor="let child of schemaPropertyControl.controls">
+                    <div *ngIf="child.type !== 'object' && child.type !== 'array'; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                        <label>{{child.name}}</label>
+                        <input [attr.type]="getControlType(child.type)" formControlName="{{child.name}}">
+                    </ng-template>
+                    <ng-template #elseBlock>
+                        <app-flexible-form [schemaPropertyFormGroup]="schemaPropertyControl" [schemaPropertyControl]="child"></app-flexible-form>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'array'">
+            <div [formGroup]="schemaPropertyFormGroup.control">
+                <div>{{schemaPropertyControl.name}}</div>
+                <button click=addArrayItem(schemaPropertyControl)>Add</button>
+                <div formArrayName='{{schemaPropertyControl.name}}'>
+                    <div *ngFor="let child of schemaPropertyControl.controls; index as i">
+                        <div *ngIf="child.type !== 'object' && child.type !== 'array'; then thenBlock else elseBlock"></div>
                         <ng-template #thenBlock>
-                            <app-flexible-form [schemaFormGroup]="child"></app-flexible-form>
+                            <label>{{i}}</label>
+                            <input [attr.type]="getControlType(child.type)" [formControlName]="i">
                         </ng-template>
                         <ng-template #elseBlock>
-                            <mat-form-field>
-                                <mat-label>{{ child.name }}</mat-label>
-                                <input [attr.type]="getControlType(child.type)" matInput formControlName="{{child.name}}">
-                            </mat-form-field>
+                            <app-flexible-form [schemaPropertyFormGroup]="schemaPropertyControl" [schemaPropertyControl]="child"></app-flexible-form>
                         </ng-template>
                     </div>
                 </div>
             </div>
-        </mat-card-content>
-    </mat-card>
-
+        </div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
-import { SchemaFormGroup } from '../models/schema-form-group';
+import { SchemaFormArray, SchemaFormGroup, SchemaPropertyControl } from '../models/schema-form-group';
 
 @Component({
   selector: 'app-flexible-form',
@@ -8,16 +8,21 @@ import { SchemaFormGroup } from '../models/schema-form-group';
   styleUrls: ['./flexible-form.component.css']
 })
 export class FlexibleFormComponent implements OnInit {
-  @Input() schemaFormGroup: SchemaFormGroup;
+  @Input() schemaPropertyFormGroup: SchemaFormGroup
+  @Input() schemaPropertyControl: SchemaPropertyControl;
   
   constructor() { 
   }
 
   ngOnInit(): void {
-    console.log(this.schemaFormGroup);
   }
 
   getControlType(dataType:string){
     return (dataType === "number") ? "number":"text"
+  }
+
+  addArrayItem(schemaPropertyControl:SchemaFormArray){
+    let schemaPropertyFormArray = schemaPropertyControl;
+    schemaPropertyControl.addNewItem();
   }
 }

@@ -29,11 +29,13 @@ export class SchemaFormArray implements SchemaPropertyControl {
     type: string;
     control: FormArray;
     controls: SchemaPropertyControl[];
+    items: JsonSchemaProperty;
 
     constructor(name: string, items:JsonSchemaProperty, data:any[]){
         this.name = name;
         this.type = 'array';
-        //this.controls = new Array<SchemaPropertyControl>()
+        this.items = items;
+        this.controls = new Array<SchemaPropertyControl>()
         let children = new Array<AbstractControl>();
         
         if(Array.isArray(data)){ 
@@ -58,7 +60,7 @@ export class SchemaFormArray implements SchemaPropertyControl {
                     default:
                         break;
                 }
-                //this.controls.push(child);
+                this.controls.push(child);
                 children.push(child.control);
             });
         }
@@ -68,6 +70,10 @@ export class SchemaFormArray implements SchemaPropertyControl {
 
     getData(){
         return this.control.value;
+    }
+
+    addNewItem(){
+
     }
 }
 
