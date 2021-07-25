@@ -50,6 +50,12 @@ export class CharacterDataService {
     let emc= new Weapon('Flail')
     emc.flare='Engine Knuckles';
     emc.magic=2
+    let enbox= new Weapon('Maul')
+    enbox.flare="Heavy Flame Combo"
+    enbox.magic=0
+    enbox.xtradice=[]
+    enbox.xtradice.push({dice:2,sides:6,type:'fire',source:'weapon'})
+    enbox.xtradice.push({dice:1, sides:4,type:enbox.damageType, source:'enlarge'})
 
     class Dndchar {
       stats: any =
@@ -171,12 +177,12 @@ export class CharacterDataService {
     alo.abilities={STR:12, DEX:12, CON:12, INT:20, WIS:15, CHR:10}
     alo.hitPoints=alo.maxHitPoints=59
     alo.armorClass=10
-    alo.proficiencies.weapontype.push('Simple')
+    alo.proficiencies.weapontype.push('Simple', 'Martial')
     alo.proficiencies.skills.push('investigation','arcana')
     alo.proficiencies.saves.push('CON', 'INT')
     alo.proficiencies.armor.push('light', 'medium', 'shield')
     alo.resources.push({name:'1stSpell', min:4, max:4},{name:'2ndSpell', min:3,max:3},{name:'3rdSpell',min:2, max:2})
-    alo.weapons.push(emc, thugery)
+    alo.weapons.push(emc, enbox)
     alo.features=[]
     alo.bio={visuals:{idle:'assets/images/hayidle.png'}}
     alo.icon='("assets/images/hayicon.png")'

@@ -3,7 +3,7 @@ import { AttackOptions } from "../models/attack-options";
 import { Combatant } from "./combatant";
 import { GameEvent } from "./game-event";
 import { Weapon } from "./weapon";
-import { attackRoll, weaponDamageRoll, ActAttackRoll, attackDamageRoll, damageresist } from "./dice"
+import { attackRoll, weaponDamageRoll, ActAttackRoll, attackDamageRoll, damageresist, xtraweaponDamageRoll } from "./dice"
 import { InstancedBufferAttribute } from "three";
 import { Player } from "./player";
 import { Action, DamageInfo } from "./enemy";
@@ -41,8 +41,17 @@ export class CombatSystem {
             
             let damage = weaponDamageRoll(source, weapon,
                 weaponDamage.dice, weaponDamage.sides, isCritical);
-                damage= damageresist(damage,target,weaponDamage.type
-)
+                damage= damageresist(damage ,target,weaponDamage.type
+                
+                )
+            if(weapon.xtradice&& weapon.xtradice.length>0)
+
+            {for (let i=0;i<weapon.xtradice.length;i++){
+                let xtrdam= xtraweaponDamageRoll(source,weapon,weapon.xtradice[i].dice,weapon.xtradice[i].sides, isCritical);
+                xtrdam=damageresist(xtrdam, target, weapon.xtradice[i].type)
+                damage=damage+xtrdam
+                }
+            }
 
             //apply damage to target
             target.hitPoints -= damage;

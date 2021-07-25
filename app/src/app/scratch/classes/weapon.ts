@@ -18,6 +18,7 @@ export class Weapon {
     category:string;
     magic:number;
     dmgbonus:number;
+    xtradice:Array<{dice:number, sides:number,type:string, source:string}>
     damageType:string;
 
     constructor(name:string) {
